@@ -1,0 +1,9 @@
+This is the part of C-\/core for the P\-O\-S\-I\-X platform. It has the (P\-O\-S\-I\-X) platform-\/specific files and a sample Makefile ({\ttfamily posix.\-mk}), which will build two sample programs\-: {\ttfamily pubnub\-\_\-sync\-\_\-sample} and {\ttfamily pubnub\-\_\-callback\-\_\-sample}. The former uses the \char`\"{}sync\char`\"{} interface (A\-P\-I) and the latter uses the \char`\"{}callback\char`\"{} interface (A\-P\-I).
+
+The sources of the samples are in {\ttfamily ../core/samples}, as they are portable across all or most hosted platforms (P\-O\-S\-I\-X, Windows...).
+
+So, to build the samples, just run\-: \begin{DoxyVerb}make -f posix.mk
+\end{DoxyVerb}
+
+
+There are no special requirements for C-\/core on P\-O\-S\-I\-X, it should just build on any regular P\-O\-S\-I\-X system with a G\-C\-C compiler (probably with any other too, but that would require some changes to the Makefile). 

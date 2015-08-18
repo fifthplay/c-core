@@ -1,0 +1,12 @@
+This is the Pubnub client library for the Con\-Tiki O\-S. It is carefully designed for small footprint and to be a good fit for Con\-Tiki O\-S way of multitasking with Protothreads and Contiki O\-S processes. You can have multiple pubnub contexts established; in each context, at most one Pubnub A\-P\-I call/transaction may be ongoing (typically a \char`\"{}publish\char`\"{} or a \char`\"{}subscribe\char`\"{}).
+
+It has less features than most Pubnub libraries for other O\-Ses, as it is designed to be used in more constrained environments.
+
+The most important differences from a full-\/fledged Pubnub A\-P\-I implementation are\-:
+
+
+\begin{DoxyItemize}
+\item The only available Pubnub A\-P\-Is are\-: publish, subscribe, leave.
+\item Library itself doesn't handle timeouts other than T\-C\-P/\-I\-P timeout, which mostly comes down to loss of connection to the server. If you want to impose a timeout on transaction duration, use one of the several Con\-Tiki O\-S timer interfaces yourself.
+\item You can't change the origin (U\-R\-L) or several other parameters of connection to Pubnub. 
+\end{DoxyItemize}

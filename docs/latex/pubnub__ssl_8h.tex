@@ -1,0 +1,53 @@
+\hypertarget{pubnub__ssl_8h}{\section{core/pubnub\-\_\-ssl.h File Reference}
+\label{pubnub__ssl_8h}\index{core/pubnub\-\_\-ssl.\-h@{core/pubnub\-\_\-ssl.\-h}}
+}
+{\ttfamily \#include \char`\"{}pubnub\-\_\-res.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$stdbool.\-h$>$}\\*
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structpubnub}{pubnub} \hyperlink{pubnub__ssl_8h_afaf02e571ac3551810b876ee151b5fc6}{pubnub\-\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{pubnub__ssl_8h_a5c5b32b434bbf26e69d1ac18930e29fa}{pubnub\-\_\-set\-\_\-ssl\-\_\-options} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p, bool use\-S\-S\-L, bool reduce\-Security\-On\-Error, bool ignore\-Secure\-Connection\-Requirement)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the \char`\"{}\-S\-S\-L/\-T\-L\-S\char`\"{} A\-P\-I of the Pubnub client library. It has functions that pertain to using S\-S\-L/\-T\-L\-S to connect to Pubnub. It is supported on platforms that have S\-S\-L/\-T\-L\-S. 
+
+\subsection{Typedef Documentation}
+\hypertarget{pubnub__ssl_8h_afaf02e571ac3551810b876ee151b5fc6}{\index{pubnub\-\_\-ssl.\-h@{pubnub\-\_\-ssl.\-h}!pubnub\-\_\-t@{pubnub\-\_\-t}}
+\index{pubnub\-\_\-t@{pubnub\-\_\-t}!pubnub_ssl.h@{pubnub\-\_\-ssl.\-h}}
+\subsubsection[{pubnub\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf pubnub} {\bf pubnub\-\_\-t}}}\label{pubnub__ssl_8h_afaf02e571ac3551810b876ee151b5fc6}
+A pubnub context. An opaque data structure that holds all the data needed for a context. 
+
+\subsection{Function Documentation}
+\hypertarget{pubnub__ssl_8h_a5c5b32b434bbf26e69d1ac18930e29fa}{\index{pubnub\-\_\-ssl.\-h@{pubnub\-\_\-ssl.\-h}!pubnub\-\_\-set\-\_\-ssl\-\_\-options@{pubnub\-\_\-set\-\_\-ssl\-\_\-options}}
+\index{pubnub\-\_\-set\-\_\-ssl\-\_\-options@{pubnub\-\_\-set\-\_\-ssl\-\_\-options}!pubnub_ssl.h@{pubnub\-\_\-ssl.\-h}}
+\subsubsection[{pubnub\-\_\-set\-\_\-ssl\-\_\-options}]{\setlength{\rightskip}{0pt plus 5cm}void pubnub\-\_\-set\-\_\-ssl\-\_\-options (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p, }
+\item[{bool}]{use\-S\-S\-L, }
+\item[{bool}]{reduce\-Security\-On\-Error, }
+\item[{bool}]{ignore\-Secure\-Connection\-Requirement}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ssl_8h_a5c5b32b434bbf26e69d1ac18930e29fa}
+Sets the S\-S\-L options for a context. If S\-S\-L support is enabled, these options will get their default values in \hyperlink{pubnub__coreapi_8h_af3efadf99ac4b832949265a675ec87b0}{pubnub\-\_\-init()}. If you wish to change them, call this function.
+
+\begin{DoxyPrecond}{Precondition}
+Call this after \hyperlink{pubnub__coreapi_8h_af3efadf99ac4b832949265a675ec87b0}{pubnub\-\_\-init()} on the context 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Context to set S\-S\-L options for\\
+\hline
+{\em use\-S\-S\-L} & Should the Pub\-Nub client establish the connection to Pub\-Nub using S\-S\-L? (default\-: Y\-E\-S)\\
+\hline
+{\em reduce\-Security\-On\-Error} & When S\-S\-L is enabled, should Pub\-Nub client ignore all S\-S\-L certificate-\/handshake issues and still continue in S\-S\-L mode if it experiences issues handshaking across local proxies, firewalls, etc? (default\-: Y\-E\-S)\\
+\hline
+{\em ignore\-Secure\-Connection\-Requirement} & When S\-S\-L is enabled, should the client fallback to a non-\/\-S\-S\-L connection if it experiences issues handshaking across local proxies, firewalls, etc? (default\-: Y\-E\-S) \\
+\hline
+\end{DoxyParams}

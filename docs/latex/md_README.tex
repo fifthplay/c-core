@@ -1,0 +1,16 @@
+This repository has the source for the C/\-C++ client libraries, designed mostly for embedded systems, but perfectly suitable for \char`\"{}regular\char`\"{} (P\-O\-S\-I\-X, Windows) systems, too.
+
+\subsection*{Directory Organization}
+
+The directories of the library repository are\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily core} \-: The core part, with modules portable to all, or most, libraries for specific platforms
+\item {\ttfamily lib} \-: Modules for libs that are available on more than one platform
+\item {\ttfamily windows} \-: Modules and Makefile for the Windows platform
+\item {\ttfamily posix} \-: Modules and Makefile for P\-O\-S\-I\-X O\-Ses (tested mostly on Linux)
+\item {\ttfamily openssl}\-: Modules and Makefile(s) for Open\-S\-S\-L (on P\-O\-S\-I\-X and Windows)
+\item {\ttfamily contiki} \-: Modules and Makefile for the Contiki O\-S
+\item {\ttfamily freertos} \-: Modules and Makefile for the Free\-R\-T\-O\-S O\-S 
+\end{DoxyItemize}

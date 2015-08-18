@@ -1,0 +1,60 @@
+\hypertarget{pubnub__helper_8h}{\section{core/pubnub\-\_\-helper.h File Reference}
+\label{pubnub__helper_8h}\index{core/pubnub\-\_\-helper.\-h@{core/pubnub\-\_\-helper.\-h}}
+}
+{\ttfamily \#include \char`\"{}pubnub\-\_\-res.\-h\char`\"{}}\\*
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{pubnub__helper_8h_a55b2fc27925a8ae5d8cc6a4c0a491eaf}{pubnub\-\_\-publish\-\_\-res} \{ \hyperlink{pubnub__helper_8h_a55b2fc27925a8ae5d8cc6a4c0a491eafada55bfc1c4a91915771cfed297060b00}{P\-N\-P\-U\-B\-\_\-\-S\-E\-N\-T}, 
+\hyperlink{pubnub__helper_8h_a55b2fc27925a8ae5d8cc6a4c0a491eafa4e4bd6dc90aa782270d7fd48c18072c9}{P\-N\-P\-U\-B\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-J\-S\-O\-N}, 
+\hyperlink{pubnub__helper_8h_a55b2fc27925a8ae5d8cc6a4c0a491eafa45cf66546911354689a499f3e8aee3b8}{P\-N\-P\-U\-B\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-C\-H\-A\-R\-\_\-\-I\-N\-\_\-\-C\-H\-A\-N\-\_\-\-N\-A\-M\-E}, 
+\hyperlink{pubnub__helper_8h_a55b2fc27925a8ae5d8cc6a4c0a491eafa50d87fafcbb1a54702d348d2ad2a80b8}{P\-N\-P\-U\-B\-\_\-\-U\-N\-K\-O\-W\-N\-\_\-\-E\-R\-R\-O\-R}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{pubnub__helper_8h_a55b2fc27925a8ae5d8cc6a4c0a491eaf}{pubnub\-\_\-publish\-\_\-res} \hyperlink{pubnub__helper_8h_aadc4bc5646b0913ca052e89385e95dd5}{pubnub\-\_\-parse\-\_\-publish\-\_\-result} (char const $\ast$result)
+\item 
+char const $\ast$ \hyperlink{pubnub__helper_8h_ac37bafb946d75447a9842d43244ac1b4}{pubnub\-\_\-res\-\_\-2\-\_\-string} (enum pubnub\-\_\-res e)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is a set of \char`\"{}\-Helper\char`\"{} functions of the Pubnub client library. You don't need this to work with Pubnub client, but they may come in handy. 
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{pubnub__helper_8h_a55b2fc27925a8ae5d8cc6a4c0a491eaf}{\index{pubnub\-\_\-helper.\-h@{pubnub\-\_\-helper.\-h}!pubnub\-\_\-publish\-\_\-res@{pubnub\-\_\-publish\-\_\-res}}
+\index{pubnub\-\_\-publish\-\_\-res@{pubnub\-\_\-publish\-\_\-res}!pubnub_helper.h@{pubnub\-\_\-helper.\-h}}
+\subsubsection[{pubnub\-\_\-publish\-\_\-res}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf pubnub\-\_\-publish\-\_\-res}}}\label{pubnub__helper_8h_a55b2fc27925a8ae5d8cc6a4c0a491eaf}
+Possible (known) publish results (outcomes) in the description received from Pubnub. \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{P\-N\-P\-U\-B\-\_\-\-S\-E\-N\-T@{P\-N\-P\-U\-B\-\_\-\-S\-E\-N\-T}!pubnub\-\_\-helper.\-h@{pubnub\-\_\-helper.\-h}}\index{pubnub\-\_\-helper.\-h@{pubnub\-\_\-helper.\-h}!P\-N\-P\-U\-B\-\_\-\-S\-E\-N\-T@{P\-N\-P\-U\-B\-\_\-\-S\-E\-N\-T}}\item[{\em 
+\hypertarget{pubnub__helper_8h_a55b2fc27925a8ae5d8cc6a4c0a491eafada55bfc1c4a91915771cfed297060b00}{P\-N\-P\-U\-B\-\_\-\-S\-E\-N\-T}\label{pubnub__helper_8h_a55b2fc27925a8ae5d8cc6a4c0a491eafada55bfc1c4a91915771cfed297060b00}
+}]Publish succeeded, message sent on the channel \index{P\-N\-P\-U\-B\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-J\-S\-O\-N@{P\-N\-P\-U\-B\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-J\-S\-O\-N}!pubnub\-\_\-helper.\-h@{pubnub\-\_\-helper.\-h}}\index{pubnub\-\_\-helper.\-h@{pubnub\-\_\-helper.\-h}!P\-N\-P\-U\-B\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-J\-S\-O\-N@{P\-N\-P\-U\-B\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-J\-S\-O\-N}}\item[{\em 
+\hypertarget{pubnub__helper_8h_a55b2fc27925a8ae5d8cc6a4c0a491eafa4e4bd6dc90aa782270d7fd48c18072c9}{P\-N\-P\-U\-B\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-J\-S\-O\-N}\label{pubnub__helper_8h_a55b2fc27925a8ae5d8cc6a4c0a491eafa4e4bd6dc90aa782270d7fd48c18072c9}
+}]Publish failed, the message had invalid J\-S\-O\-N \index{P\-N\-P\-U\-B\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-C\-H\-A\-R\-\_\-\-I\-N\-\_\-\-C\-H\-A\-N\-\_\-\-N\-A\-M\-E@{P\-N\-P\-U\-B\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-C\-H\-A\-R\-\_\-\-I\-N\-\_\-\-C\-H\-A\-N\-\_\-\-N\-A\-M\-E}!pubnub\-\_\-helper.\-h@{pubnub\-\_\-helper.\-h}}\index{pubnub\-\_\-helper.\-h@{pubnub\-\_\-helper.\-h}!P\-N\-P\-U\-B\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-C\-H\-A\-R\-\_\-\-I\-N\-\_\-\-C\-H\-A\-N\-\_\-\-N\-A\-M\-E@{P\-N\-P\-U\-B\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-C\-H\-A\-R\-\_\-\-I\-N\-\_\-\-C\-H\-A\-N\-\_\-\-N\-A\-M\-E}}\item[{\em 
+\hypertarget{pubnub__helper_8h_a55b2fc27925a8ae5d8cc6a4c0a491eafa45cf66546911354689a499f3e8aee3b8}{P\-N\-P\-U\-B\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-C\-H\-A\-R\-\_\-\-I\-N\-\_\-\-C\-H\-A\-N\-\_\-\-N\-A\-M\-E}\label{pubnub__helper_8h_a55b2fc27925a8ae5d8cc6a4c0a491eafa45cf66546911354689a499f3e8aee3b8}
+}]Publish failed, the channel had an invalid character in the name \index{P\-N\-P\-U\-B\-\_\-\-U\-N\-K\-O\-W\-N\-\_\-\-E\-R\-R\-O\-R@{P\-N\-P\-U\-B\-\_\-\-U\-N\-K\-O\-W\-N\-\_\-\-E\-R\-R\-O\-R}!pubnub\-\_\-helper.\-h@{pubnub\-\_\-helper.\-h}}\index{pubnub\-\_\-helper.\-h@{pubnub\-\_\-helper.\-h}!P\-N\-P\-U\-B\-\_\-\-U\-N\-K\-O\-W\-N\-\_\-\-E\-R\-R\-O\-R@{P\-N\-P\-U\-B\-\_\-\-U\-N\-K\-O\-W\-N\-\_\-\-E\-R\-R\-O\-R}}\item[{\em 
+\hypertarget{pubnub__helper_8h_a55b2fc27925a8ae5d8cc6a4c0a491eafa50d87fafcbb1a54702d348d2ad2a80b8}{P\-N\-P\-U\-B\-\_\-\-U\-N\-K\-O\-W\-N\-\_\-\-E\-R\-R\-O\-R}\label{pubnub__helper_8h_a55b2fc27925a8ae5d8cc6a4c0a491eafa50d87fafcbb1a54702d348d2ad2a80b8}
+}]Publish failed, but we were not able to parse the error description \end{description}
+\end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{pubnub__helper_8h_aadc4bc5646b0913ca052e89385e95dd5}{\index{pubnub\-\_\-helper.\-h@{pubnub\-\_\-helper.\-h}!pubnub\-\_\-parse\-\_\-publish\-\_\-result@{pubnub\-\_\-parse\-\_\-publish\-\_\-result}}
+\index{pubnub\-\_\-parse\-\_\-publish\-\_\-result@{pubnub\-\_\-parse\-\_\-publish\-\_\-result}!pubnub_helper.h@{pubnub\-\_\-helper.\-h}}
+\subsubsection[{pubnub\-\_\-parse\-\_\-publish\-\_\-result}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf pubnub\-\_\-publish\-\_\-res} pubnub\-\_\-parse\-\_\-publish\-\_\-result (
+\begin{DoxyParamCaption}
+\item[{char const $\ast$}]{result}
+\end{DoxyParamCaption}
+)}}\label{pubnub__helper_8h_aadc4bc5646b0913ca052e89385e95dd5}
+Parses the given publish {\ttfamily result}. You usually obtain this with \hyperlink{pubnub__coreapi_8h_a60d7c7c38cd91b552df479ba21155c5c}{pubnub\-\_\-last\-\_\-publish\-\_\-result()}. \hypertarget{pubnub__helper_8h_ac37bafb946d75447a9842d43244ac1b4}{\index{pubnub\-\_\-helper.\-h@{pubnub\-\_\-helper.\-h}!pubnub\-\_\-res\-\_\-2\-\_\-string@{pubnub\-\_\-res\-\_\-2\-\_\-string}}
+\index{pubnub\-\_\-res\-\_\-2\-\_\-string@{pubnub\-\_\-res\-\_\-2\-\_\-string}!pubnub_helper.h@{pubnub\-\_\-helper.\-h}}
+\subsubsection[{pubnub\-\_\-res\-\_\-2\-\_\-string}]{\setlength{\rightskip}{0pt plus 5cm}char const$\ast$ pubnub\-\_\-res\-\_\-2\-\_\-string (
+\begin{DoxyParamCaption}
+\item[{enum pubnub\-\_\-res}]{e}
+\end{DoxyParamCaption}
+)}}\label{pubnub__helper_8h_ac37bafb946d75447a9842d43244ac1b4}
+Returns a string (in English) describing a Pubnub result enum value {\ttfamily e}. 

@@ -1,0 +1,71 @@
+\hypertarget{pubnub__blocking__io_8h}{\section{core/pubnub\-\_\-blocking\-\_\-io.h File Reference}
+\label{pubnub__blocking__io_8h}\index{core/pubnub\-\_\-blocking\-\_\-io.\-h@{core/pubnub\-\_\-blocking\-\_\-io.\-h}}
+}
+{\ttfamily \#include \char`\"{}pubnub\-\_\-res.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$stdbool.\-h$>$}\\*
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structpubnub}{pubnub} \hyperlink{pubnub__blocking__io_8h_afaf02e571ac3551810b876ee151b5fc6}{pubnub\-\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{pubnub__blocking__io_8h_a633660394405de4726b3d01938c2172d}{pubnub\-\_\-set\-\_\-non\-\_\-blocking\-\_\-io} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p)
+\item 
+int \hyperlink{pubnub__blocking__io_8h_a10805ad004c7e92437461ff06da7dee8}{pubnub\-\_\-set\-\_\-blocking\-\_\-io} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the \char`\"{}\-Blocking I/\-O\char`\"{} A\-P\-I of the Pubnub client library. Functions here influence the way that Pubnub client library works with lower levels (the T\-C\-P/\-I\-P stack).
+
+It is available on platforms that support setting blocking / non-\/blocking behavior. Be aware that, even on such platforms, most of these functions provide more of a hint, rather than a command. 
+
+\subsection{Typedef Documentation}
+\hypertarget{pubnub__blocking__io_8h_afaf02e571ac3551810b876ee151b5fc6}{\index{pubnub\-\_\-blocking\-\_\-io.\-h@{pubnub\-\_\-blocking\-\_\-io.\-h}!pubnub\-\_\-t@{pubnub\-\_\-t}}
+\index{pubnub\-\_\-t@{pubnub\-\_\-t}!pubnub_blocking_io.h@{pubnub\-\_\-blocking\-\_\-io.\-h}}
+\subsubsection[{pubnub\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf pubnub} {\bf pubnub\-\_\-t}}}\label{pubnub__blocking__io_8h_afaf02e571ac3551810b876ee151b5fc6}
+A pubnub context. An opaque data structure that holds all the data needed for a context. 
+
+\subsection{Function Documentation}
+\hypertarget{pubnub__blocking__io_8h_a10805ad004c7e92437461ff06da7dee8}{\index{pubnub\-\_\-blocking\-\_\-io.\-h@{pubnub\-\_\-blocking\-\_\-io.\-h}!pubnub\-\_\-set\-\_\-blocking\-\_\-io@{pubnub\-\_\-set\-\_\-blocking\-\_\-io}}
+\index{pubnub\-\_\-set\-\_\-blocking\-\_\-io@{pubnub\-\_\-set\-\_\-blocking\-\_\-io}!pubnub_blocking_io.h@{pubnub\-\_\-blocking\-\_\-io.\-h}}
+\subsubsection[{pubnub\-\_\-set\-\_\-blocking\-\_\-io}]{\setlength{\rightskip}{0pt plus 5cm}int pubnub\-\_\-set\-\_\-blocking\-\_\-io (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__blocking__io_8h_a10805ad004c7e92437461ff06da7dee8}
+Sets the usage of blocking I/\-O for a context. If blocking I/\-O is supported by a platform, it will be used, unless some other reason prevents it.
+
+\begin{DoxyPrecond}{Precondition}
+Call this after \hyperlink{pubnub__coreapi_8h_af3efadf99ac4b832949265a675ec87b0}{pubnub\-\_\-init()} on the context 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Context to set non-\/blocking I/\-O for\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0\-: O\-K, otherwise\-: error, blocking I/\-O not supported 
+\end{DoxyReturn}
+\hypertarget{pubnub__blocking__io_8h_a633660394405de4726b3d01938c2172d}{\index{pubnub\-\_\-blocking\-\_\-io.\-h@{pubnub\-\_\-blocking\-\_\-io.\-h}!pubnub\-\_\-set\-\_\-non\-\_\-blocking\-\_\-io@{pubnub\-\_\-set\-\_\-non\-\_\-blocking\-\_\-io}}
+\index{pubnub\-\_\-set\-\_\-non\-\_\-blocking\-\_\-io@{pubnub\-\_\-set\-\_\-non\-\_\-blocking\-\_\-io}!pubnub_blocking_io.h@{pubnub\-\_\-blocking\-\_\-io.\-h}}
+\subsubsection[{pubnub\-\_\-set\-\_\-non\-\_\-blocking\-\_\-io}]{\setlength{\rightskip}{0pt plus 5cm}int pubnub\-\_\-set\-\_\-non\-\_\-blocking\-\_\-io (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__blocking__io_8h_a633660394405de4726b3d01938c2172d}
+Sets the usage of non-\/blocking I/\-O for a context. If non-\/blocking I/\-O is supported by a platform, it will be used, unless some other reason prevents it.
+
+\begin{DoxyPrecond}{Precondition}
+Call this after \hyperlink{pubnub__coreapi_8h_af3efadf99ac4b832949265a675ec87b0}{pubnub\-\_\-init()} on the context 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Context to set non-\/blocking I/\-O for\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0\-: O\-K, otherwise\-: error, blocking I/\-O not supported 
+\end{DoxyReturn}

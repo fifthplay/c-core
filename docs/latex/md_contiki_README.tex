@@ -1,0 +1,77 @@
+N\-O\-T\-E\-: This library is a work-\/in-\/progress, in pre-\/alpha state.
+
+Pubnub library for Contiki O\-S is designed for embedded/constrained devices. It is a part of the \char`\"{}\-C-\/core\char`\"{} repository, using most of the \char`\"{}core\char`\"{} modules and providing only the P\-A\-L (\char`\"{}\-Platform Abstraction
+\-Layer\char`\"{}) for the Contiki O\-S.
+
+There are no special requirements of the library, and it should be usable as-\/is on any platform that Contiki is ported to.
+
+It is designed with minimal amount of code in mind. It's data memory requirements can be tweaked by the user, but are by design static and brought down to minimum.
+
+\subsection*{File Organization}
+
+The core modules are in {\ttfamily ../core} directory.
+
+Modules and headers in this directory combine to make the P\-A\-L for Contiki O\-S.
+
+{\ttfamily pubnub\-Demo.\-c} is a simple demo of how the library should be used. Build this (with pubnub.\-c and Contiki) for a basic example of how stuff works.
+
+{\ttfamily Makefile} is a basic Makefile to build the pubnub\-Demo \char`\"{}app\char`\"{}. Use are is, or look for clues on how to make one for yourself.
+
+{\ttfamily L\-I\-C\-E\-N\-S\-E} and this {\ttfamily R\-E\-A\-D\-M\-E.\-md} should be self-\/explanatory.
+
+\subsection*{Design considerations}
+
+The fundamental flow for working with the library is this\-:
+
+0. Foremost, you should have a Contiki O\-S process to handle the outcome of your requests. You can work without them, but that would be somewhat clumsy. Of course, this can be done in an already existing Contiki O\-S process of yours.
+
+
+\begin{DoxyEnumerate}
+\item Obtain a Pubnub \char`\"{}context\char`\"{} from the library. It is an opaque pointer. {\itshape Note}\-: you can't create contexts on your own. \char`\"{}\-All Pubnub contexz
+   are belong to us.\char`\"{} \-:)
+\item Initialize the context, giving the subscribe and publish key.
+\item Start a operation/transaction/\-Pubnub A\-P\-I call on the context. It will either fail or return an indication of \char`\"{}started\char`\"{}. The outcome will be sent to your process, with event indicating the transaction type and data being the context on which the transaction was carried out.
+\item On receipt of the process event, check the context for the result (success or indication of failure). If O\-K and it was a subscribe transaction, you can get the messages that were fetched (and, if available, the channels they pertain too).
+\item When you're done processing the outcome event, you can start a new transaction in that context.
+\end{DoxyEnumerate}
+
+This is ilustrated in pubnub\-Demo.\-c, similar to this\-: \begin{DoxyVerb}static pubnub_t *m_pb = pubnub_alloc();
+pubnub_init(m_pb, pubkey, subkey);
+
+etimer_set(&et, 3*CLOCK_SECOND);
+
+while (1) {
+    PROCESS_WAIT_EVENT();
+    if (ev == PROCESS_EVENT_TIMER) {
+        pubnub_publish(m_pb, channel, "\"ConTiki Pubnub voyager\"");
+    }
+    else if (ev == pubnub_publish_event) {
+        pubnub_subscribe(m_pb, channel);
+    }
+    else if (ev == pubnub_subscribe_event) {
+        for (;;) {
+            char const *msg = pubnub_get(m_pb);
+            if (NULL == msg) {
+                break;
+            }
+            printf("Received message: %s\n", msg);
+        }
+        etimer_restart(&et);
+    }
+}
+\end{DoxyVerb}
+
+
+\subsubsection*{Remarks}
+
+
+\begin{DoxyItemize}
+\item We said there are no requirements, because we assume the minimal Contiki O\-S. But, in fact, {\itshape we do} expect that\-:
+\begin{DoxyItemize}
+\item you have both U\-D\-P and T\-C\-P enabled
+\item you have I\-Pv4 enabled
+\item you have D\-N\-S enabled
+\end{DoxyItemize}
+\item While you may have parallel transactions running in different contexts, a single context can handle only one transaction at a time.
+\item You have to start the {\ttfamily pubnub\-\_\-process} at some point, preferrably before you initiate any transaction. It does not start automatically. This enables you to start it at your own convinience. The pubnub\-Demo starts it in the {\ttfamily A\-U\-T\-O\-S\-T\-A\-R\-T\-\_\-\-P\-R\-O\-C\-E\-S\-S\-E\-S} list, but you don't have to do it like that. 
+\end{DoxyItemize}

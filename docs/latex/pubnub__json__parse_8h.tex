@@ -1,0 +1,181 @@
+\hypertarget{pubnub__json__parse_8h}{\section{core/pubnub\-\_\-json\-\_\-parse.h File Reference}
+\label{pubnub__json__parse_8h}\index{core/pubnub\-\_\-json\-\_\-parse.\-h@{core/pubnub\-\_\-json\-\_\-parse.\-h}}
+}
+{\ttfamily \#include $<$stdbool.\-h$>$}\\*
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structpbjson__elem}{pbjson\-\_\-elem}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fc}{pbjson\-\_\-object\-\_\-name\-\_\-parse\-\_\-result} \{ \\*
+\hyperlink{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca512971e15baf3245f4669c348426f0a2}{jonmp\-No\-Start\-Curly}, 
+\hyperlink{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fcabe360e35df51fce4d9c8596ebf479629}{jonmp\-Key\-Missing}, 
+\hyperlink{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca4c5f53d8be1e1531097abb553c4d3260}{jonmp\-Key\-Not\-String}, 
+\hyperlink{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca4a4fd2a0906b88912a5090a995a739c6}{jonmp\-String\-Not\-Terminated}, 
+\\*
+\hyperlink{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca44deb562032cc8661fa3ff8f658b65c6}{jonmp\-Missing\-Colon}, 
+\hyperlink{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fcadd6899262c44b21afb0003f51cc6b0a2}{jonmp\-Object\-Incomplete}, 
+\hyperlink{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca8d720fc19e522d357b4db71daa6c980d}{jonmp\-Missing\-Value\-Separator}, 
+\hyperlink{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca52bfcdd8885eb3ad5c3bd3dff7e0c4cd}{jonmp\-Key\-Not\-Found}, 
+\\*
+\hyperlink{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca6e17a7502dca9ce18668e4fc21c0055d}{jonmp\-Invalid\-Key\-Name}, 
+\hyperlink{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fcafdf2a309c99246884ebb59a87c0ac0d7}{jonmp\-O\-K}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char const $\ast$ \hyperlink{pubnub__json__parse_8h_aa1703f37ef9e3823367f230a79885724}{pbjson\-\_\-skip\-\_\-whitespace} (char const $\ast$start, char const $\ast$end)
+\item 
+char const $\ast$ \hyperlink{pubnub__json__parse_8h_a5bb347def16377f16b70d6de32199695}{pbjson\-\_\-find\-\_\-end\-\_\-string} (char const $\ast$start, char const $\ast$end)
+\item 
+char const $\ast$ \hyperlink{pubnub__json__parse_8h_a7538b261fd82b657037cdf7f7465a979}{pbjson\-\_\-find\-\_\-end\-\_\-primitive} (char const $\ast$start, char const $\ast$end)
+\item 
+char const $\ast$ \hyperlink{pubnub__json__parse_8h_a70cd9e08810218557b0fdb50443eecb9}{pbjson\-\_\-find\-\_\-end\-\_\-complex} (char const $\ast$start, char const $\ast$end)
+\item 
+char const $\ast$ \hyperlink{pubnub__json__parse_8h_ace8628ed6b20ddeceb756cc8e9867637}{pbjson\-\_\-find\-\_\-end\-\_\-element} (char const $\ast$start, char const $\ast$end)
+\item 
+enum \\*
+\hyperlink{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fc}{pbjson\-\_\-object\-\_\-name\-\_\-parse\-\_\-result} \hyperlink{pubnub__json__parse_8h_a4d96849eddb16490a5994544791daf5d}{pbjson\-\_\-get\-\_\-object\-\_\-value} (struct \hyperlink{structpbjson__elem}{pbjson\-\_\-elem} const $\ast$p, char const $\ast$name, struct \hyperlink{structpbjson__elem}{pbjson\-\_\-elem} $\ast$parsed)
+\item 
+bool \hyperlink{pubnub__json__parse_8h_a904dad3ae8698c509aef8dcd49733e76}{pbjson\-\_\-elem\-\_\-equals\-\_\-string} (struct \hyperlink{structpbjson__elem}{pbjson\-\_\-elem} const $\ast$e, char const $\ast$s)
+\item 
+char const $\ast$ \hyperlink{pubnub__json__parse_8h_a561f5b9fa3552ab89b8ef98985e6e3dc}{pbjson\-\_\-object\-\_\-name\-\_\-parse\-\_\-result\-\_\-2\-\_\-string} (enum \hyperlink{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fc}{pbjson\-\_\-object\-\_\-name\-\_\-parse\-\_\-result} e)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A bunch of functions for parsing J\-S\-O\-N. These are designed for internal use by the Pubnub client, but, since they are rather generic, the user can use them, too, though their availability and interface are not guaranteed to survive Pubnub client version changes. 
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fc}{\index{pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}!pbjson\-\_\-object\-\_\-name\-\_\-parse\-\_\-result@{pbjson\-\_\-object\-\_\-name\-\_\-parse\-\_\-result}}
+\index{pbjson\-\_\-object\-\_\-name\-\_\-parse\-\_\-result@{pbjson\-\_\-object\-\_\-name\-\_\-parse\-\_\-result}!pubnub_json_parse.h@{pubnub\-\_\-json\-\_\-parse.\-h}}
+\subsubsection[{pbjson\-\_\-object\-\_\-name\-\_\-parse\-\_\-result}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf pbjson\-\_\-object\-\_\-name\-\_\-parse\-\_\-result}}}\label{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fc}
+Results of parsing a J\-S\-O\-N (object) definition \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{jonmp\-No\-Start\-Curly@{jonmp\-No\-Start\-Curly}!pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}}\index{pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}!jonmp\-No\-Start\-Curly@{jonmp\-No\-Start\-Curly}}\item[{\em 
+\hypertarget{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca512971e15baf3245f4669c348426f0a2}{jonmp\-No\-Start\-Curly}\label{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca512971e15baf3245f4669c348426f0a2}
+}]No starting curly brace {\ttfamily \{} \index{jonmp\-Key\-Missing@{jonmp\-Key\-Missing}!pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}}\index{pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}!jonmp\-Key\-Missing@{jonmp\-Key\-Missing}}\item[{\em 
+\hypertarget{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fcabe360e35df51fce4d9c8596ebf479629}{jonmp\-Key\-Missing}\label{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fcabe360e35df51fce4d9c8596ebf479629}
+}]Key is missing from a J\-S\-O\-N object definition \index{jonmp\-Key\-Not\-String@{jonmp\-Key\-Not\-String}!pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}}\index{pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}!jonmp\-Key\-Not\-String@{jonmp\-Key\-Not\-String}}\item[{\em 
+\hypertarget{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca4c5f53d8be1e1531097abb553c4d3260}{jonmp\-Key\-Not\-String}\label{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca4c5f53d8be1e1531097abb553c4d3260}
+}]Key is not a string (this forbidden by J\-S\-O\-N) \index{jonmp\-String\-Not\-Terminated@{jonmp\-String\-Not\-Terminated}!pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}}\index{pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}!jonmp\-String\-Not\-Terminated@{jonmp\-String\-Not\-Terminated}}\item[{\em 
+\hypertarget{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca4a4fd2a0906b88912a5090a995a739c6}{jonmp\-String\-Not\-Terminated}\label{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca4a4fd2a0906b88912a5090a995a739c6}
+}]String not terminated (no end {\ttfamily "}) \index{jonmp\-Missing\-Colon@{jonmp\-Missing\-Colon}!pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}}\index{pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}!jonmp\-Missing\-Colon@{jonmp\-Missing\-Colon}}\item[{\em 
+\hypertarget{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca44deb562032cc8661fa3ff8f658b65c6}{jonmp\-Missing\-Colon}\label{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca44deb562032cc8661fa3ff8f658b65c6}
+}]Colon ({\ttfamily \-:}) is missing in J\-S\-O\-N object definition \index{jonmp\-Object\-Incomplete@{jonmp\-Object\-Incomplete}!pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}}\index{pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}!jonmp\-Object\-Incomplete@{jonmp\-Object\-Incomplete}}\item[{\em 
+\hypertarget{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fcadd6899262c44b21afb0003f51cc6b0a2}{jonmp\-Object\-Incomplete}\label{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fcadd6899262c44b21afb0003f51cc6b0a2}
+}]Ending curly brace {\ttfamily \}} is missing \index{jonmp\-Missing\-Value\-Separator@{jonmp\-Missing\-Value\-Separator}!pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}}\index{pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}!jonmp\-Missing\-Value\-Separator@{jonmp\-Missing\-Value\-Separator}}\item[{\em 
+\hypertarget{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca8d720fc19e522d357b4db71daa6c980d}{jonmp\-Missing\-Value\-Separator}\label{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca8d720fc19e522d357b4db71daa6c980d}
+}]A comma {\ttfamily ,}, delimiting key-\/value pairs in a J\-S\-O\-N object, is missing. \index{jonmp\-Key\-Not\-Found@{jonmp\-Key\-Not\-Found}!pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}}\index{pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}!jonmp\-Key\-Not\-Found@{jonmp\-Key\-Not\-Found}}\item[{\em 
+\hypertarget{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca52bfcdd8885eb3ad5c3bd3dff7e0c4cd}{jonmp\-Key\-Not\-Found}\label{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca52bfcdd8885eb3ad5c3bd3dff7e0c4cd}
+}]The key was not found in the J\-S\-O\-N object definition \index{jonmp\-Invalid\-Key\-Name@{jonmp\-Invalid\-Key\-Name}!pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}}\index{pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}!jonmp\-Invalid\-Key\-Name@{jonmp\-Invalid\-Key\-Name}}\item[{\em 
+\hypertarget{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca6e17a7502dca9ce18668e4fc21c0055d}{jonmp\-Invalid\-Key\-Name}\label{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fca6e17a7502dca9ce18668e4fc21c0055d}
+}]The name of the key is empty or otherwise not valid \index{jonmp\-O\-K@{jonmp\-O\-K}!pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}}\index{pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}!jonmp\-O\-K@{jonmp\-O\-K}}\item[{\em 
+\hypertarget{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fcafdf2a309c99246884ebb59a87c0ac0d7}{jonmp\-O\-K}\label{pubnub__json__parse_8h_a4300bcda6d4467d9e44136d80d8d67fcafdf2a309c99246884ebb59a87c0ac0d7}
+}]Parsed O\-K, J\-S\-O\-N (object) is valid \end{description}
+\end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{pubnub__json__parse_8h_a904dad3ae8698c509aef8dcd49733e76}{\index{pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}!pbjson\-\_\-elem\-\_\-equals\-\_\-string@{pbjson\-\_\-elem\-\_\-equals\-\_\-string}}
+\index{pbjson\-\_\-elem\-\_\-equals\-\_\-string@{pbjson\-\_\-elem\-\_\-equals\-\_\-string}!pubnub_json_parse.h@{pubnub\-\_\-json\-\_\-parse.\-h}}
+\subsubsection[{pbjson\-\_\-elem\-\_\-equals\-\_\-string}]{\setlength{\rightskip}{0pt plus 5cm}bool pbjson\-\_\-elem\-\_\-equals\-\_\-string (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbjson\-\_\-elem} const $\ast$}]{e, }
+\item[{char const $\ast$}]{s}
+\end{DoxyParamCaption}
+)}}\label{pubnub__json__parse_8h_a904dad3ae8698c509aef8dcd49733e76}
+Helper function, returns whether string {\ttfamily s} is equal to the contents of the J\-S\-O\-N element {\ttfamily e}. \hypertarget{pubnub__json__parse_8h_a70cd9e08810218557b0fdb50443eecb9}{\index{pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}!pbjson\-\_\-find\-\_\-end\-\_\-complex@{pbjson\-\_\-find\-\_\-end\-\_\-complex}}
+\index{pbjson\-\_\-find\-\_\-end\-\_\-complex@{pbjson\-\_\-find\-\_\-end\-\_\-complex}!pubnub_json_parse.h@{pubnub\-\_\-json\-\_\-parse.\-h}}
+\subsubsection[{pbjson\-\_\-find\-\_\-end\-\_\-complex}]{\setlength{\rightskip}{0pt plus 5cm}char const$\ast$ pbjson\-\_\-find\-\_\-end\-\_\-complex (
+\begin{DoxyParamCaption}
+\item[{char const $\ast$}]{start, }
+\item[{char const $\ast$}]{end}
+\end{DoxyParamCaption}
+)}}\label{pubnub__json__parse_8h_a70cd9e08810218557b0fdb50443eecb9}
+Finds the end of the \char`\"{}complex\char`\"{} value starting from {\ttfamily start}, until {\ttfamily end}. Interprets \char`\"{}complex value\char`\"{} as a J\-S\-O\-N object or array -\/ that should be compatible with a lot of other specifications.
+
+Assumes that {\ttfamily start} points to the first character of the complex object (opening curly brace or square bracket).
+
+\begin{DoxyReturn}{Returns}
+Pointer to the character that is the end of the complex. It is == {\ttfamily end} if the end of the complex was not found in input. 
+\end{DoxyReturn}
+\hypertarget{pubnub__json__parse_8h_ace8628ed6b20ddeceb756cc8e9867637}{\index{pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}!pbjson\-\_\-find\-\_\-end\-\_\-element@{pbjson\-\_\-find\-\_\-end\-\_\-element}}
+\index{pbjson\-\_\-find\-\_\-end\-\_\-element@{pbjson\-\_\-find\-\_\-end\-\_\-element}!pubnub_json_parse.h@{pubnub\-\_\-json\-\_\-parse.\-h}}
+\subsubsection[{pbjson\-\_\-find\-\_\-end\-\_\-element}]{\setlength{\rightskip}{0pt plus 5cm}char const$\ast$ pbjson\-\_\-find\-\_\-end\-\_\-element (
+\begin{DoxyParamCaption}
+\item[{char const $\ast$}]{start, }
+\item[{char const $\ast$}]{end}
+\end{DoxyParamCaption}
+)}}\label{pubnub__json__parse_8h_ace8628ed6b20ddeceb756cc8e9867637}
+Finds the end of the J\-S\-O\-N element starting from {\ttfamily start}, until {\ttfamily end}. Interprets element as J\-S\-O\-N does (primitive, object or array) -\/ that should be compatible with a lot of other specifications.
+
+Assumes that {\ttfamily start} points to the first character of the element.
+
+\begin{DoxyReturn}{Returns}
+Pointer to the character that is the end of the element. It is == {\ttfamily end} if the end of the element was not found in input. 
+\end{DoxyReturn}
+\hypertarget{pubnub__json__parse_8h_a7538b261fd82b657037cdf7f7465a979}{\index{pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}!pbjson\-\_\-find\-\_\-end\-\_\-primitive@{pbjson\-\_\-find\-\_\-end\-\_\-primitive}}
+\index{pbjson\-\_\-find\-\_\-end\-\_\-primitive@{pbjson\-\_\-find\-\_\-end\-\_\-primitive}!pubnub_json_parse.h@{pubnub\-\_\-json\-\_\-parse.\-h}}
+\subsubsection[{pbjson\-\_\-find\-\_\-end\-\_\-primitive}]{\setlength{\rightskip}{0pt plus 5cm}char const$\ast$ pbjson\-\_\-find\-\_\-end\-\_\-primitive (
+\begin{DoxyParamCaption}
+\item[{char const $\ast$}]{start, }
+\item[{char const $\ast$}]{end}
+\end{DoxyParamCaption}
+)}}\label{pubnub__json__parse_8h_a7538b261fd82b657037cdf7f7465a979}
+Finds the end of the \char`\"{}primitive\char`\"{} value starting from {\ttfamily start}, until {\ttfamily end}. Interprets \char`\"{}primitive value\char`\"{} a little more broadly than J\-S\-O\-N does (basically, we allow anything that is not a J\-S\-O\-N string, array or object) -\/ that should be compatible with a lot of other specifications.
+
+Assumes that {\ttfamily start} points to the first character of the primitive.
+
+\begin{DoxyReturn}{Returns}
+Pointer to the character that is the end of the primitive. It is == {\ttfamily end} if the end of the primitive was not found in input. 
+\end{DoxyReturn}
+\hypertarget{pubnub__json__parse_8h_a5bb347def16377f16b70d6de32199695}{\index{pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}!pbjson\-\_\-find\-\_\-end\-\_\-string@{pbjson\-\_\-find\-\_\-end\-\_\-string}}
+\index{pbjson\-\_\-find\-\_\-end\-\_\-string@{pbjson\-\_\-find\-\_\-end\-\_\-string}!pubnub_json_parse.h@{pubnub\-\_\-json\-\_\-parse.\-h}}
+\subsubsection[{pbjson\-\_\-find\-\_\-end\-\_\-string}]{\setlength{\rightskip}{0pt plus 5cm}char const$\ast$ pbjson\-\_\-find\-\_\-end\-\_\-string (
+\begin{DoxyParamCaption}
+\item[{char const $\ast$}]{start, }
+\item[{char const $\ast$}]{end}
+\end{DoxyParamCaption}
+)}}\label{pubnub__json__parse_8h_a5bb347def16377f16b70d6de32199695}
+Finds the end of the string starting from {\ttfamily start}, until {\ttfamily end}. Interprets string as J\-S\-O\-N does (starting and ending with double-\/quotation and allowing escape characters with backslash) -\/ that should be compatible with a lot of other specifications.
+
+Assumes that {\ttfamily start} points to the first character of the string (that is, one past the opening double-\/quote).
+
+\begin{DoxyReturn}{Returns}
+Pointer to the double-\/quotation character that is the end of string from input. It is == {\ttfamily end} if the end of the string was not found in input. 
+\end{DoxyReturn}
+\hypertarget{pubnub__json__parse_8h_a4d96849eddb16490a5994544791daf5d}{\index{pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}!pbjson\-\_\-get\-\_\-object\-\_\-value@{pbjson\-\_\-get\-\_\-object\-\_\-value}}
+\index{pbjson\-\_\-get\-\_\-object\-\_\-value@{pbjson\-\_\-get\-\_\-object\-\_\-value}!pubnub_json_parse.h@{pubnub\-\_\-json\-\_\-parse.\-h}}
+\subsubsection[{pbjson\-\_\-get\-\_\-object\-\_\-value}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf pbjson\-\_\-object\-\_\-name\-\_\-parse\-\_\-result} pbjson\-\_\-get\-\_\-object\-\_\-value (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbjson\-\_\-elem} const $\ast$}]{p, }
+\item[{char const $\ast$}]{name, }
+\item[{struct {\bf pbjson\-\_\-elem} $\ast$}]{parsed}
+\end{DoxyParamCaption}
+)}}\label{pubnub__json__parse_8h_a4d96849eddb16490a5994544791daf5d}
+Gets the value from a J\-S\-O\-N object from {\ttfamily p}, with the key {\ttfamily name} and puts it to {\ttfamily parsed} o success, returning jonmp\-O\-K. On failure, returns the error code and the effects on {\ttfamily parsed} are not defined. \hypertarget{pubnub__json__parse_8h_a561f5b9fa3552ab89b8ef98985e6e3dc}{\index{pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}!pbjson\-\_\-object\-\_\-name\-\_\-parse\-\_\-result\-\_\-2\-\_\-string@{pbjson\-\_\-object\-\_\-name\-\_\-parse\-\_\-result\-\_\-2\-\_\-string}}
+\index{pbjson\-\_\-object\-\_\-name\-\_\-parse\-\_\-result\-\_\-2\-\_\-string@{pbjson\-\_\-object\-\_\-name\-\_\-parse\-\_\-result\-\_\-2\-\_\-string}!pubnub_json_parse.h@{pubnub\-\_\-json\-\_\-parse.\-h}}
+\subsubsection[{pbjson\-\_\-object\-\_\-name\-\_\-parse\-\_\-result\-\_\-2\-\_\-string}]{\setlength{\rightskip}{0pt plus 5cm}char const$\ast$ pbjson\-\_\-object\-\_\-name\-\_\-parse\-\_\-result\-\_\-2\-\_\-string (
+\begin{DoxyParamCaption}
+\item[{enum {\bf pbjson\-\_\-object\-\_\-name\-\_\-parse\-\_\-result}}]{e}
+\end{DoxyParamCaption}
+)}}\label{pubnub__json__parse_8h_a561f5b9fa3552ab89b8ef98985e6e3dc}
+Helper function, returns a string describing an enum for the J\-S\-O\-N (object) parse result. \hypertarget{pubnub__json__parse_8h_aa1703f37ef9e3823367f230a79885724}{\index{pubnub\-\_\-json\-\_\-parse.\-h@{pubnub\-\_\-json\-\_\-parse.\-h}!pbjson\-\_\-skip\-\_\-whitespace@{pbjson\-\_\-skip\-\_\-whitespace}}
+\index{pbjson\-\_\-skip\-\_\-whitespace@{pbjson\-\_\-skip\-\_\-whitespace}!pubnub_json_parse.h@{pubnub\-\_\-json\-\_\-parse.\-h}}
+\subsubsection[{pbjson\-\_\-skip\-\_\-whitespace}]{\setlength{\rightskip}{0pt plus 5cm}char const$\ast$ pbjson\-\_\-skip\-\_\-whitespace (
+\begin{DoxyParamCaption}
+\item[{char const $\ast$}]{start, }
+\item[{char const $\ast$}]{end}
+\end{DoxyParamCaption}
+)}}\label{pubnub__json__parse_8h_aa1703f37ef9e3823367f230a79885724}
+Skips whitespace starting from {\ttfamily start}, until {\ttfamily end}. Interprets whitespace as J\-S\-O\-N does -\/ that should be compatible with a lot of other specifications.
+
+\begin{DoxyReturn}{Returns}
+Pointer to the first character that is not whitespace. It is == {\ttfamily end} if the whole input is skipped. 
+\end{DoxyReturn}

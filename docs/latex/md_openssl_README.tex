@@ -1,0 +1,19 @@
+This is the part of C-\/core for the Open\-S\-S\-L library/platform. Open\-S\-S\-L is portable across P\-O\-S\-I\-X and Windows, so the same code is used on all and thus we deem it \char`\"{}library/platform\char`\"{}.
+
+It has the (Open\-S\-S\-L) library/platform-\/specific files and a sample Makefile ({\ttfamily posix.\-mk}), which will build two sample programs on P\-O\-S\-I\-X\-: {\ttfamily pubnub\-\_\-sync\-\_\-sample} and {\ttfamily pubnub\-\_\-callback\-\_\-sample}. The former uses the \char`\"{}sync\char`\"{} interface (A\-P\-I) and the latter uses the \char`\"{}callback\char`\"{} interface (A\-P\-I).
+
+The sources of the samples are in {\ttfamily ../core/samples}, as they are portable across all or most hosted platforms (P\-O\-S\-I\-X, Windows...).
+
+So, to build the samples, just run\-: \begin{DoxyVerb}make -f posix.mk
+\end{DoxyVerb}
+
+
+There are no special requirements for C-\/core on P\-O\-S\-I\-X, it should just build on any regular P\-O\-S\-I\-X system with a G\-C\-C compiler (probably with any other too, but that would require some changes to the Makefile).
+
+\section*{Notes}
+
+
+\begin{DoxyItemize}
+\item The callback A\-P\-I is not yet functional. For now, use the sync A\-P\-I.
+\item We shall add sample Makefile for Windows soon. 
+\end{DoxyItemize}

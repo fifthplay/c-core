@@ -1,0 +1,40 @@
+\hypertarget{pubnub__ntf__sync_8h}{\section{core/pubnub\-\_\-ntf\-\_\-sync.h File Reference}
+\label{pubnub__ntf__sync_8h}\index{core/pubnub\-\_\-ntf\-\_\-sync.\-h@{core/pubnub\-\_\-ntf\-\_\-sync.\-h}}
+}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{pubnub__ntf__sync_8h_afaf02e571ac3551810b876ee151b5fc6}{typedef struct \hyperlink{structpubnub}{pubnub} {\bfseries pubnub\-\_\-t}}\label{pubnub__ntf__sync_8h_afaf02e571ac3551810b876ee151b5fc6}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__ntf__sync_8h_ad5f9dcf61e6c902e08a12204cebddae9}{pubnub\-\_\-await} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the \char`\"{}sync\char`\"{} notification interface.
+
+Pubnub client library offers two \char`\"{}mostly portable\char`\"{} interfaces for getting notification about the outcome of a Pubnub transaction. Those are\-:
+\begin{DoxyItemize}
+\item sync (this one)
+\item callback
+\end{DoxyItemize}
+
+There are others, which are specific to a platform (like process events for Contiki O\-S). Also, not all platforms support the two \char`\"{}mostly portable\char`\"{} interfaces mentioned above.
+
+Sync interfaces is the simplest. You just check for the (last) result of a context (by using \hyperlink{pubnub__coreapi_8h_a5cea75959cd319da41900771686f4956}{pubnub\-\_\-last\-\_\-result()}) and when it becomes something other than \#\-P\-N\-R\-\_\-\-S\-T\-A\-R\-T\-E\-D, you have your outcome.
+
+Since \hyperlink{pubnub__coreapi_8h_a5cea75959cd319da41900771686f4956}{pubnub\-\_\-last\-\_\-result()} is part of the \char`\"{}\-Core A\-P\-I\char`\"{}, this interface only provides one additional, helper function, which will wait in a loop for the transaction to finish. While \hyperlink{pubnub__coreapi_8h_a5cea75959cd319da41900771686f4956}{pubnub\-\_\-last\-\_\-result()} is available in all Pubnub client libraries, \hyperlink{pubnub__ntf__sync_8h_ad5f9dcf61e6c902e08a12204cebddae9}{pubnub\-\_\-await()} is not. 
+
+\subsection{Function Documentation}
+\hypertarget{pubnub__ntf__sync_8h_ad5f9dcf61e6c902e08a12204cebddae9}{\index{pubnub\-\_\-ntf\-\_\-sync.\-h@{pubnub\-\_\-ntf\-\_\-sync.\-h}!pubnub\-\_\-await@{pubnub\-\_\-await}}
+\index{pubnub\-\_\-await@{pubnub\-\_\-await}!pubnub_ntf_sync.h@{pubnub\-\_\-ntf\-\_\-sync.\-h}}
+\subsubsection[{pubnub\-\_\-await}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pubnub\-\_\-await (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ntf__sync_8h_ad5f9dcf61e6c902e08a12204cebddae9}
+Waits, in a loop, for the current transaction to finish. 

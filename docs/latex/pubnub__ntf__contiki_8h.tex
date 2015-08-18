@@ -1,0 +1,43 @@
+\hypertarget{pubnub__ntf__contiki_8h}{\section{contiki/pubnub\-\_\-ntf\-\_\-contiki.h File Reference}
+\label{pubnub__ntf__contiki_8h}\index{contiki/pubnub\-\_\-ntf\-\_\-contiki.\-h@{contiki/pubnub\-\_\-ntf\-\_\-contiki.\-h}}
+}
+{\ttfamily \#include \char`\"{}contiki.\-h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{pubnub__ntf__contiki_8h_a04be348d6375cfcbb18ca9d02e9744e0}{{\bfseries P\-R\-O\-C\-E\-S\-S\-\_\-\-N\-A\-M\-E} (pubnub\-\_\-process)}\label{pubnub__ntf__contiki_8h_a04be348d6375cfcbb18ca9d02e9744e0}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+process\-\_\-event\-\_\-t \hyperlink{pubnub__ntf__contiki_8h_a0e917c4bd15f229cff1783999a502499}{pubnub\-\_\-publish\-\_\-event}
+\item 
+process\-\_\-event\-\_\-t \hyperlink{pubnub__ntf__contiki_8h_ab6f02959c3c1620af83281db5ce7a174}{pubnub\-\_\-subscribe\-\_\-event}
+\item 
+process\-\_\-event\-\_\-t \hyperlink{pubnub__ntf__contiki_8h_af858578becfd5ecd25d5da06f0d8b13f}{pubnub\-\_\-time\-\_\-event}
+\item 
+process\-\_\-event\-\_\-t \hyperlink{pubnub__ntf__contiki_8h_a59cd8e0bacfde7ac687c55b96bc7450c}{pubnub\-\_\-history\-\_\-event}
+\end{DoxyCompactItemize}
+
+
+\subsection{Variable Documentation}
+\hypertarget{pubnub__ntf__contiki_8h_a59cd8e0bacfde7ac687c55b96bc7450c}{\index{pubnub\-\_\-ntf\-\_\-contiki.\-h@{pubnub\-\_\-ntf\-\_\-contiki.\-h}!pubnub\-\_\-history\-\_\-event@{pubnub\-\_\-history\-\_\-event}}
+\index{pubnub\-\_\-history\-\_\-event@{pubnub\-\_\-history\-\_\-event}!pubnub_ntf_contiki.h@{pubnub\-\_\-ntf\-\_\-contiki.\-h}}
+\subsubsection[{pubnub\-\_\-history\-\_\-event}]{\setlength{\rightskip}{0pt plus 5cm}process\-\_\-event\-\_\-t pubnub\-\_\-history\-\_\-event}}\label{pubnub__ntf__contiki_8h_a59cd8e0bacfde7ac687c55b96bc7450c}
+The I\-D of the Pubnub History event. The same I\-D is used for History v1 and v2 events.
+
+Event carries the context pointer on which the history transaction finished. Use \hyperlink{pubnub__coreapi_8h_a5cea75959cd319da41900771686f4956}{pubnub\-\_\-last\-\_\-result()} to read the outcome of the transaction.
+
+The I\-D of the Pubnub Prsence event. The same I\-D is used for all presence events\-: here now, global here now, where now, leave.
+
+Event carries the context pointer on which the history transaction finished. Use \hyperlink{pubnub__coreapi_8h_a5cea75959cd319da41900771686f4956}{pubnub\-\_\-last\-\_\-result()} to read the outcome of the transaction. \hypertarget{pubnub__ntf__contiki_8h_a0e917c4bd15f229cff1783999a502499}{\index{pubnub\-\_\-ntf\-\_\-contiki.\-h@{pubnub\-\_\-ntf\-\_\-contiki.\-h}!pubnub\-\_\-publish\-\_\-event@{pubnub\-\_\-publish\-\_\-event}}
+\index{pubnub\-\_\-publish\-\_\-event@{pubnub\-\_\-publish\-\_\-event}!pubnub_ntf_contiki.h@{pubnub\-\_\-ntf\-\_\-contiki.\-h}}
+\subsubsection[{pubnub\-\_\-publish\-\_\-event}]{\setlength{\rightskip}{0pt plus 5cm}process\-\_\-event\-\_\-t pubnub\-\_\-publish\-\_\-event}}\label{pubnub__ntf__contiki_8h_a0e917c4bd15f229cff1783999a502499}
+The I\-D of the Pubnub Publish event. Event carries the context pointer on which the publish transaction finished. Use \hyperlink{pubnub__coreapi_8h_a5cea75959cd319da41900771686f4956}{pubnub\-\_\-last\-\_\-result()} to read the outcome of the transaction. \hypertarget{pubnub__ntf__contiki_8h_ab6f02959c3c1620af83281db5ce7a174}{\index{pubnub\-\_\-ntf\-\_\-contiki.\-h@{pubnub\-\_\-ntf\-\_\-contiki.\-h}!pubnub\-\_\-subscribe\-\_\-event@{pubnub\-\_\-subscribe\-\_\-event}}
+\index{pubnub\-\_\-subscribe\-\_\-event@{pubnub\-\_\-subscribe\-\_\-event}!pubnub_ntf_contiki.h@{pubnub\-\_\-ntf\-\_\-contiki.\-h}}
+\subsubsection[{pubnub\-\_\-subscribe\-\_\-event}]{\setlength{\rightskip}{0pt plus 5cm}process\-\_\-event\-\_\-t pubnub\-\_\-subscribe\-\_\-event}}\label{pubnub__ntf__contiki_8h_ab6f02959c3c1620af83281db5ce7a174}
+The I\-D of the Pubnub Subscribe event. Event carries the context pointer on which the subscribe transaction finished. Use \hyperlink{pubnub__coreapi_8h_a5cea75959cd319da41900771686f4956}{pubnub\-\_\-last\-\_\-result()} to read the outcome of the transaction. \hypertarget{pubnub__ntf__contiki_8h_af858578becfd5ecd25d5da06f0d8b13f}{\index{pubnub\-\_\-ntf\-\_\-contiki.\-h@{pubnub\-\_\-ntf\-\_\-contiki.\-h}!pubnub\-\_\-time\-\_\-event@{pubnub\-\_\-time\-\_\-event}}
+\index{pubnub\-\_\-time\-\_\-event@{pubnub\-\_\-time\-\_\-event}!pubnub_ntf_contiki.h@{pubnub\-\_\-ntf\-\_\-contiki.\-h}}
+\subsubsection[{pubnub\-\_\-time\-\_\-event}]{\setlength{\rightskip}{0pt plus 5cm}process\-\_\-event\-\_\-t pubnub\-\_\-time\-\_\-event}}\label{pubnub__ntf__contiki_8h_af858578becfd5ecd25d5da06f0d8b13f}
+The I\-D of the Pubnub Time event. Event carries the context pointer on which the time transaction finished. Use \hyperlink{pubnub__coreapi_8h_a5cea75959cd319da41900771686f4956}{pubnub\-\_\-last\-\_\-result()} to read the outcome of the transaction. 

@@ -1,0 +1,819 @@
+\hypertarget{pubnub__coreapi_8h}{\section{core/pubnub\-\_\-coreapi.h File Reference}
+\label{pubnub__coreapi_8h}\index{core/pubnub\-\_\-coreapi.\-h@{core/pubnub\-\_\-coreapi.\-h}}
+}
+{\ttfamily \#include \char`\"{}pubnub\-\_\-res.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$stdbool.\-h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{pubnub__coreapi_8h_a80cf98d90a11fab90abb8d57b046773c}{P\-U\-B\-N\-U\-B\-\_\-\-P\-R\-E\-S\-E\-N\-C\-E\-\_\-\-S\-U\-F\-F\-I\-X}~\char`\"{}-\/pnpres\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structpubnub}{pubnub} \hyperlink{pubnub__coreapi_8h_afaf02e571ac3551810b876ee151b5fc6}{pubnub\-\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{pubnub__coreapi_8h_af3efadf99ac4b832949265a675ec87b0}{pubnub\-\_\-init} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p, const char $\ast$publish\-\_\-key, const char $\ast$subscribe\-\_\-key)
+\item 
+void \hyperlink{pubnub__coreapi_8h_a561f8188e2aa23b44e5b0038a82a4198}{pubnub\-\_\-set\-\_\-uuid} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p, const char $\ast$uuid)
+\item 
+char const $\ast$ \hyperlink{pubnub__coreapi_8h_a1ca62c2a7f676cd084f335f983b6f1eb}{pubnub\-\_\-uuid\-\_\-get} (\hyperlink{structpubnub}{pubnub\-\_\-t} const $\ast$p)
+\item 
+void \hyperlink{pubnub__coreapi_8h_a2289ad90d4d24a66f3407fb191e75281}{pubnub\-\_\-set\-\_\-auth} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p, const char $\ast$auth)
+\item 
+char const $\ast$ \hyperlink{pubnub__coreapi_8h_aea851fb09fcfcf5d024c5e3ab1bae10d}{pubnub\-\_\-auth\-\_\-get} (\hyperlink{structpubnub}{pubnub\-\_\-t} const $\ast$p)
+\item 
+void \hyperlink{pubnub__coreapi_8h_a285de94b69585fc83a1c3742035528f7}{pubnub\-\_\-cancel} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__coreapi_8h_af043957f0989781596c695b123f9686e}{pubnub\-\_\-publish} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p, const char $\ast$channel, const char $\ast$message)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__coreapi_8h_aef6ec570028527de1869df05d67a347f}{pubnub\-\_\-publishv2} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p, const char $\ast$channel, const char $\ast$message, bool store\-\_\-in\-\_\-history, bool eat\-\_\-after\-\_\-reading)
+\item 
+char const $\ast$ \hyperlink{pubnub__coreapi_8h_ab6d4b0fa460d97a1e256e44e60df2447}{pubnub\-\_\-get} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p)
+\item 
+char const $\ast$ \hyperlink{pubnub__coreapi_8h_a08834b5041b308e7bc5747053c1020ed}{pubnub\-\_\-get\-\_\-channel} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$pb)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__coreapi_8h_a54c044b475d6902883e5ca41a1deabc4}{pubnub\-\_\-subscribe} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p, const char $\ast$channel, const char $\ast$channel\-\_\-group)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__coreapi_8h_a327aa6bbf7efac398dc453d31ba8097d}{pubnub\-\_\-leave} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p, const char $\ast$channel, const char $\ast$channel\-\_\-group)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__coreapi_8h_a748bcf6a8df43e443100db9a9e6fe759}{pubnub\-\_\-time} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__coreapi_8h_aebf3862e98a8b449b143ad6b820bf1dd}{pubnub\-\_\-history} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p, const char $\ast$channel, const char $\ast$channel\-\_\-group, unsigned count)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__coreapi_8h_a6bb12ce1eaa8c7de06c17727bf034cd1}{pubnub\-\_\-historyv2} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p, const char $\ast$channel, const char $\ast$channel\-\_\-group, unsigned count, bool include\-\_\-token)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__coreapi_8h_a82e882ea2d4828c8ebcf5ac7418c1572}{pubnub\-\_\-here\-\_\-now} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p, const char $\ast$channel, const char $\ast$channel\-\_\-group)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__coreapi_8h_a9e1df681eec8ac7697124d5179c8c240}{pubnub\-\_\-global\-\_\-here\-\_\-now} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__coreapi_8h_a4086aeedb45d944d4b68ab3e0407e0f7}{pubnub\-\_\-where\-\_\-now} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p, const char $\ast$uuid)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__coreapi_8h_afc1e29aa8c82763709a5e7e53de35144}{pubnub\-\_\-set\-\_\-state} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p, char const $\ast$channel, char const $\ast$channel\-\_\-group, const char $\ast$uuid, char const $\ast$state)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__coreapi_8h_a69951cee4056d416b531dcf0f03c5b42}{pubnub\-\_\-state\-\_\-get} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p, char const $\ast$channel, char const $\ast$channel\-\_\-group, const char $\ast$uuid)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__coreapi_8h_a42d5ec4e620b8a9eea719445dbe6bd93}{pubnub\-\_\-remove\-\_\-channel\-\_\-group} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p, char const $\ast$channel\-\_\-group)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__coreapi_8h_a0b4e32da7ba33152ed4addce7b6a54c5}{pubnub\-\_\-remove\-\_\-channel\-\_\-from\-\_\-group} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p, char const $\ast$channel, char const $\ast$channel\-\_\-group)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__coreapi_8h_aad4358380d59dc7b3bffb12ad45f0204}{pubnub\-\_\-add\-\_\-channel\-\_\-to\-\_\-group} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p, char const $\ast$channel, char const $\ast$channel\-\_\-group)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__coreapi_8h_ac1ce31971f4afb40ee00ea34130923da}{pubnub\-\_\-list\-\_\-channel\-\_\-group} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$p, char const $\ast$channel\-\_\-group)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__coreapi_8h_a5cea75959cd319da41900771686f4956}{pubnub\-\_\-last\-\_\-result} (\hyperlink{structpubnub}{pubnub\-\_\-t} const $\ast$p)
+\item 
+int \hyperlink{pubnub__coreapi_8h_a66dc0f940def45e87ec92d63539bdab1}{pubnub\-\_\-last\-\_\-http\-\_\-code} (\hyperlink{structpubnub}{pubnub\-\_\-t} const $\ast$p)
+\item 
+char const $\ast$ \hyperlink{pubnub__coreapi_8h_a60d7c7c38cd91b552df479ba21155c5c}{pubnub\-\_\-last\-\_\-publish\-\_\-result} (\hyperlink{structpubnub}{pubnub\-\_\-t} const $\ast$p)
+\item 
+char const $\ast$ \hyperlink{pubnub__coreapi_8h_aeb826ed7d4b07795e799e9d7180e8aa2}{pubnub\-\_\-last\-\_\-time\-\_\-token} (\hyperlink{structpubnub}{pubnub\-\_\-t} const $\ast$p)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the \char`\"{}\-Core\char`\"{} A\-P\-I of the Pubnub client library. It has the functions that are present in all variants and platforms and have the same interface in all of them. For the most part, they have the same implementation in all of them, too. 
+
+\subsection{Macro Definition Documentation}
+\hypertarget{pubnub__coreapi_8h_a80cf98d90a11fab90abb8d57b046773c}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!P\-U\-B\-N\-U\-B\-\_\-\-P\-R\-E\-S\-E\-N\-C\-E\-\_\-\-S\-U\-F\-F\-I\-X@{P\-U\-B\-N\-U\-B\-\_\-\-P\-R\-E\-S\-E\-N\-C\-E\-\_\-\-S\-U\-F\-F\-I\-X}}
+\index{P\-U\-B\-N\-U\-B\-\_\-\-P\-R\-E\-S\-E\-N\-C\-E\-\_\-\-S\-U\-F\-F\-I\-X@{P\-U\-B\-N\-U\-B\-\_\-\-P\-R\-E\-S\-E\-N\-C\-E\-\_\-\-S\-U\-F\-F\-I\-X}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{P\-U\-B\-N\-U\-B\-\_\-\-P\-R\-E\-S\-E\-N\-C\-E\-\_\-\-S\-U\-F\-F\-I\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-U\-B\-N\-U\-B\-\_\-\-P\-R\-E\-S\-E\-N\-C\-E\-\_\-\-S\-U\-F\-F\-I\-X~\char`\"{}-\/pnpres\char`\"{}}}\label{pubnub__coreapi_8h_a80cf98d90a11fab90abb8d57b046773c}
+Append this to a name of the channel to form the name of its \char`\"{}presence\char`\"{} channel. A \char`\"{}presence\char`\"{} channel is a pseudo-\/channel on which notifications of presence changes of a channel are announced (sent by the Pubnub network). These notifications are J\-S\-O\-N objects with the following keys\-:
+
+
+\begin{DoxyItemize}
+\item \char`\"{}action\char`\"{}\-: the event that happened, can be \char`\"{}leave\char`\"{}, \char`\"{}join\char`\"{}, \char`\"{}timeout\char`\"{}, \char`\"{}state-\/change\char`\"{}
+\item \char`\"{}timestamp\char`\"{}\-: the timestamp of the moment the event happened
+\item \char`\"{}uuid\char`\"{}\-: I\-D of the user that the event pertains to
+\item \char`\"{}occupancy\char`\"{}\-: current number of present users in the channel
+\end{DoxyItemize}
+
+There is no special support for these (pseudo) channels in our Pubnub client. If you wish to receive presence events, simply append this suffix to the name of the channel and subscribe to that \char`\"{}combined\char`\"{} name. For example, to receive presence events on channel \char`\"{}my\-\_\-channel\char`\"{}, subscribe to \char`\"{}my\-\_\-channel-\/pnpres\char`\"{}.
+
+Actually, you can subscribe to both a \char`\"{}regular\char`\"{} channel and a \char`\"{}presence\char`\"{} channel at the same time, and you'll receive both the presence events (on the \char`\"{}presence channel\char`\"{}) and the published messages (on the \char`\"{}regular\char`\"{} channel). 
+
+\subsection{Typedef Documentation}
+\hypertarget{pubnub__coreapi_8h_afaf02e571ac3551810b876ee151b5fc6}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-t@{pubnub\-\_\-t}}
+\index{pubnub\-\_\-t@{pubnub\-\_\-t}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf pubnub} {\bf pubnub\-\_\-t}}}\label{pubnub__coreapi_8h_afaf02e571ac3551810b876ee151b5fc6}
+A pubnub context. An opaque data structure that holds all the data needed for a context. 
+
+\subsection{Function Documentation}
+\hypertarget{pubnub__coreapi_8h_aad4358380d59dc7b3bffb12ad45f0204}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-add\-\_\-channel\-\_\-to\-\_\-group@{pubnub\-\_\-add\-\_\-channel\-\_\-to\-\_\-group}}
+\index{pubnub\-\_\-add\-\_\-channel\-\_\-to\-\_\-group@{pubnub\-\_\-add\-\_\-channel\-\_\-to\-\_\-group}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-add\-\_\-channel\-\_\-to\-\_\-group}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pubnub\-\_\-add\-\_\-channel\-\_\-to\-\_\-group (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p, }
+\item[{char const $\ast$}]{channel, }
+\item[{char const $\ast$}]{channel\-\_\-group}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_aad4358380d59dc7b3bffb12ad45f0204}
+Adds a {\ttfamily channel} to the {\ttfamily channel\-\_\-group} . This actually means \char`\"{}initiate a add\-\_\-channel\-\_\-to\-\_\-channel\-\_\-group transaction\char`\"{}. It can be thought of as an update against the \char`\"{}channel group database\char`\"{}.
+
+If the channel group doesn't exist, this implicitly adds (creates) it.
+
+If transaction is successful, the response will be a available via \hyperlink{pubnub__coreapi_8h_a08834b5041b308e7bc5747053c1020ed}{pubnub\-\_\-get\-\_\-channel()} as one \char`\"{}channel\char`\"{}, a J\-S\-O\-N object with keys\-:
+
+
+\begin{DoxyItemize}
+\item \char`\"{}service\char`\"{}\-: should be \char`\"{}channel-\/registry\char`\"{}
+\item \char`\"{}status\char`\"{}\-: the H\-T\-T\-P status of the operation (200 O\-K, 40x error, etc.)
+\item \char`\"{}error\char`\"{}\-: true on error, false on success
+\item \char`\"{}message\char`\"{}\-: the string/message describing the status (\char`\"{}\-O\-K\char`\"{}...)
+\end{DoxyItemize}
+
+You can't add a channel to a channel group if a transaction is in progress on the context.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub context. Can't be N\-U\-L\-L. \\
+\hline
+{\em channel\-\_\-group} & The channel to add \\
+\hline
+{\em channel\-\_\-group} & The channel group to add to\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\#\-P\-N\-R\-\_\-\-S\-T\-A\-R\-T\-E\-D on success, an error otherwise 
+\end{DoxyReturn}
+\hypertarget{pubnub__coreapi_8h_aea851fb09fcfcf5d024c5e3ab1bae10d}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-auth\-\_\-get@{pubnub\-\_\-auth\-\_\-get}}
+\index{pubnub\-\_\-auth\-\_\-get@{pubnub\-\_\-auth\-\_\-get}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-auth\-\_\-get}]{\setlength{\rightskip}{0pt plus 5cm}char const$\ast$ pubnub\-\_\-auth\-\_\-get (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} const $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_aea851fb09fcfcf5d024c5e3ab1bae10d}
+Returns the current authentication information for the context {\ttfamily p}. After \hyperlink{pubnub__coreapi_8h_af3efadf99ac4b832949265a675ec87b0}{pubnub\-\_\-init()}, it will return {\ttfamily N\-U\-L\-L} until you change it to non-\/{\ttfamily N\-U\-L\-L} via \hyperlink{pubnub__coreapi_8h_a2289ad90d4d24a66f3407fb191e75281}{pubnub\-\_\-set\-\_\-auth()}. \hypertarget{pubnub__coreapi_8h_a285de94b69585fc83a1c3742035528f7}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-cancel@{pubnub\-\_\-cancel}}
+\index{pubnub\-\_\-cancel@{pubnub\-\_\-cancel}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-cancel}]{\setlength{\rightskip}{0pt plus 5cm}void pubnub\-\_\-cancel (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_a285de94b69585fc83a1c3742035528f7}
+Cancel an ongoing A\-P\-I transaction. The outcome of the transaction in progress, if any, will be \#\-P\-N\-R\-\_\-\-C\-A\-N\-C\-E\-L\-L\-E\-D. \hypertarget{pubnub__coreapi_8h_ab6d4b0fa460d97a1e256e44e60df2447}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-get@{pubnub\-\_\-get}}
+\index{pubnub\-\_\-get@{pubnub\-\_\-get}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-get}]{\setlength{\rightskip}{0pt plus 5cm}char const$\ast$ pubnub\-\_\-get (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_ab6d4b0fa460d97a1e256e44e60df2447}
+Returns a pointer to an arrived message or other element of the response to an operation/transaction. Message(s) arrive on finish of a subscribe operation or history operation, while for some other operations this will give access to the whole response, or the next element of the response. That is documented in the function that starts the operation.
+
+Subsequent call to this function will return the next message (if any). All messages are from the channel(s) the last operation was for.
+
+\begin{DoxyNote}{Note}
+Context doesn't keep track of the channel(s) you subscribed to. This is a memory saving design decision, as most users won't change the channel(s) they subscribe too.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub context. Can't be N\-U\-L\-L.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the message, N\-U\-L\-L on error 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{pubnub__coreapi_8h_a54c044b475d6902883e5ca41a1deabc4}{pubnub\-\_\-subscribe} 
+\end{DoxySeeAlso}
+\hypertarget{pubnub__coreapi_8h_a08834b5041b308e7bc5747053c1020ed}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-get\-\_\-channel@{pubnub\-\_\-get\-\_\-channel}}
+\index{pubnub\-\_\-get\-\_\-channel@{pubnub\-\_\-get\-\_\-channel}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-get\-\_\-channel}]{\setlength{\rightskip}{0pt plus 5cm}char const$\ast$ pubnub\-\_\-get\-\_\-channel (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{pb}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_a08834b5041b308e7bc5747053c1020ed}
+Returns a pointer to an fetched subscribe operation/transaction's next channel. Each transaction may hold a list of channels, and this functions provides a way to read them. Subsequent call to this function will return the next channel (if any).
+
+\begin{DoxyNote}{Note}
+You don't have to read all (or any) of the channels before you start a new transaction.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em pb} & The Pubnub context. Can't be N\-U\-L\-L.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the channel, N\-U\-L\-L on error 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{pubnub__coreapi_8h_a54c044b475d6902883e5ca41a1deabc4}{pubnub\-\_\-subscribe} 
+
+\hyperlink{pubnub__coreapi_8h_ab6d4b0fa460d97a1e256e44e60df2447}{pubnub\-\_\-get} 
+\end{DoxySeeAlso}
+\hypertarget{pubnub__coreapi_8h_a9e1df681eec8ac7697124d5179c8c240}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-global\-\_\-here\-\_\-now@{pubnub\-\_\-global\-\_\-here\-\_\-now}}
+\index{pubnub\-\_\-global\-\_\-here\-\_\-now@{pubnub\-\_\-global\-\_\-here\-\_\-now}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-global\-\_\-here\-\_\-now}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pubnub\-\_\-global\-\_\-here\-\_\-now (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_a9e1df681eec8ac7697124d5179c8c240}
+Get the currently present users on all channel. This actually means \char`\"{}initiate a global here\-\_\-now transaction\char`\"{}. It can be thought of as a query against the \char`\"{}presence database\char`\"{}.
+
+If transaction is successful, the response will be the same as for \char`\"{}multi-\/channel\char`\"{} response for \hyperlink{pubnub__coreapi_8h_a82e882ea2d4828c8ebcf5ac7418c1572}{pubnub\-\_\-here\-\_\-now()}, if we queried against all currently available channels.
+
+You can't get list of currently present users if a transaction is in progress on the context.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub context. Can't be N\-U\-L\-L. \\
+\hline
+{\em channel} & The string with the channel name (or comma-\/delimited list of channel names) to get presence info for.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\#\-P\-N\-R\-\_\-\-S\-T\-A\-R\-T\-E\-D on success, an error otherwise 
+\end{DoxyReturn}
+\hypertarget{pubnub__coreapi_8h_a82e882ea2d4828c8ebcf5ac7418c1572}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-here\-\_\-now@{pubnub\-\_\-here\-\_\-now}}
+\index{pubnub\-\_\-here\-\_\-now@{pubnub\-\_\-here\-\_\-now}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-here\-\_\-now}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pubnub\-\_\-here\-\_\-now (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p, }
+\item[{const char $\ast$}]{channel, }
+\item[{const char $\ast$}]{channel\-\_\-group}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_a82e882ea2d4828c8ebcf5ac7418c1572}
+Get the currently present users on a {\ttfamily channel} and/or {\ttfamily channel\-\_\-group}. This actually means \char`\"{}initiate a here\-\_\-now
+transaction\char`\"{}. It can be thought of as a query against the \char`\"{}presence database\char`\"{}.
+
+If transaction is successful, the response will be a available via \hyperlink{pubnub__coreapi_8h_ab6d4b0fa460d97a1e256e44e60df2447}{pubnub\-\_\-get()} as one message, a J\-S\-O\-N object. Following keys are always present\-:
+\begin{DoxyItemize}
+\item \char`\"{}status\char`\"{}\-: the H\-T\-T\-P status of the operation (200 O\-K, 40x error, etc.)
+\item \char`\"{}message\char`\"{}\-: the string/message describing the status (\char`\"{}\-O\-K\char`\"{}...)
+\item \char`\"{}service\char`\"{}\-: should be \char`\"{}\-Presence\char`\"{}
+\end{DoxyItemize}
+
+If doing a query on a single channel, following keys are present\-:
+\begin{DoxyItemize}
+\item \char`\"{}uuids\char`\"{}\-: an array of U\-U\-I\-Ds of currently present users
+\item \char`\"{}occupancy\char`\"{}\-: the number of currently present users in the channel
+\end{DoxyItemize}
+
+If doing a query on more channels, a key \char`\"{}payload\char`\"{} is present, which is a J\-S\-O\-N object whose keys are\-:
+
+
+\begin{DoxyItemize}
+\item \char`\"{}channels\char`\"{}\-: a J\-S\-O\-N object with keys being the names of the channels and their values J\-S\-O\-N objects with keys \char`\"{}uuids\char`\"{} and \char`\"{}occupancy\char`\"{} with the meaning the same as for query on a single channel
+\item \char`\"{}total\-\_\-channels\char`\"{}\-: the number of channels for which the presence is given (in \char`\"{}payload\char`\"{})
+\item \char`\"{}total\-\_\-occupancy\char`\"{}\-: total number of users present in all channels
+\end{DoxyItemize}
+
+If {\ttfamily channel} is N\-U\-L\-L, then {\ttfamily channel\-\_\-group} cannot be N\-U\-L\-L and you will subscribe only to the channel group(s). It goes both ways\-: if {\ttfamily channel\-\_\-group} is N\-U\-L\-L, then {\ttfamily channel} cannot be N\-U\-L\-L and you will subscribe only to the channel(s).
+
+You can't get list of currently present users if a transaction is in progress on the context.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub context. Can't be N\-U\-L\-L. \\
+\hline
+{\em channel} & The string with the channel name (or comma-\/delimited list of channel names) to get presence info for. \\
+\hline
+{\em channel\-\_\-group} & The string with the channel name (or comma-\/delimited list of channel group names) to get presence info for.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\#\-P\-N\-R\-\_\-\-S\-T\-A\-R\-T\-E\-D on success, an error otherwise 
+\end{DoxyReturn}
+\hypertarget{pubnub__coreapi_8h_aebf3862e98a8b449b143ad6b820bf1dd}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-history@{pubnub\-\_\-history}}
+\index{pubnub\-\_\-history@{pubnub\-\_\-history}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-history}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pubnub\-\_\-history (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p, }
+\item[{const char $\ast$}]{channel, }
+\item[{const char $\ast$}]{channel\-\_\-group, }
+\item[{unsigned}]{count}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_aebf3862e98a8b449b143ad6b820bf1dd}
+Get the message history for the {\ttfamily channel} and/or {\ttfamily channel\-\_\-group}. This actually means \char`\"{}initiate a history
+transaction\char`\"{}.
+
+If transaction is successful, the gotten messages will be available via the \hyperlink{pubnub__coreapi_8h_ab6d4b0fa460d97a1e256e44e60df2447}{pubnub\-\_\-get()}.
+
+If {\ttfamily channel} is N\-U\-L\-L, then {\ttfamily channel\-\_\-group} cannot be N\-U\-L\-L and you will get history only for the channel group. It goes both ways\-: if {\ttfamily channel\-\_\-group} is N\-U\-L\-L, then {\ttfamily channel} cannot be N\-U\-L\-L and you will get history only for the channel.
+
+You can't get history if a transaction is in progress on the context.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub context. Can't be N\-U\-L\-L. \\
+\hline
+{\em channel} & The string with the channel name to get message history for. This {\itshape can't} be a comma separated list of channels. \\
+\hline
+{\em channel\-\_\-group} & The string with the channel group name to get message history for. This {\itshape can't} be a comma separated list \\
+\hline
+{\em count} & Maximum number of messages to get. If there are less than this available on the {\ttfamily channel}, you'll get less, but you can't get more.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\#\-P\-N\-R\-\_\-\-S\-T\-A\-R\-T\-E\-D on success, an error otherwise 
+\end{DoxyReturn}
+\hypertarget{pubnub__coreapi_8h_a6bb12ce1eaa8c7de06c17727bf034cd1}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-historyv2@{pubnub\-\_\-historyv2}}
+\index{pubnub\-\_\-historyv2@{pubnub\-\_\-historyv2}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-historyv2}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pubnub\-\_\-historyv2 (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p, }
+\item[{const char $\ast$}]{channel, }
+\item[{const char $\ast$}]{channel\-\_\-group, }
+\item[{unsigned}]{count, }
+\item[{bool}]{include\-\_\-token}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_a6bb12ce1eaa8c7de06c17727bf034cd1}
+Get the message history for the {\ttfamily channel} and/or {\ttfamily channel\-\_\-group} using the v2 A\-P\-I. This actually means \char`\"{}initiate a history
+transaction/operation\char`\"{}.
+
+If transaction is successful, the gotten messages will be available via the \hyperlink{pubnub__coreapi_8h_ab6d4b0fa460d97a1e256e44e60df2447}{pubnub\-\_\-get()}, but in a different way then \hyperlink{pubnub__coreapi_8h_aebf3862e98a8b449b143ad6b820bf1dd}{pubnub\-\_\-history()}. In our case, \hyperlink{pubnub__coreapi_8h_ab6d4b0fa460d97a1e256e44e60df2447}{pubnub\-\_\-get()} will give you exactly three messages (or, rather, elements). The first will be a J\-S\-O\-N array of gotten messages, and the second and third will be the timestamps of the first and the last message from that array.
+
+If {\ttfamily channel} is N\-U\-L\-L, then {\ttfamily channel\-\_\-group} cannot be N\-U\-L\-L and you will get history only for the channel group. It goes both ways\-: if {\ttfamily channel\-\_\-group} is N\-U\-L\-L, then {\ttfamily channel} cannot be N\-U\-L\-L and you will get history only for the channel.
+
+Also, if you select to {\ttfamily include\-\_\-token}, then the J\-S\-O\-N array you get will not be a simple array of gotten messages, but rather an array of J\-S\-O\-N objects, having keys {\ttfamily message} with value the actual message, and {\ttfamily timetoken} with the time token of that particular message.
+
+You can't get history if a transaction is in progress on the context.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub context. Can't be N\-U\-L\-L. \\
+\hline
+{\em channel} & The string with the channel name to get message history for. This {\itshape can't} be a comma separated list of channels. \\
+\hline
+{\em channel\-\_\-group} & The string with the channel group name to get message history for. This {\itshape can't} be a comma separated list \\
+\hline
+{\em count} & Maximum number of messages to get. If there are less than this available on the {\ttfamily channel}, you'll get less, but you can't get more. \\
+\hline
+{\em include\-\_\-token} & If true, include the time token for every gotten message\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\#\-P\-N\-R\-\_\-\-S\-T\-A\-R\-T\-E\-D on success, an error otherwise 
+\end{DoxyReturn}
+\hypertarget{pubnub__coreapi_8h_af3efadf99ac4b832949265a675ec87b0}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-init@{pubnub\-\_\-init}}
+\index{pubnub\-\_\-init@{pubnub\-\_\-init}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void pubnub\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p, }
+\item[{const char $\ast$}]{publish\-\_\-key, }
+\item[{const char $\ast$}]{subscribe\-\_\-key}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_af3efadf99ac4b832949265a675ec87b0}
+Initialize a given pubnub context {\ttfamily p} to the {\ttfamily publish\-\_\-key} and {\ttfamily subscribe\-\_\-key}. You can customize other parameters of the context by the configuration function calls below.
+
+\begin{DoxyNote}{Note}
+The {\ttfamily publish\-\_\-key} and {\ttfamily subscribe} key are expected to be valid (A\-S\-C\-I\-I\-Z string) pointers throughout the use of context {\ttfamily p}, that is, until either you call pubnub\-\_\-done(), or the otherwise stop using it (like when the whole software/ firmware stops working). So, the contents of these keys are not copied to the Pubnub context {\ttfamily p}.
+\end{DoxyNote}
+\begin{DoxyPrecond}{Precondition}
+Call this after T\-C\-P initialization. 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Context to initialize (use pubnub\-\_\-get\-\_\-ctx() to obtain it) \\
+\hline
+{\em publish\-\_\-key} & The string of the key to use when publishing messages \\
+\hline
+{\em subscribe\-\_\-key} & The string of the key to use when subscribing to messages \\
+\hline
+\end{DoxyParams}
+\hypertarget{pubnub__coreapi_8h_a66dc0f940def45e87ec92d63539bdab1}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-last\-\_\-http\-\_\-code@{pubnub\-\_\-last\-\_\-http\-\_\-code}}
+\index{pubnub\-\_\-last\-\_\-http\-\_\-code@{pubnub\-\_\-last\-\_\-http\-\_\-code}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-last\-\_\-http\-\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}int pubnub\-\_\-last\-\_\-http\-\_\-code (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} const $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_a66dc0f940def45e87ec92d63539bdab1}
+Returns the H\-T\-T\-P reply code of the last transaction in the {\ttfamily p} context. \hypertarget{pubnub__coreapi_8h_a60d7c7c38cd91b552df479ba21155c5c}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-last\-\_\-publish\-\_\-result@{pubnub\-\_\-last\-\_\-publish\-\_\-result}}
+\index{pubnub\-\_\-last\-\_\-publish\-\_\-result@{pubnub\-\_\-last\-\_\-publish\-\_\-result}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-last\-\_\-publish\-\_\-result}]{\setlength{\rightskip}{0pt plus 5cm}char const$\ast$ pubnub\-\_\-last\-\_\-publish\-\_\-result (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} const $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_a60d7c7c38cd91b552df479ba21155c5c}
+Returns the string of the result of the last {\ttfamily publish} transaction, as returned from Pubnub. If the last transaction is not a publish, or there is some other error, it returns N\-U\-L\-L. If the Publish was successfull, it will return \char`\"{}\-Sent\char`\"{}, otherwise a description of the error. \hypertarget{pubnub__coreapi_8h_a5cea75959cd319da41900771686f4956}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-last\-\_\-result@{pubnub\-\_\-last\-\_\-result}}
+\index{pubnub\-\_\-last\-\_\-result@{pubnub\-\_\-last\-\_\-result}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-last\-\_\-result}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pubnub\-\_\-last\-\_\-result (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} const $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_a5cea75959cd319da41900771686f4956}
+Returns the result of the last transaction in the {\ttfamily p} context. \hypertarget{pubnub__coreapi_8h_aeb826ed7d4b07795e799e9d7180e8aa2}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-last\-\_\-time\-\_\-token@{pubnub\-\_\-last\-\_\-time\-\_\-token}}
+\index{pubnub\-\_\-last\-\_\-time\-\_\-token@{pubnub\-\_\-last\-\_\-time\-\_\-token}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-last\-\_\-time\-\_\-token}]{\setlength{\rightskip}{0pt plus 5cm}char const$\ast$ pubnub\-\_\-last\-\_\-time\-\_\-token (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} const $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_aeb826ed7d4b07795e799e9d7180e8aa2}
+Returns the string of the last received time token on the {\ttfamily p} context. After \hyperlink{pubnub__coreapi_8h_af3efadf99ac4b832949265a675ec87b0}{pubnub\-\_\-init()} this should be \char`\"{}0\char`\"{}. 
+\begin{DoxyParams}{Parameters}
+{\em p} & Pubnub context to get the last received time token from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A read only string of the last received time token 
+\end{DoxyReturn}
+\hypertarget{pubnub__coreapi_8h_a327aa6bbf7efac398dc453d31ba8097d}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-leave@{pubnub\-\_\-leave}}
+\index{pubnub\-\_\-leave@{pubnub\-\_\-leave}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-leave}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pubnub\-\_\-leave (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p, }
+\item[{const char $\ast$}]{channel, }
+\item[{const char $\ast$}]{channel\-\_\-group}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_a327aa6bbf7efac398dc453d31ba8097d}
+Leave the {\ttfamily channel}. This actually means \char`\"{}initiate a leave
+transaction\char`\"{}. You should leave channel(s) when you want to subscribe to another in the same context to avoid loosing messages. Also, it is useful for tracking presence.
+
+You can't leave if a transaction is in progress on the context.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub context. Can't be N\-U\-L\-L. \\
+\hline
+{\em channel} & The string with the channel name (or comma-\/delimited list of channel names) to leave from. \\
+\hline
+{\em channel\-\_\-group} & The string with the channel group name (or comma-\/delimited list of channel group names) to leave from.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\#\-P\-N\-R\-\_\-\-S\-T\-A\-R\-T\-E\-D on success, an error otherwise 
+\end{DoxyReturn}
+\hypertarget{pubnub__coreapi_8h_ac1ce31971f4afb40ee00ea34130923da}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-list\-\_\-channel\-\_\-group@{pubnub\-\_\-list\-\_\-channel\-\_\-group}}
+\index{pubnub\-\_\-list\-\_\-channel\-\_\-group@{pubnub\-\_\-list\-\_\-channel\-\_\-group}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-list\-\_\-channel\-\_\-group}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pubnub\-\_\-list\-\_\-channel\-\_\-group (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p, }
+\item[{char const $\ast$}]{channel\-\_\-group}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_ac1ce31971f4afb40ee00ea34130923da}
+Lists all channels of a {\ttfamily channel\-\_\-group}. This actually means \char`\"{}initiate a list\-\_\-channel\-\_\-group transaction\char`\"{}. It can be thought of as a query against the \char`\"{}channel group database\char`\"{}.
+
+If transaction is successful, the response will be a available via \hyperlink{pubnub__coreapi_8h_a08834b5041b308e7bc5747053c1020ed}{pubnub\-\_\-get\-\_\-channel()} as one \char`\"{}channel\char`\"{}, a J\-S\-O\-N object with keys\-:
+
+
+\begin{DoxyItemize}
+\item \char`\"{}service\char`\"{}\-: should be \char`\"{}channel-\/registry\char`\"{}
+\item \char`\"{}status\char`\"{}\-: the H\-T\-T\-P status of the operation (200 O\-K, 40x error, etc.)
+\item \char`\"{}error\char`\"{}\-: true on error, false on success
+\item \char`\"{}payload\char`\"{}\-: J\-S\-O\-N object with keys \char`\"{}group\char`\"{} with value the string of the channel group name and \char`\"{}channels\char`\"{} with value a J\-S\-O\-N array of strings with names of the channels that belong to the group
+\end{DoxyItemize}
+
+You can't remove a channel group if a transaction is in progress on the context.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub context. Can't be N\-U\-L\-L. \\
+\hline
+{\em channel\-\_\-group} & The channel group to remove\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\#\-P\-N\-R\-\_\-\-S\-T\-A\-R\-T\-E\-D on success, an error otherwise 
+\end{DoxyReturn}
+\hypertarget{pubnub__coreapi_8h_af043957f0989781596c695b123f9686e}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-publish@{pubnub\-\_\-publish}}
+\index{pubnub\-\_\-publish@{pubnub\-\_\-publish}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-publish}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pubnub\-\_\-publish (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p, }
+\item[{const char $\ast$}]{channel, }
+\item[{const char $\ast$}]{message}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_af043957f0989781596c695b123f9686e}
+Publish the {\ttfamily message} (in J\-S\-O\-N format) on {\ttfamily p} channel, using the {\ttfamily p} context. This actually means \char`\"{}initiate a publish
+transaction\char`\"{}.
+
+You can't publish if a transaction is in progress in {\ttfamily p} context.
+
+If transaction is not successful ({\ttfamily P\-N\-R\-\_\-\-P\-U\-B\-L\-I\-S\-H\-\_\-\-F\-A\-I\-L\-E\-D}), you can get the string describing the reason for failure by calling \hyperlink{pubnub__coreapi_8h_a60d7c7c38cd91b552df479ba21155c5c}{pubnub\-\_\-last\-\_\-publish\-\_\-result()}.
+
+Keep in mind that the time token from the publish operation response is {\itshape not} parsed by the library, just relayed to the user. Only time-\/tokens from the subscribe operation are parsed by the library.
+
+Also, for all error codes known at the time of this writing, the H\-T\-T\-P error will be set also, so the result of the Pubnub operation will not be {\ttfamily P\-N\-R\-\_\-\-O\-K} (but you will still be able to get the result code and the description).
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The pubnub context. Can't be N\-U\-L\-L \\
+\hline
+{\em channel} & The string with the channel (or comma-\/delimited list of channels) to publish to. \\
+\hline
+{\em message} & The message to publish, expected to be in J\-S\-O\-N format\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\#\-P\-N\-R\-\_\-\-S\-T\-A\-R\-T\-E\-D on success, an error otherwise 
+\end{DoxyReturn}
+\hypertarget{pubnub__coreapi_8h_aef6ec570028527de1869df05d67a347f}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-publishv2@{pubnub\-\_\-publishv2}}
+\index{pubnub\-\_\-publishv2@{pubnub\-\_\-publishv2}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-publishv2}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pubnub\-\_\-publishv2 (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p, }
+\item[{const char $\ast$}]{channel, }
+\item[{const char $\ast$}]{message, }
+\item[{bool}]{store\-\_\-in\-\_\-history, }
+\item[{bool}]{eat\-\_\-after\-\_\-reading}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_aef6ec570028527de1869df05d67a347f}
+Publish the {\ttfamily message} (in J\-S\-O\-N format) on {\ttfamily p} channel, using the {\ttfamily p} context, utilizing the v2 A\-P\-I. This actually means \char`\"{}initiate
+a publish transaction\char`\"{}.
+
+Basically, this is an extension to the \hyperlink{pubnub__coreapi_8h_af043957f0989781596c695b123f9686e}{pubnub\-\_\-publish()} (v1), with some additional options.
+
+You can't publish if a transaction is in progress in {\ttfamily p} context.
+
+The response
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The pubnub context. Can't be N\-U\-L\-L \\
+\hline
+{\em channel} & The string with the channel (or comma-\/delimited list of channels) to publish to. \\
+\hline
+{\em message} & The message to publish, expected to be in J\-S\-O\-N format \\
+\hline
+{\em store\-\_\-in\-\_\-history} & If {\ttfamily false}, message will not be stored in history of the channel \\
+\hline
+{\em eat\-\_\-after\-\_\-reading} & If {\ttfamily true}, message will not be stored for delayed or repeated retrieval or display\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\#\-P\-N\-R\-\_\-\-S\-T\-A\-R\-T\-E\-D on success, an error otherwise 
+\end{DoxyReturn}
+\hypertarget{pubnub__coreapi_8h_a0b4e32da7ba33152ed4addce7b6a54c5}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-remove\-\_\-channel\-\_\-from\-\_\-group@{pubnub\-\_\-remove\-\_\-channel\-\_\-from\-\_\-group}}
+\index{pubnub\-\_\-remove\-\_\-channel\-\_\-from\-\_\-group@{pubnub\-\_\-remove\-\_\-channel\-\_\-from\-\_\-group}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-remove\-\_\-channel\-\_\-from\-\_\-group}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pubnub\-\_\-remove\-\_\-channel\-\_\-from\-\_\-group (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p, }
+\item[{char const $\ast$}]{channel, }
+\item[{char const $\ast$}]{channel\-\_\-group}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_a0b4e32da7ba33152ed4addce7b6a54c5}
+Removes a {\ttfamily channel} from the {\ttfamily channel\-\_\-group} . This actually means \char`\"{}initiate a remove\-\_\-channel\-\_\-from\-\_\-channel\-\_\-group
+transaction\char`\"{}. It can be thought of as an update against the \char`\"{}channel group database\char`\"{}.
+
+You can't remove the last channel from a channel group. To do that, remove the channel group itself.
+
+If transaction is successful, the response will be a available via \hyperlink{pubnub__coreapi_8h_a08834b5041b308e7bc5747053c1020ed}{pubnub\-\_\-get\-\_\-channel()} as one \char`\"{}channel\char`\"{}, a J\-S\-O\-N object with keys\-:
+
+
+\begin{DoxyItemize}
+\item \char`\"{}service\char`\"{}\-: should be \char`\"{}channel-\/registry\char`\"{}
+\item \char`\"{}status\char`\"{}\-: the H\-T\-T\-P status of the operation (200 O\-K, 40x error, etc.)
+\item \char`\"{}error\char`\"{}\-: true on error, false on success
+\item \char`\"{}message\char`\"{}\-: the string/message describing the status (\char`\"{}\-O\-K\char`\"{}...)
+\end{DoxyItemize}
+
+You can't remove a channel from a channel group if a transaction is in progress on the context.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub context. Can't be N\-U\-L\-L. \\
+\hline
+{\em channel\-\_\-group} & The channel to remove \\
+\hline
+{\em channel\-\_\-group} & The channel group to remove from\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\#\-P\-N\-R\-\_\-\-S\-T\-A\-R\-T\-E\-D on success, an error otherwise 
+\end{DoxyReturn}
+\hypertarget{pubnub__coreapi_8h_a42d5ec4e620b8a9eea719445dbe6bd93}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-remove\-\_\-channel\-\_\-group@{pubnub\-\_\-remove\-\_\-channel\-\_\-group}}
+\index{pubnub\-\_\-remove\-\_\-channel\-\_\-group@{pubnub\-\_\-remove\-\_\-channel\-\_\-group}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-remove\-\_\-channel\-\_\-group}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pubnub\-\_\-remove\-\_\-channel\-\_\-group (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p, }
+\item[{char const $\ast$}]{channel\-\_\-group}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_a42d5ec4e620b8a9eea719445dbe6bd93}
+Removes a {\ttfamily channel\-\_\-group} and all its channels. This actually means \char`\"{}initiate a remove\-\_\-channel\-\_\-group transaction\char`\"{}. It can be thought of as an update against the \char`\"{}channel group database\char`\"{}.
+
+If transaction is successful, the response will be a available via \hyperlink{pubnub__coreapi_8h_a08834b5041b308e7bc5747053c1020ed}{pubnub\-\_\-get\-\_\-channel()} as one \char`\"{}channel\char`\"{}, a J\-S\-O\-N object with keys\-:
+
+
+\begin{DoxyItemize}
+\item \char`\"{}service\char`\"{}\-: should be \char`\"{}channel-\/registry\char`\"{}
+\item \char`\"{}status\char`\"{}\-: the H\-T\-T\-P status of the operation (200 O\-K, 40x error, etc.)
+\item \char`\"{}error\char`\"{}\-: true on error, false on success
+\item \char`\"{}message\char`\"{}\-: the string/message describing the status (\char`\"{}\-O\-K\char`\"{}...)
+\end{DoxyItemize}
+
+You can't remove a channel group if a transaction is in progress on the context.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub context. Can't be N\-U\-L\-L. \\
+\hline
+{\em channel\-\_\-group} & The channel group to remove\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\#\-P\-N\-R\-\_\-\-S\-T\-A\-R\-T\-E\-D on success, an error otherwise 
+\end{DoxyReturn}
+\hypertarget{pubnub__coreapi_8h_a2289ad90d4d24a66f3407fb191e75281}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-set\-\_\-auth@{pubnub\-\_\-set\-\_\-auth}}
+\index{pubnub\-\_\-set\-\_\-auth@{pubnub\-\_\-set\-\_\-auth}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-set\-\_\-auth}]{\setlength{\rightskip}{0pt plus 5cm}void pubnub\-\_\-set\-\_\-auth (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p, }
+\item[{const char $\ast$}]{auth}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_a2289ad90d4d24a66f3407fb191e75281}
+Set the authentication information of Pub\-Nub client context {\ttfamily p}. Pass N\-U\-L\-L to unset.
+
+\begin{DoxyNote}{Note}
+The {\ttfamily auth} is expected to be valid (A\-S\-C\-I\-I\-Z string) pointers throughout the use of context {\ttfamily p}, that is, until either you call pubnub\-\_\-done() on {\ttfamily p}, or the otherwise stop using it (like when the whole software/ firmware stops working). So, the contents of the auth string is not copied to the Pubnub context {\ttfamily p}. 
+\end{DoxyNote}
+\hypertarget{pubnub__coreapi_8h_afc1e29aa8c82763709a5e7e53de35144}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-set\-\_\-state@{pubnub\-\_\-set\-\_\-state}}
+\index{pubnub\-\_\-set\-\_\-state@{pubnub\-\_\-set\-\_\-state}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-set\-\_\-state}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pubnub\-\_\-set\-\_\-state (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p, }
+\item[{char const $\ast$}]{channel, }
+\item[{char const $\ast$}]{channel\-\_\-group, }
+\item[{const char $\ast$}]{uuid, }
+\item[{char const $\ast$}]{state}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_afc1e29aa8c82763709a5e7e53de35144}
+Sets some state for the {\ttfamily channel} and/or  for a user, identified by {\ttfamily uuid}. This actually means \char`\"{}initiate a set
+state transaction\char`\"{}. It can be thought of as an update against the \char`\"{}presence database\char`\"{}.
+
+\char`\"{}\-State\char`\"{} has to be a J\-S\-O\-N object (I\-O\-W, several \char`\"{}key-\/value\char`\"{} pairs).
+
+If transaction is successful, the response will be a available via \hyperlink{pubnub__coreapi_8h_ab6d4b0fa460d97a1e256e44e60df2447}{pubnub\-\_\-get()} as one message, a J\-S\-O\-N object with following keys\-:
+\begin{DoxyItemize}
+\item \char`\"{}status\char`\"{}\-: the H\-T\-T\-P status of the operation (200 O\-K, 40x error, etc.)
+\item \char`\"{}message\char`\"{}\-: the string/message describing the status (\char`\"{}\-O\-K\char`\"{}...)
+\item \char`\"{}service\char`\"{}\-: should be \char`\"{}\-Presence\char`\"{}
+\item \char`\"{}payload\char`\"{} the state
+\end{DoxyItemize}
+
+This will set the same state to all channels identified by {\ttfamily channel} and {\ttfamily channel\-\_\-group}.
+
+If {\ttfamily channel} is N\-U\-L\-L, then {\ttfamily channel\-\_\-group} cannot be N\-U\-L\-L and you will set state only to the channel group(s). It goes both ways\-: if {\ttfamily channel\-\_\-group} is N\-U\-L\-L, then {\ttfamily channel} cannot be N\-U\-L\-L and you will set state only to the channel(s).
+
+You can't set state of channels if a transaction is in progress on the context.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub context. Can't be N\-U\-L\-L. \\
+\hline
+{\em channel} & The string with the channel name (or comma-\/delimited list of channel names) to set state for. \\
+\hline
+{\em channel\-\_\-group} & The string with the channel name (or comma-\/delimited list of channel group names) to set state for. \\
+\hline
+{\em uuid} & The U\-U\-I\-D of the user for which to set state for. If N\-U\-L\-L, the current U\-U\-I\-D of the {\ttfamily p} context will be used. \\
+\hline
+{\em state} & Has to be a J\-S\-O\-N object\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\#\-P\-N\-R\-\_\-\-S\-T\-A\-R\-T\-E\-D on success, an error otherwise 
+\end{DoxyReturn}
+\hypertarget{pubnub__coreapi_8h_a561f8188e2aa23b44e5b0038a82a4198}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-set\-\_\-uuid@{pubnub\-\_\-set\-\_\-uuid}}
+\index{pubnub\-\_\-set\-\_\-uuid@{pubnub\-\_\-set\-\_\-uuid}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-set\-\_\-uuid}]{\setlength{\rightskip}{0pt plus 5cm}void pubnub\-\_\-set\-\_\-uuid (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p, }
+\item[{const char $\ast$}]{uuid}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_a561f8188e2aa23b44e5b0038a82a4198}
+Set the U\-U\-I\-D identification of Pub\-Nub client context {\ttfamily p} to {\ttfamily uuid}. Pass N\-U\-L\-L to unset.
+
+\begin{DoxyNote}{Note}
+The {\ttfamily uuid} is expected to be valid (A\-S\-C\-I\-I\-Z string) pointers throughout the use of context {\ttfamily p}, that is, until either you call pubnub\-\_\-done() on {\ttfamily p}, or the otherwise stop using it (like when the whole software/ firmware stops working). So, the contents of the {\ttfamily uuid} string is not copied to the Pubnub context {\ttfamily p}. 
+\end{DoxyNote}
+\hypertarget{pubnub__coreapi_8h_a69951cee4056d416b531dcf0f03c5b42}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-state\-\_\-get@{pubnub\-\_\-state\-\_\-get}}
+\index{pubnub\-\_\-state\-\_\-get@{pubnub\-\_\-state\-\_\-get}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-state\-\_\-get}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pubnub\-\_\-state\-\_\-get (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p, }
+\item[{char const $\ast$}]{channel, }
+\item[{char const $\ast$}]{channel\-\_\-group, }
+\item[{const char $\ast$}]{uuid}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_a69951cee4056d416b531dcf0f03c5b42}
+Gets some state for the {\ttfamily channel} and/or  for a user, identified by {\ttfamily uuid}. This actually means \char`\"{}initiate a get
+state transaction\char`\"{}. It can be thought of as a query against the \char`\"{}presence database\char`\"{}.
+
+If transaction is successful, the response will be a available via \hyperlink{pubnub__coreapi_8h_ab6d4b0fa460d97a1e256e44e60df2447}{pubnub\-\_\-get()} as one message, a J\-S\-O\-N object with following keys\-:
+\begin{DoxyItemize}
+\item \char`\"{}status\char`\"{}\-: the H\-T\-T\-P status of the operation (200 O\-K, 40x error, etc.)
+\item \char`\"{}message\char`\"{}\-: the string/message describing the status (\char`\"{}\-O\-K\char`\"{}...)
+\item \char`\"{}service\char`\"{}\-: should be \char`\"{}\-Presence\char`\"{}
+\item \char`\"{}payload\char`\"{}\-: if querying against one channel the gotten state (a J\-S\-O\-N object), otherwise a J\-S\-O\-N object with the key \char`\"{}channels\char`\"{} whose value is a J\-S\-O\-N object with keys the name of the channels and their respective values J\-S\-O\-N objects of the gotten state
+\end{DoxyItemize}
+
+If {\ttfamily channel} is N\-U\-L\-L, then {\ttfamily channel\-\_\-group} cannot be N\-U\-L\-L and you will get state only for the channel group(s). It goes both ways\-: if {\ttfamily channel\-\_\-group} is N\-U\-L\-L, then {\ttfamily channel} cannot be N\-U\-L\-L and you will get state only for the channel(s).
+
+You can't set state of channels if a transaction is in progress on the context.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub context. Can't be N\-U\-L\-L. \\
+\hline
+{\em channel} & The string with the channel name (or comma-\/delimited list of channel names) to set state for. \\
+\hline
+{\em channel\-\_\-group} & The string with the channel name (or comma-\/delimited list of channel group names) to set state for. \\
+\hline
+{\em uuid} & The U\-U\-I\-D of the user for which to set state for. If N\-U\-L\-L, the current U\-U\-I\-D of the {\ttfamily p} context will be used.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\#\-P\-N\-R\-\_\-\-S\-T\-A\-R\-T\-E\-D on success, an error otherwise 
+\end{DoxyReturn}
+\hypertarget{pubnub__coreapi_8h_a54c044b475d6902883e5ca41a1deabc4}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-subscribe@{pubnub\-\_\-subscribe}}
+\index{pubnub\-\_\-subscribe@{pubnub\-\_\-subscribe}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-subscribe}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pubnub\-\_\-subscribe (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p, }
+\item[{const char $\ast$}]{channel, }
+\item[{const char $\ast$}]{channel\-\_\-group}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_a54c044b475d6902883e5ca41a1deabc4}
+Subscribe to {\ttfamily channel} and/or {\ttfamily channel\-\_\-group}. This actually means \char`\"{}initiate a subscribe operation/transaction\char`\"{}. The outcome is sent to the process that starts the transaction via process event \hyperlink{pubnub__ntf__contiki_8h_a0e917c4bd15f229cff1783999a502499}{pubnub\-\_\-publish\-\_\-event}, which is a good place to start reading the fetched message(s), via \hyperlink{pubnub__coreapi_8h_ab6d4b0fa460d97a1e256e44e60df2447}{pubnub\-\_\-get()}.
+
+Messages published on {\ttfamily channel} and/or {\ttfamily channel\-\_\-group} since the last subscribe transaction will be fetched.
+
+The {\ttfamily channel} and {\ttfamily channel\-\_\-group} strings may contain multiple comma-\/separated channel (channel group) names, so only one call is needed to fetch messages from multiple channels (channel groups).
+
+If {\ttfamily channel} is N\-U\-L\-L, then {\ttfamily channel\-\_\-group} cannot be N\-U\-L\-L and you will subscribe only to the channel group(s). It goes both ways\-: if {\ttfamily channel\-\_\-group} is N\-U\-L\-L, then {\ttfamily channel} cannot be N\-U\-L\-L and you will subscribe only to the channel(s).
+
+You can't subscribe if a transaction is in progress on the context.
+
+Also, you can't subscribe if there are unread messages in the context (you read messages with \hyperlink{pubnub__coreapi_8h_ab6d4b0fa460d97a1e256e44e60df2447}{pubnub\-\_\-get()}).
+
+\begin{DoxyNote}{Note}
+Some of the subscribed messages may be lost when calling publish() after a subscribe() on the same context or subscribe() on different channels in turn on the same context. But typically, you will want two separate contexts for publish and subscribe anyway. If you are changing the set of channels you subscribe to, you should first call \hyperlink{pubnub__coreapi_8h_a327aa6bbf7efac398dc453d31ba8097d}{pubnub\-\_\-leave()} on the old set.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The pubnub context. Can't be N\-U\-L\-L \\
+\hline
+{\em channel} & The string with the channel name (or comma-\/delimited list of channel names) to subscribe to. \\
+\hline
+{\em channel\-\_\-group} & The string with the channel group name (or comma-\/delimited list of channel group names) to subscribe to.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\#\-P\-N\-R\-\_\-\-S\-T\-A\-R\-T\-E\-D on success, an error otherwise
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{pubnub__coreapi_8h_ab6d4b0fa460d97a1e256e44e60df2447}{pubnub\-\_\-get} 
+\end{DoxySeeAlso}
+\hypertarget{pubnub__coreapi_8h_a748bcf6a8df43e443100db9a9e6fe759}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-time@{pubnub\-\_\-time}}
+\index{pubnub\-\_\-time@{pubnub\-\_\-time}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pubnub\-\_\-time (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_a748bcf6a8df43e443100db9a9e6fe759}
+Get the current Pubnub time token . This actually means \char`\"{}initiate
+a time transaction\char`\"{}. Since time token is in the response to most Pubnub R\-E\-S\-T A\-P\-I calls, this is reserved mostly when you want to get a high-\/quality seed for a random number generator, or some such thing.
+
+If transaction is successful, the gotten time will be the only message you can get with \hyperlink{pubnub__coreapi_8h_ab6d4b0fa460d97a1e256e44e60df2447}{pubnub\-\_\-get()}. It will be a (large) J\-S\-O\-N integer.
+
+You can't get time if a transaction is in progress on the context.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub context. Can't be N\-U\-L\-L.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\#\-P\-N\-R\-\_\-\-S\-T\-A\-R\-T\-E\-D on success, an error otherwise 
+\end{DoxyReturn}
+\hypertarget{pubnub__coreapi_8h_a1ca62c2a7f676cd084f335f983b6f1eb}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-uuid\-\_\-get@{pubnub\-\_\-uuid\-\_\-get}}
+\index{pubnub\-\_\-uuid\-\_\-get@{pubnub\-\_\-uuid\-\_\-get}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-uuid\-\_\-get}]{\setlength{\rightskip}{0pt plus 5cm}char const$\ast$ pubnub\-\_\-uuid\-\_\-get (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} const $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_a1ca62c2a7f676cd084f335f983b6f1eb}
+Get the U\-U\-I\-D identification of Pub\-Nub client context {\ttfamily p}. After \hyperlink{pubnub__coreapi_8h_af3efadf99ac4b832949265a675ec87b0}{pubnub\-\_\-init()}, it will return {\ttfamily N\-U\-L\-L} until you change it to non-\/{\ttfamily N\-U\-L\-L} via \hyperlink{pubnub__coreapi_8h_a561f8188e2aa23b44e5b0038a82a4198}{pubnub\-\_\-set\-\_\-uuid()}. \hypertarget{pubnub__coreapi_8h_a4086aeedb45d944d4b68ab3e0407e0f7}{\index{pubnub\-\_\-coreapi.\-h@{pubnub\-\_\-coreapi.\-h}!pubnub\-\_\-where\-\_\-now@{pubnub\-\_\-where\-\_\-now}}
+\index{pubnub\-\_\-where\-\_\-now@{pubnub\-\_\-where\-\_\-now}!pubnub_coreapi.h@{pubnub\-\_\-coreapi.\-h}}
+\subsubsection[{pubnub\-\_\-where\-\_\-now}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pubnub\-\_\-where\-\_\-now (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{p, }
+\item[{const char $\ast$}]{uuid}
+\end{DoxyParamCaption}
+)}}\label{pubnub__coreapi_8h_a4086aeedb45d944d4b68ab3e0407e0f7}
+Get the currently present users on a {\ttfamily channel} and/or {\ttfamily channel\-\_\-group}. This actually means \char`\"{}initiate a here\-\_\-now
+transaction\char`\"{}. It can be thought of as a query against the \char`\"{}presence database\char`\"{}.
+
+If transaction is successful, the response will be a available via \hyperlink{pubnub__coreapi_8h_ab6d4b0fa460d97a1e256e44e60df2447}{pubnub\-\_\-get()} as one message, a J\-S\-O\-N object with keys\-:
+
+
+\begin{DoxyItemize}
+\item \char`\"{}status\char`\"{}\-: the H\-T\-T\-P status of the operation (200 O\-K, 40x error, etc.)
+\item \char`\"{}message\char`\"{}\-: the string/message describing the status (\char`\"{}\-O\-K\char`\"{}...)
+\item \char`\"{}service\char`\"{}\-: should be \char`\"{}\-Presence\char`\"{}
+\item \char`\"{}payload\char`\"{}\-: J\-S\-O\-N object with a key \char`\"{}channels\char`\"{} which is an array of channels this user is present in
+\end{DoxyItemize}
+
+You can't get channel presence for the user if a transaction is in progress on the context.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub context. Can't be N\-U\-L\-L. \\
+\hline
+{\em uuid} & The U\-U\-I\-D of the user to get the channel presence. If N\-U\-L\-L, the current U\-U\-I\-D of the {\ttfamily p} context will be used.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\#\-P\-N\-R\-\_\-\-S\-T\-A\-R\-T\-E\-D on success, an error otherwise 
+\end{DoxyReturn}

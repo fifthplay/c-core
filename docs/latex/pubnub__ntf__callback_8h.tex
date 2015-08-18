@@ -1,0 +1,69 @@
+\hypertarget{pubnub__ntf__callback_8h}{\section{core/pubnub\-\_\-ntf\-\_\-callback.h File Reference}
+\label{pubnub__ntf__callback_8h}\index{core/pubnub\-\_\-ntf\-\_\-callback.\-h@{core/pubnub\-\_\-ntf\-\_\-callback.\-h}}
+}
+{\ttfamily \#include \char`\"{}pubnub\-\_\-res.\-h\char`\"{}}\\*
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{pubnub__ntf__callback_8h_afaf02e571ac3551810b876ee151b5fc6}{typedef struct \hyperlink{structpubnub}{pubnub} {\bfseries pubnub\-\_\-t}}\label{pubnub__ntf__callback_8h_afaf02e571ac3551810b876ee151b5fc6}
+
+\item 
+typedef void($\ast$ \hyperlink{pubnub__ntf__callback_8h_aacbb622143d7fd8b3b7557c31e99c8ed}{pubnub\-\_\-callback\-\_\-t} )(\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$pb, enum pubnub\-\_\-trans trans, enum pubnub\-\_\-res result)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__ntf__callback_8h_a59a126e6f3309778098994e8baa2ec2f}{pubnub\-\_\-register\-\_\-callback} (\hyperlink{structpubnub}{pubnub\-\_\-t} $\ast$pb, \hyperlink{pubnub__ntf__callback_8h_aacbb622143d7fd8b3b7557c31e99c8ed}{pubnub\-\_\-callback\-\_\-t} cb)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the \char`\"{}callback\char`\"{} notification interface.
+
+Pubnub client library offers two \char`\"{}mostly portable\char`\"{} interfaces for getting notification about the outcome of a Pubnub transaction. Those are\-:
+\begin{DoxyItemize}
+\item sync (this one)
+\item callback
+\end{DoxyItemize}
+
+There are others, which are specific to a platform (like process events for Contiki O\-S). Also, not all platforms support the two \char`\"{}mostly portable\char`\"{} interfaces mentioned above.
+
+The \char`\"{}callback\char`\"{} interface provides a means to register a callback function to be called with the outcome of a Pubnub transaction. There is only one callback function per a Pubnub context.
+
+The user should not assume anything about the thread on which the callback is called. It is up to the user to synchronize access to the Pubnub context for which the callback was called with any (other) threads that might be trying to use it at the same time. 
+
+\subsection{Typedef Documentation}
+\hypertarget{pubnub__ntf__callback_8h_aacbb622143d7fd8b3b7557c31e99c8ed}{\index{pubnub\-\_\-ntf\-\_\-callback.\-h@{pubnub\-\_\-ntf\-\_\-callback.\-h}!pubnub\-\_\-callback\-\_\-t@{pubnub\-\_\-callback\-\_\-t}}
+\index{pubnub\-\_\-callback\-\_\-t@{pubnub\-\_\-callback\-\_\-t}!pubnub_ntf_callback.h@{pubnub\-\_\-ntf\-\_\-callback.\-h}}
+\subsubsection[{pubnub\-\_\-callback\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ pubnub\-\_\-callback\-\_\-t)({\bf pubnub\-\_\-t} $\ast$pb, enum pubnub\-\_\-trans trans, enum pubnub\-\_\-res result)}}\label{pubnub__ntf__callback_8h_aacbb622143d7fd8b3b7557c31e99c8ed}
+Pointer to a function to be called on the outcome of a Pubnub transaction. 
+\begin{DoxyParams}{Parameters}
+{\em pb} & The Pubnub context for which the outcome is reported \\
+\hline
+{\em trans} & Type of transaction (publish, subscribe...) at hand \\
+\hline
+{\em result} & The actual result of the transaction \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Function Documentation}
+\hypertarget{pubnub__ntf__callback_8h_a59a126e6f3309778098994e8baa2ec2f}{\index{pubnub\-\_\-ntf\-\_\-callback.\-h@{pubnub\-\_\-ntf\-\_\-callback.\-h}!pubnub\-\_\-register\-\_\-callback@{pubnub\-\_\-register\-\_\-callback}}
+\index{pubnub\-\_\-register\-\_\-callback@{pubnub\-\_\-register\-\_\-callback}!pubnub_ntf_callback.h@{pubnub\-\_\-ntf\-\_\-callback.\-h}}
+\subsubsection[{pubnub\-\_\-register\-\_\-callback}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pubnub\-\_\-register\-\_\-callback (
+\begin{DoxyParamCaption}
+\item[{{\bf pubnub\-\_\-t} $\ast$}]{pb, }
+\item[{{\bf pubnub\-\_\-callback\-\_\-t}}]{cb}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ntf__callback_8h_a59a126e6f3309778098994e8baa2ec2f}
+Registers a callback function to be called when a transaction ends. While it is O\-K to register a N\-U\-L\-L pointer, which means no callback will be called, it is useful only in very specific circumstances. Also, {\ttfamily N\-U\-L\-L} is the initial value (after calling \hyperlink{pubnub__coreapi_8h_af3efadf99ac4b832949265a675ec87b0}{pubnub\-\_\-init()}), so no need to set it.
+
+Don't make any assumptions about the thread on which this function is called.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pb} & The Pubnub context for which the callback is set \\
+\hline
+{\em cb} & Pointer to function to call on end of transaction \\
+\hline
+\end{DoxyParams}

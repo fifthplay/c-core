@@ -1,0 +1,93 @@
+\hypertarget{structpbcc__context}{\section{pbcc\-\_\-context Struct Reference}
+\label{structpbcc__context}\index{pbcc\-\_\-context@{pbcc\-\_\-context}}
+}
+
+
+{\ttfamily \#include $<$pubnub\-\_\-ccore.\-h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+char const $\ast$ \hyperlink{structpbcc__context_a038ce8bdf5339c5170843c1b470fa3c9}{publish\-\_\-key}
+\item 
+char const $\ast$ \hyperlink{structpbcc__context_aea41f2045a1dc83f600a2f7bd032a182}{subscribe\-\_\-key}
+\item 
+char const $\ast$ \hyperlink{structpbcc__context_aa8d0fc21c3ccda3224e890df3a2f7e10}{uuid}
+\item 
+char const $\ast$ \hyperlink{structpbcc__context_a57d9d0b3237a59baee5b5bfe4ada1e88}{auth}
+\item 
+char \hyperlink{structpbcc__context_a35c520ac999690a71e134dc56340246c}{timetoken} \mbox{[}64\mbox{]}
+\item 
+enum pubnub\-\_\-res \hyperlink{structpbcc__context_a0856b6491ba45151606f0aaf3b4682cb}{last\-\_\-result}
+\item 
+char \hyperlink{structpbcc__context_a74521f09b39cc108dac6cee666119433}{http\-\_\-buf} \mbox{[}P\-U\-B\-N\-U\-B\-\_\-\-B\-U\-F\-\_\-\-M\-A\-X\-L\-E\-N\mbox{]}
+\item 
+int \hyperlink{structpbcc__context_ad659b41ee54df86b38d74e6f5478c509}{http\-\_\-code}
+\item 
+unsigned \hyperlink{structpbcc__context_a27c229bf8b80877f536520881466075a}{http\-\_\-buf\-\_\-len}
+\item 
+unsigned \hyperlink{structpbcc__context_a971e2aac4ff3d79bdf592fb2ef10ff6b}{http\-\_\-content\-\_\-len}
+\item 
+bool \hyperlink{structpbcc__context_a601d4aa87b762dc9b75c0f534179b9cf}{http\-\_\-chunked}
+\item 
+char \hyperlink{structpbcc__context_a80e82b122487ea9bb2713e3aee00fcc8}{http\-\_\-reply} \mbox{[}P\-U\-B\-N\-U\-B\-\_\-\-R\-E\-P\-L\-Y\-\_\-\-M\-A\-X\-L\-E\-N+1\mbox{]}
+\item 
+\hypertarget{structpbcc__context_ac9fd3ea03356b5e8b14779748c1c591c}{unsigned short {\bfseries msg\-\_\-ofs}}\label{structpbcc__context_ac9fd3ea03356b5e8b14779748c1c591c}
+
+\item 
+\hypertarget{structpbcc__context_a6ed2f92b3c8d07feac6ab671aa4baba1}{unsigned short {\bfseries msg\-\_\-end}}\label{structpbcc__context_a6ed2f92b3c8d07feac6ab671aa4baba1}
+
+\item 
+\hypertarget{structpbcc__context_a44ef1970cb8ac9e04a8c78b90c67d29d}{unsigned short {\bfseries chan\-\_\-ofs}}\label{structpbcc__context_a44ef1970cb8ac9e04a8c78b90c67d29d}
+
+\item 
+\hypertarget{structpbcc__context_a6624ae66c229fac910c0f88caebce902}{unsigned short {\bfseries chan\-\_\-end}}\label{structpbcc__context_a6624ae66c229fac910c0f88caebce902}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The Pubnub \char`\"{}(\-C) core\char`\"{} context, contains context data that is shared among all Pubnub C clients. 
+
+\subsection{Field Documentation}
+\hypertarget{structpbcc__context_a57d9d0b3237a59baee5b5bfe4ada1e88}{\index{pbcc\-\_\-context@{pbcc\-\_\-context}!auth@{auth}}
+\index{auth@{auth}!pbcc_context@{pbcc\-\_\-context}}
+\subsubsection[{auth}]{\setlength{\rightskip}{0pt plus 5cm}char const$\ast$ pbcc\-\_\-context\-::auth}}\label{structpbcc__context_a57d9d0b3237a59baee5b5bfe4ada1e88}
+The {\ttfamily auth} parameter to be sent on to server. If N\-U\-L\-L, don't send any \hypertarget{structpbcc__context_a74521f09b39cc108dac6cee666119433}{\index{pbcc\-\_\-context@{pbcc\-\_\-context}!http\-\_\-buf@{http\-\_\-buf}}
+\index{http\-\_\-buf@{http\-\_\-buf}!pbcc_context@{pbcc\-\_\-context}}
+\subsubsection[{http\-\_\-buf}]{\setlength{\rightskip}{0pt plus 5cm}char pbcc\-\_\-context\-::http\-\_\-buf\mbox{[}P\-U\-B\-N\-U\-B\-\_\-\-B\-U\-F\-\_\-\-M\-A\-X\-L\-E\-N\mbox{]}}}\label{structpbcc__context_a74521f09b39cc108dac6cee666119433}
+The buffer for H\-T\-T\-P data \hypertarget{structpbcc__context_a27c229bf8b80877f536520881466075a}{\index{pbcc\-\_\-context@{pbcc\-\_\-context}!http\-\_\-buf\-\_\-len@{http\-\_\-buf\-\_\-len}}
+\index{http\-\_\-buf\-\_\-len@{http\-\_\-buf\-\_\-len}!pbcc_context@{pbcc\-\_\-context}}
+\subsubsection[{http\-\_\-buf\-\_\-len}]{\setlength{\rightskip}{0pt plus 5cm}unsigned pbcc\-\_\-context\-::http\-\_\-buf\-\_\-len}}\label{structpbcc__context_a27c229bf8b80877f536520881466075a}
+The length of the data in the H\-T\-T\-P buffer \hypertarget{structpbcc__context_a601d4aa87b762dc9b75c0f534179b9cf}{\index{pbcc\-\_\-context@{pbcc\-\_\-context}!http\-\_\-chunked@{http\-\_\-chunked}}
+\index{http\-\_\-chunked@{http\-\_\-chunked}!pbcc_context@{pbcc\-\_\-context}}
+\subsubsection[{http\-\_\-chunked}]{\setlength{\rightskip}{0pt plus 5cm}bool pbcc\-\_\-context\-::http\-\_\-chunked}}\label{structpbcc__context_a601d4aa87b762dc9b75c0f534179b9cf}
+Indicates whether we are receiving chunked or regular H\-T\-T\-P response \hypertarget{structpbcc__context_ad659b41ee54df86b38d74e6f5478c509}{\index{pbcc\-\_\-context@{pbcc\-\_\-context}!http\-\_\-code@{http\-\_\-code}}
+\index{http\-\_\-code@{http\-\_\-code}!pbcc_context@{pbcc\-\_\-context}}
+\subsubsection[{http\-\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}int pbcc\-\_\-context\-::http\-\_\-code}}\label{structpbcc__context_ad659b41ee54df86b38d74e6f5478c509}
+Last received H\-T\-T\-P (result) code \hypertarget{structpbcc__context_a971e2aac4ff3d79bdf592fb2ef10ff6b}{\index{pbcc\-\_\-context@{pbcc\-\_\-context}!http\-\_\-content\-\_\-len@{http\-\_\-content\-\_\-len}}
+\index{http\-\_\-content\-\_\-len@{http\-\_\-content\-\_\-len}!pbcc_context@{pbcc\-\_\-context}}
+\subsubsection[{http\-\_\-content\-\_\-len}]{\setlength{\rightskip}{0pt plus 5cm}unsigned pbcc\-\_\-context\-::http\-\_\-content\-\_\-len}}\label{structpbcc__context_a971e2aac4ff3d79bdf592fb2ef10ff6b}
+The length of total data to be received in a H\-T\-T\-P reply \hypertarget{structpbcc__context_a80e82b122487ea9bb2713e3aee00fcc8}{\index{pbcc\-\_\-context@{pbcc\-\_\-context}!http\-\_\-reply@{http\-\_\-reply}}
+\index{http\-\_\-reply@{http\-\_\-reply}!pbcc_context@{pbcc\-\_\-context}}
+\subsubsection[{http\-\_\-reply}]{\setlength{\rightskip}{0pt plus 5cm}char pbcc\-\_\-context\-::http\-\_\-reply\mbox{[}P\-U\-B\-N\-U\-B\-\_\-\-R\-E\-P\-L\-Y\-\_\-\-M\-A\-X\-L\-E\-N+1\mbox{]}}}\label{structpbcc__context_a80e82b122487ea9bb2713e3aee00fcc8}
+The contents of a H\-T\-T\-P reply/reponse \hypertarget{structpbcc__context_a0856b6491ba45151606f0aaf3b4682cb}{\index{pbcc\-\_\-context@{pbcc\-\_\-context}!last\-\_\-result@{last\-\_\-result}}
+\index{last\-\_\-result@{last\-\_\-result}!pbcc_context@{pbcc\-\_\-context}}
+\subsubsection[{last\-\_\-result}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pbcc\-\_\-context\-::last\-\_\-result}}\label{structpbcc__context_a0856b6491ba45151606f0aaf3b4682cb}
+The result of the last Pubnub transaction \hypertarget{structpbcc__context_a038ce8bdf5339c5170843c1b470fa3c9}{\index{pbcc\-\_\-context@{pbcc\-\_\-context}!publish\-\_\-key@{publish\-\_\-key}}
+\index{publish\-\_\-key@{publish\-\_\-key}!pbcc_context@{pbcc\-\_\-context}}
+\subsubsection[{publish\-\_\-key}]{\setlength{\rightskip}{0pt plus 5cm}char const$\ast$ pbcc\-\_\-context\-::publish\-\_\-key}}\label{structpbcc__context_a038ce8bdf5339c5170843c1b470fa3c9}
+The publish key (to use when publishing) \hypertarget{structpbcc__context_aea41f2045a1dc83f600a2f7bd032a182}{\index{pbcc\-\_\-context@{pbcc\-\_\-context}!subscribe\-\_\-key@{subscribe\-\_\-key}}
+\index{subscribe\-\_\-key@{subscribe\-\_\-key}!pbcc_context@{pbcc\-\_\-context}}
+\subsubsection[{subscribe\-\_\-key}]{\setlength{\rightskip}{0pt plus 5cm}char const$\ast$ pbcc\-\_\-context\-::subscribe\-\_\-key}}\label{structpbcc__context_aea41f2045a1dc83f600a2f7bd032a182}
+The subscribe key (to use when subscribing) \hypertarget{structpbcc__context_a35c520ac999690a71e134dc56340246c}{\index{pbcc\-\_\-context@{pbcc\-\_\-context}!timetoken@{timetoken}}
+\index{timetoken@{timetoken}!pbcc_context@{pbcc\-\_\-context}}
+\subsubsection[{timetoken}]{\setlength{\rightskip}{0pt plus 5cm}char pbcc\-\_\-context\-::timetoken\mbox{[}64\mbox{]}}}\label{structpbcc__context_a35c520ac999690a71e134dc56340246c}
+The last used time token. \hypertarget{structpbcc__context_aa8d0fc21c3ccda3224e890df3a2f7e10}{\index{pbcc\-\_\-context@{pbcc\-\_\-context}!uuid@{uuid}}
+\index{uuid@{uuid}!pbcc_context@{pbcc\-\_\-context}}
+\subsubsection[{uuid}]{\setlength{\rightskip}{0pt plus 5cm}char const$\ast$ pbcc\-\_\-context\-::uuid}}\label{structpbcc__context_aa8d0fc21c3ccda3224e890df3a2f7e10}
+The U\-U\-I\-D to be sent on to server. If N\-U\-L\-L, don't send any 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+core/\hyperlink{pubnub__ccore_8h}{pubnub\-\_\-ccore.\-h}\end{DoxyCompactItemize}

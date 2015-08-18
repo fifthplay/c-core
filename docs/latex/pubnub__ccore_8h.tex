@@ -1,0 +1,348 @@
+\hypertarget{pubnub__ccore_8h}{\section{core/pubnub\-\_\-ccore.h File Reference}
+\label{pubnub__ccore_8h}\index{core/pubnub\-\_\-ccore.\-h@{core/pubnub\-\_\-ccore.\-h}}
+}
+{\ttfamily \#include \char`\"{}pubnub\-\_\-config.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pubnub\-\_\-res.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$stdbool.\-h$>$}\\*
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structpbcc__context}{pbcc\-\_\-context}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{pubnub__ccore_8h_a08e43dc56070c039e9561526f342a59e}{pbcc\-\_\-init} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$pbcc, const char $\ast$publish\-\_\-key, const char $\ast$subscribe\-\_\-key)
+\item 
+char const $\ast$ \hyperlink{pubnub__ccore_8h_a63d99bd436b48a6798b02be560f25033}{pbcc\-\_\-get\-\_\-msg} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$pb)
+\item 
+char const $\ast$ \hyperlink{pubnub__ccore_8h_a384557baa12be9ea9e0d6be07a8751af}{pbcc\-\_\-get\-\_\-channel} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$pb)
+\item 
+void \hyperlink{pubnub__ccore_8h_ab197c6c60d1bbebd3889b0b5273111ae}{pbcc\-\_\-set\-\_\-uuid} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$pb, const char $\ast$uuid)
+\item 
+void \hyperlink{pubnub__ccore_8h_acfaf79da7ef10275d36689dde216a5f7}{pbcc\-\_\-set\-\_\-auth} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$pb, const char $\ast$auth)
+\item 
+int \hyperlink{pubnub__ccore_8h_acc41e2f20144b43ca00c2eeb365bc087}{pbcc\-\_\-parse\-\_\-subscribe\-\_\-response} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$p)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__ccore_8h_a0d00ea062115b2c90b877f59ae483d7d}{pbcc\-\_\-parse\-\_\-publish\-\_\-response} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$p)
+\item 
+int \hyperlink{pubnub__ccore_8h_a4db37420250427b643ce2f81c3d46711}{pbcc\-\_\-parse\-\_\-time\-\_\-response} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$p)
+\item 
+int \hyperlink{pubnub__ccore_8h_a17a00cf541daa1d23d1dbf2bcaa9324e}{pbcc\-\_\-parse\-\_\-history\-\_\-response} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$p)
+\item 
+int \hyperlink{pubnub__ccore_8h_ac648a3c6adfc147155476f768abc26fc}{pbcc\-\_\-parse\-\_\-historyv2\-\_\-response} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$p)
+\item 
+int \hyperlink{pubnub__ccore_8h_a5a3b20b3a35346d94bf34ab6012f76e2}{pbcc\-\_\-parse\-\_\-presence\-\_\-response} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$p)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__ccore_8h_a0c414ddb92d7195c9467e54d6f7581a3}{pbcc\-\_\-parse\-\_\-channel\-\_\-registry\-\_\-response} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$p)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__ccore_8h_af4675c0f764f641ed81a8735f70de7e1}{pbcc\-\_\-publish\-\_\-prep} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$pb, const char $\ast$channel, const char $\ast$message, bool store\-\_\-in\-\_\-history, bool eat\-\_\-after\-\_\-reading)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__ccore_8h_a0e575c3f74d08a763af62d2d2e28bf0b}{pbcc\-\_\-subscribe\-\_\-prep} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$p, const char $\ast$channel, const char $\ast$channel\-\_\-group)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__ccore_8h_a857d858442a907d05edcd8dd94598a6b}{pbcc\-\_\-leave\-\_\-prep} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$p, const char $\ast$channel, const char $\ast$channel\-\_\-group)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__ccore_8h_a664a6d657ca7ec5f6678aea073002038}{pbcc\-\_\-time\-\_\-prep} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$p)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__ccore_8h_afef4a0a66a4a83cb8b4b4c16885cd3bd}{pbcc\-\_\-history\-\_\-prep} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$p, const char $\ast$channel, const char $\ast$channel\-\_\-group, unsigned count)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__ccore_8h_a8a9a5f98969f42b4e616b067cf8d56bf}{pbcc\-\_\-historyv2\-\_\-prep} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$p, const char $\ast$channel, const char $\ast$channel\-\_\-group, unsigned count, bool include\-\_\-token)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__ccore_8h_a7eb1f7f3e05760e038c7e975fac86d91}{pbcc\-\_\-here\-\_\-now\-\_\-prep} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$p, const char $\ast$channel, const char $\ast$channel\-\_\-group)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__ccore_8h_ac1927a4c5421890ecaa253d38b8c2bd6}{pbcc\-\_\-where\-\_\-now\-\_\-prep} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$p, const char $\ast$uuid)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__ccore_8h_aebd8cc4425388497a7c56384c6af2493}{pbcc\-\_\-set\-\_\-state\-\_\-prep} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$p, char const $\ast$channel, char const $\ast$channel\-\_\-group, const char $\ast$uuid, char const $\ast$state)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__ccore_8h_a40fe628b503a3afcfd84aef1c8975e21}{pbcc\-\_\-state\-\_\-get\-\_\-prep} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$p, char const $\ast$channel, char const $\ast$channel\-\_\-group, const char $\ast$uuid)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__ccore_8h_ac4ec4afd7988b47d0d681ddce3280d5f}{pbcc\-\_\-remove\-\_\-channel\-\_\-group\-\_\-prep} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$p, char const $\ast$channel\-\_\-group)
+\item 
+enum pubnub\-\_\-res \hyperlink{pubnub__ccore_8h_a0417aff31ced799b00eb3c248ebab3b6}{pbcc\-\_\-channel\-\_\-registry\-\_\-prep} (struct \hyperlink{structpbcc__context}{pbcc\-\_\-context} $\ast$p, char const $\ast$channel\-\_\-group, char const $\ast$param, char const $\ast$channel)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \char`\"{}\-C core\char`\"{} module is the internal module of the Pubnub C clients, shared by all. It has all the \char`\"{}generic\char`\"{} code (formatting, parsing, H\-T\-T\-P...) while individual C clients deal with interacting with the environment (O\-S, frameworks, libraries...).
+
+The interface of this module is subject to change, so user of a Pubnub C client should {\itshape not} use this module directly. Use the official and documented A\-P\-I for your environment. 
+
+\subsection{Function Documentation}
+\hypertarget{pubnub__ccore_8h_a0417aff31ced799b00eb3c248ebab3b6}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-channel\-\_\-registry\-\_\-prep@{pbcc\-\_\-channel\-\_\-registry\-\_\-prep}}
+\index{pbcc\-\_\-channel\-\_\-registry\-\_\-prep@{pbcc\-\_\-channel\-\_\-registry\-\_\-prep}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-channel\-\_\-registry\-\_\-prep}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pbcc\-\_\-channel\-\_\-registry\-\_\-prep (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{p, }
+\item[{char const $\ast$}]{channel\-\_\-group, }
+\item[{char const $\ast$}]{param, }
+\item[{char const $\ast$}]{channel}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_a0417aff31ced799b00eb3c248ebab3b6}
+Preparse an operation (transaction) against the channel registry, mostly by formatting the U\-R\-I of the H\-T\-T\-P request. \hypertarget{pubnub__ccore_8h_a384557baa12be9ea9e0d6be07a8751af}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-get\-\_\-channel@{pbcc\-\_\-get\-\_\-channel}}
+\index{pbcc\-\_\-get\-\_\-channel@{pbcc\-\_\-get\-\_\-channel}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-get\-\_\-channel}]{\setlength{\rightskip}{0pt plus 5cm}char const$\ast$ pbcc\-\_\-get\-\_\-channel (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{pb}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_a384557baa12be9ea9e0d6be07a8751af}
+Returns the next channel from the Pubnub C Core context. N\-U\-L\-L if there are no (more) messages. \hypertarget{pubnub__ccore_8h_a63d99bd436b48a6798b02be560f25033}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-get\-\_\-msg@{pbcc\-\_\-get\-\_\-msg}}
+\index{pbcc\-\_\-get\-\_\-msg@{pbcc\-\_\-get\-\_\-msg}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-get\-\_\-msg}]{\setlength{\rightskip}{0pt plus 5cm}char const$\ast$ pbcc\-\_\-get\-\_\-msg (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{pb}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_a63d99bd436b48a6798b02be560f25033}
+Returns the next message from the Pubnub C Core context. N\-U\-L\-L if there are no (more) messages \hypertarget{pubnub__ccore_8h_a7eb1f7f3e05760e038c7e975fac86d91}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-here\-\_\-now\-\_\-prep@{pbcc\-\_\-here\-\_\-now\-\_\-prep}}
+\index{pbcc\-\_\-here\-\_\-now\-\_\-prep@{pbcc\-\_\-here\-\_\-now\-\_\-prep}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-here\-\_\-now\-\_\-prep}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pbcc\-\_\-here\-\_\-now\-\_\-prep (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{p, }
+\item[{const char $\ast$}]{channel, }
+\item[{const char $\ast$}]{channel\-\_\-group}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_a7eb1f7f3e05760e038c7e975fac86d91}
+Prepares the Here-\/now operation (transaction), mostly by formatting the U\-R\-I of the H\-T\-T\-P request. \hypertarget{pubnub__ccore_8h_afef4a0a66a4a83cb8b4b4c16885cd3bd}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-history\-\_\-prep@{pbcc\-\_\-history\-\_\-prep}}
+\index{pbcc\-\_\-history\-\_\-prep@{pbcc\-\_\-history\-\_\-prep}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-history\-\_\-prep}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pbcc\-\_\-history\-\_\-prep (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{p, }
+\item[{const char $\ast$}]{channel, }
+\item[{const char $\ast$}]{channel\-\_\-group, }
+\item[{unsigned}]{count}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_afef4a0a66a4a83cb8b4b4c16885cd3bd}
+Prepares the History operation (transaction), mostly by formatting the U\-R\-I of the H\-T\-T\-P request. \hypertarget{pubnub__ccore_8h_a8a9a5f98969f42b4e616b067cf8d56bf}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-historyv2\-\_\-prep@{pbcc\-\_\-historyv2\-\_\-prep}}
+\index{pbcc\-\_\-historyv2\-\_\-prep@{pbcc\-\_\-historyv2\-\_\-prep}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-historyv2\-\_\-prep}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pbcc\-\_\-historyv2\-\_\-prep (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{p, }
+\item[{const char $\ast$}]{channel, }
+\item[{const char $\ast$}]{channel\-\_\-group, }
+\item[{unsigned}]{count, }
+\item[{bool}]{include\-\_\-token}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_a8a9a5f98969f42b4e616b067cf8d56bf}
+Prepares the History v2 operation (transaction), mostly by formatting the U\-R\-I of the H\-T\-T\-P request. \hypertarget{pubnub__ccore_8h_a08e43dc56070c039e9561526f342a59e}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-init@{pbcc\-\_\-init}}
+\index{pbcc\-\_\-init@{pbcc\-\_\-init}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void pbcc\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{pbcc, }
+\item[{const char $\ast$}]{publish\-\_\-key, }
+\item[{const char $\ast$}]{subscribe\-\_\-key}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_a08e43dc56070c039e9561526f342a59e}
+Initializes the Pubnub C core context \hypertarget{pubnub__ccore_8h_a857d858442a907d05edcd8dd94598a6b}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-leave\-\_\-prep@{pbcc\-\_\-leave\-\_\-prep}}
+\index{pbcc\-\_\-leave\-\_\-prep@{pbcc\-\_\-leave\-\_\-prep}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-leave\-\_\-prep}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pbcc\-\_\-leave\-\_\-prep (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{p, }
+\item[{const char $\ast$}]{channel, }
+\item[{const char $\ast$}]{channel\-\_\-group}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_a857d858442a907d05edcd8dd94598a6b}
+Prepares the Leave operation (transaction), mostly by formatting the U\-R\-I of the H\-T\-T\-P request. \hypertarget{pubnub__ccore_8h_a0c414ddb92d7195c9467e54d6f7581a3}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-parse\-\_\-channel\-\_\-registry\-\_\-response@{pbcc\-\_\-parse\-\_\-channel\-\_\-registry\-\_\-response}}
+\index{pbcc\-\_\-parse\-\_\-channel\-\_\-registry\-\_\-response@{pbcc\-\_\-parse\-\_\-channel\-\_\-registry\-\_\-response}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-parse\-\_\-channel\-\_\-registry\-\_\-response}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pbcc\-\_\-parse\-\_\-channel\-\_\-registry\-\_\-response (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_a0c414ddb92d7195c9467e54d6f7581a3}
+Parses the string received as a response for a channel-\/registry operation (transaction). It is done on several user requests (add/remove channel (from/to) channel group, list (channels in a) channel group, remove channel group).
+
+This checks if the response is valid (a J\-S\-O\-N object), and, if it is, enables getting it, as a whole, in one \hyperlink{pubnub__coreapi_8h_ab6d4b0fa460d97a1e256e44e60df2447}{pubnub\-\_\-get()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub C core context to parse the response \char`\"{}in\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the parsing, expressed as the \char`\"{}\-Pubnub
+result\char`\"{} enum 
+\end{DoxyReturn}
+\hypertarget{pubnub__ccore_8h_a17a00cf541daa1d23d1dbf2bcaa9324e}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-parse\-\_\-history\-\_\-response@{pbcc\-\_\-parse\-\_\-history\-\_\-response}}
+\index{pbcc\-\_\-parse\-\_\-history\-\_\-response@{pbcc\-\_\-parse\-\_\-history\-\_\-response}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-parse\-\_\-history\-\_\-response}]{\setlength{\rightskip}{0pt plus 5cm}int pbcc\-\_\-parse\-\_\-history\-\_\-response (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_a17a00cf541daa1d23d1dbf2bcaa9324e}
+Parses the string received as a response for a history operation (transaction). This checks if the response is valid, and, if it is, enables getting the gotten message (like for {\ttfamily subscribe}).
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub C core context to parse the response \char`\"{}in\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0\-: O\-K, -\/1\-: error (invalid response) 
+\end{DoxyReturn}
+\hypertarget{pubnub__ccore_8h_ac648a3c6adfc147155476f768abc26fc}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-parse\-\_\-historyv2\-\_\-response@{pbcc\-\_\-parse\-\_\-historyv2\-\_\-response}}
+\index{pbcc\-\_\-parse\-\_\-historyv2\-\_\-response@{pbcc\-\_\-parse\-\_\-historyv2\-\_\-response}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-parse\-\_\-historyv2\-\_\-response}]{\setlength{\rightskip}{0pt plus 5cm}int pbcc\-\_\-parse\-\_\-historyv2\-\_\-response (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_ac648a3c6adfc147155476f768abc26fc}
+Parses the string received as a response for a history v2 operation (transaction). This checks if the response is valid, and, if it is, enables getting the gotten message, as a J\-S\-O\-N array, and the timestamps for the first and last of them.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub C core context to parse the response \char`\"{}in\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0\-: O\-K, -\/1\-: error (invalid response) 
+\end{DoxyReturn}
+\hypertarget{pubnub__ccore_8h_a5a3b20b3a35346d94bf34ab6012f76e2}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-parse\-\_\-presence\-\_\-response@{pbcc\-\_\-parse\-\_\-presence\-\_\-response}}
+\index{pbcc\-\_\-parse\-\_\-presence\-\_\-response@{pbcc\-\_\-parse\-\_\-presence\-\_\-response}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-parse\-\_\-presence\-\_\-response}]{\setlength{\rightskip}{0pt plus 5cm}int pbcc\-\_\-parse\-\_\-presence\-\_\-response (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_a5a3b20b3a35346d94bf34ab6012f76e2}
+Parses the string received as a response for a presence query operation (transaction). Presence query is done on several user requests\-: \char`\"{}where-\/now\char`\"{}, \char`\"{}here-\/now\char`\"{}, etc.
+
+This checks if the response is valid (a J\-S\-O\-N object), and, if it is, enables getting it, as a whole, in one \hyperlink{pubnub__coreapi_8h_ab6d4b0fa460d97a1e256e44e60df2447}{pubnub\-\_\-get()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub C core context to parse the response \char`\"{}in\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0\-: O\-K, -\/1\-: error (invalid response) 
+\end{DoxyReturn}
+\hypertarget{pubnub__ccore_8h_a0d00ea062115b2c90b877f59ae483d7d}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-parse\-\_\-publish\-\_\-response@{pbcc\-\_\-parse\-\_\-publish\-\_\-response}}
+\index{pbcc\-\_\-parse\-\_\-publish\-\_\-response@{pbcc\-\_\-parse\-\_\-publish\-\_\-response}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-parse\-\_\-publish\-\_\-response}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pbcc\-\_\-parse\-\_\-publish\-\_\-response (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_a0d00ea062115b2c90b877f59ae483d7d}
+Parses the string received as a response for a publish operation (transaction). This checks if the response is valid, and, if it is, enables getting it as the gotten message (like for {\ttfamily subscribe}).
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub C core context to parse the response \char`\"{}in\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the parsing, expressed as the \char`\"{}\-Pubnub
+result\char`\"{} enum 
+\end{DoxyReturn}
+\hypertarget{pubnub__ccore_8h_acc41e2f20144b43ca00c2eeb365bc087}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-parse\-\_\-subscribe\-\_\-response@{pbcc\-\_\-parse\-\_\-subscribe\-\_\-response}}
+\index{pbcc\-\_\-parse\-\_\-subscribe\-\_\-response@{pbcc\-\_\-parse\-\_\-subscribe\-\_\-response}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-parse\-\_\-subscribe\-\_\-response}]{\setlength{\rightskip}{0pt plus 5cm}int pbcc\-\_\-parse\-\_\-subscribe\-\_\-response (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_acc41e2f20144b43ca00c2eeb365bc087}
+Parses the string received as a response for a subscribe operation (transaction). This checks if the response is valid, and, if it is, prepares for giving the messages (and possibly channels) that are received in the response to the user (via \hyperlink{pubnub__ccore_8h_a63d99bd436b48a6798b02be560f25033}{pbcc\-\_\-get\-\_\-msg()} and \hyperlink{pubnub__ccore_8h_a384557baa12be9ea9e0d6be07a8751af}{pbcc\-\_\-get\-\_\-channel()}).
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub C core context to parse the response \char`\"{}in\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0\-: O\-K, -\/1\-: error (invalid response) 
+\end{DoxyReturn}
+\hypertarget{pubnub__ccore_8h_a4db37420250427b643ce2f81c3d46711}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-parse\-\_\-time\-\_\-response@{pbcc\-\_\-parse\-\_\-time\-\_\-response}}
+\index{pbcc\-\_\-parse\-\_\-time\-\_\-response@{pbcc\-\_\-parse\-\_\-time\-\_\-response}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-parse\-\_\-time\-\_\-response}]{\setlength{\rightskip}{0pt plus 5cm}int pbcc\-\_\-parse\-\_\-time\-\_\-response (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_a4db37420250427b643ce2f81c3d46711}
+Parses the string received as a response for a time operation (transaction). This checks if the response is valid, and, if it is, enables getting it as the gotten message (like for {\ttfamily subscribe}).
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The Pubnub C core context to parse the response \char`\"{}in\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0\-: O\-K, -\/1\-: error (invalid response) 
+\end{DoxyReturn}
+\hypertarget{pubnub__ccore_8h_af4675c0f764f641ed81a8735f70de7e1}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-publish\-\_\-prep@{pbcc\-\_\-publish\-\_\-prep}}
+\index{pbcc\-\_\-publish\-\_\-prep@{pbcc\-\_\-publish\-\_\-prep}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-publish\-\_\-prep}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pbcc\-\_\-publish\-\_\-prep (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{pb, }
+\item[{const char $\ast$}]{channel, }
+\item[{const char $\ast$}]{message, }
+\item[{bool}]{store\-\_\-in\-\_\-history, }
+\item[{bool}]{eat\-\_\-after\-\_\-reading}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_af4675c0f764f641ed81a8735f70de7e1}
+Prepares the Publish operation (transaction), mostly by formatting the U\-R\-I of the H\-T\-T\-P request. \hypertarget{pubnub__ccore_8h_ac4ec4afd7988b47d0d681ddce3280d5f}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-remove\-\_\-channel\-\_\-group\-\_\-prep@{pbcc\-\_\-remove\-\_\-channel\-\_\-group\-\_\-prep}}
+\index{pbcc\-\_\-remove\-\_\-channel\-\_\-group\-\_\-prep@{pbcc\-\_\-remove\-\_\-channel\-\_\-group\-\_\-prep}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-remove\-\_\-channel\-\_\-group\-\_\-prep}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pbcc\-\_\-remove\-\_\-channel\-\_\-group\-\_\-prep (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{p, }
+\item[{char const $\ast$}]{channel\-\_\-group}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_ac4ec4afd7988b47d0d681ddce3280d5f}
+Preparse the Remove channel group operation (transaction) , mostly by formatting the U\-R\-I of the H\-T\-T\-P request. \hypertarget{pubnub__ccore_8h_acfaf79da7ef10275d36689dde216a5f7}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-set\-\_\-auth@{pbcc\-\_\-set\-\_\-auth}}
+\index{pbcc\-\_\-set\-\_\-auth@{pbcc\-\_\-set\-\_\-auth}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-set\-\_\-auth}]{\setlength{\rightskip}{0pt plus 5cm}void pbcc\-\_\-set\-\_\-auth (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{pb, }
+\item[{const char $\ast$}]{auth}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_acfaf79da7ef10275d36689dde216a5f7}
+Sets the {\ttfamily auth} for the context \hypertarget{pubnub__ccore_8h_aebd8cc4425388497a7c56384c6af2493}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-set\-\_\-state\-\_\-prep@{pbcc\-\_\-set\-\_\-state\-\_\-prep}}
+\index{pbcc\-\_\-set\-\_\-state\-\_\-prep@{pbcc\-\_\-set\-\_\-state\-\_\-prep}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-set\-\_\-state\-\_\-prep}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pbcc\-\_\-set\-\_\-state\-\_\-prep (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{p, }
+\item[{char const $\ast$}]{channel, }
+\item[{char const $\ast$}]{channel\-\_\-group, }
+\item[{const char $\ast$}]{uuid, }
+\item[{char const $\ast$}]{state}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_aebd8cc4425388497a7c56384c6af2493}
+Prepares the Set state operation (transaction), mostly by formatting the U\-R\-I of the H\-T\-T\-P request. \hypertarget{pubnub__ccore_8h_ab197c6c60d1bbebd3889b0b5273111ae}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-set\-\_\-uuid@{pbcc\-\_\-set\-\_\-uuid}}
+\index{pbcc\-\_\-set\-\_\-uuid@{pbcc\-\_\-set\-\_\-uuid}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-set\-\_\-uuid}]{\setlength{\rightskip}{0pt plus 5cm}void pbcc\-\_\-set\-\_\-uuid (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{pb, }
+\item[{const char $\ast$}]{uuid}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_ab197c6c60d1bbebd3889b0b5273111ae}
+Sets the U\-U\-I\-D for the context \hypertarget{pubnub__ccore_8h_a40fe628b503a3afcfd84aef1c8975e21}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-state\-\_\-get\-\_\-prep@{pbcc\-\_\-state\-\_\-get\-\_\-prep}}
+\index{pbcc\-\_\-state\-\_\-get\-\_\-prep@{pbcc\-\_\-state\-\_\-get\-\_\-prep}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-state\-\_\-get\-\_\-prep}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pbcc\-\_\-state\-\_\-get\-\_\-prep (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{p, }
+\item[{char const $\ast$}]{channel, }
+\item[{char const $\ast$}]{channel\-\_\-group, }
+\item[{const char $\ast$}]{uuid}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_a40fe628b503a3afcfd84aef1c8975e21}
+Prepares the Get state operation (transaction), mostly by formatting the U\-R\-I of the H\-T\-T\-P request. \hypertarget{pubnub__ccore_8h_a0e575c3f74d08a763af62d2d2e28bf0b}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-subscribe\-\_\-prep@{pbcc\-\_\-subscribe\-\_\-prep}}
+\index{pbcc\-\_\-subscribe\-\_\-prep@{pbcc\-\_\-subscribe\-\_\-prep}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-subscribe\-\_\-prep}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pbcc\-\_\-subscribe\-\_\-prep (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{p, }
+\item[{const char $\ast$}]{channel, }
+\item[{const char $\ast$}]{channel\-\_\-group}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_a0e575c3f74d08a763af62d2d2e28bf0b}
+Prepares the Subscribe operation (transaction), mostly by formatting the U\-R\-I of the H\-T\-T\-P request. \hypertarget{pubnub__ccore_8h_a664a6d657ca7ec5f6678aea073002038}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-time\-\_\-prep@{pbcc\-\_\-time\-\_\-prep}}
+\index{pbcc\-\_\-time\-\_\-prep@{pbcc\-\_\-time\-\_\-prep}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-time\-\_\-prep}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pbcc\-\_\-time\-\_\-prep (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_a664a6d657ca7ec5f6678aea073002038}
+Prepares the Time operation (transaction), mostly by formatting the U\-R\-I of the H\-T\-T\-P request. \hypertarget{pubnub__ccore_8h_ac1927a4c5421890ecaa253d38b8c2bd6}{\index{pubnub\-\_\-ccore.\-h@{pubnub\-\_\-ccore.\-h}!pbcc\-\_\-where\-\_\-now\-\_\-prep@{pbcc\-\_\-where\-\_\-now\-\_\-prep}}
+\index{pbcc\-\_\-where\-\_\-now\-\_\-prep@{pbcc\-\_\-where\-\_\-now\-\_\-prep}!pubnub_ccore.h@{pubnub\-\_\-ccore.\-h}}
+\subsubsection[{pbcc\-\_\-where\-\_\-now\-\_\-prep}]{\setlength{\rightskip}{0pt plus 5cm}enum pubnub\-\_\-res pbcc\-\_\-where\-\_\-now\-\_\-prep (
+\begin{DoxyParamCaption}
+\item[{struct {\bf pbcc\-\_\-context} $\ast$}]{p, }
+\item[{const char $\ast$}]{uuid}
+\end{DoxyParamCaption}
+)}}\label{pubnub__ccore_8h_ac1927a4c5421890ecaa253d38b8c2bd6}
+Prepares the Where-\/now operation (transaction), mostly by formatting the U\-R\-I of the H\-T\-T\-P request. 

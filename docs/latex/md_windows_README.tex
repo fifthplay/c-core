@@ -1,0 +1,13 @@
+This is the part of C-\/core for the Windows platform. It has the (Windows) platform-\/specific files and a sample Makefile ({\ttfamily windows.\-mk}), which will build two sample programs\-: {\ttfamily pubnub\-\_\-sync\-\_\-sample.\-exe} and {\ttfamily pubnub\-\_\-callback\-\_\-sample.\-exe}. The former uses the \char`\"{}sync\char`\"{} interface (A\-P\-I) and the latter uses the \char`\"{}callback\char`\"{} interface (A\-P\-I).
+
+The sources of the samples are in {\ttfamily ../core/samples}, as they are portable across all or most hosted platforms (P\-O\-S\-I\-X, Windows...).
+
+So, to build the samples, just run\-: \begin{DoxyVerb}nmake posix.mk
+\end{DoxyVerb}
+
+
+from a Visual Studio Command Prompt. This was tested mainly on M\-S\-V\-S 2010 and Windows 7 \& 8, but should work with pretty much any M\-S\-V\-S since 2005 and Windows since X\-P.
+
+There are no special requirements for C-\/core on Windows, except for a working compiler and Windows S\-D\-K -\/ and having Windows X\-P or newer.
+
+It could probably be made to build \& work with other compilers (like Cygwin, M\-I\-N\-G\-W, etc), with small changes to the Makefile. 
