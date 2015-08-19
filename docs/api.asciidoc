@@ -50,9 +50,9 @@ The uuid is expected to be valid (ASCIIZ string) pointers throughout the use of 
 
 [width="40%",frame="topbot",options="header,footer"]
 |======================
-|Parameter | Type | Required | Description
-| p | pubnub_t* | Yes | Pointer to pubnub context. |
-| uuid | const char* | Pointer to uuid string |
+|Parameter | Type | Required | Description 
+| p | pubnub_t* | Yes | Pointer to pubnub context. 
+| uuid | const char* | | Pointer to uuid string 
 |======================
 
 ===== RETURNS
@@ -82,7 +82,7 @@ Get the UUID identification of PubNub client context p. After pubnub_init(), it 
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 |Parameter | Type | Required | Description
-p | pubnub_t* | Yes | Pointer to pubnub client context.
+| p | pubnub_t* | Yes | Pointer to pubnub client context.
 |======================
 
 ===== RETURNS
@@ -101,8 +101,140 @@ printf("UUID is %s", pubnub_get_uuid(ctx));
 ```
 ===== OTHER EXAMPLES
 
+== pubnub_set_auth
+
+===== DESCRIPTION
+Set the authentication information of PubNub client context p. Pass NULL to unset.
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| p | pubnub_t* | Yes | Pointer to pubnub client context
+| auth | const char* | Yes | Pointer to auth string. NULL to unset
+|======================
+
+===== RETURNS
+void
+
+===== BASIC USAGE
+```
+pubnub_t *ctx = pubnub_alloc();
+if (NULL == ctx) {
+    puts(“Couldn’t allocate a Pubnub context”);
+    return -1;
+}
+pubnub_init(ctx, “demo”, “demo”);
+pubnub_set_auth(ctx, "my_auth_key");
+```
+===== OTHER EXAMPLES
 
 
+== pubnub_auth_get
+
+===== DESCRIPTION
+Returns the current authentication information for the context p. After pubnub_init(), it will return NULL until you change it to non-NULL via pubnub_set_auth().
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| p | pubnub_t const* | Yes | Pointer to pubnub client context
+|======================
+
+===== RETURNS
+char const*
+
+===== BASIC USAGE
+```
+pubnub_t *ctx = pubnub_alloc();
+if (NULL == ctx) {
+    puts(“Couldn’t allocate a Pubnub context”);
+    return -1;
+}
+pubnub_init(ctx, “demo”, “demo”);
+pubnub_set_auth(ctx, "my_auth_key");
+printf("Auth Key is %s", pubnub_get_auth(ctx));
+```
+===== OTHER EXAMPLES
+
+== pubnub_cancel
+
+===== DESCRIPTION
+Cancel an ongoing API transaction. The outcome of the transaction in progress, if any, will be #PNR_CANCELLED.
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| p | pubnub_t* | Yes | Pointer to Pubnub Client Context.
+|======================
+
+===== RETURNS
+void
+
+===== BASIC USAGE
+```
+pubnub_t *ctx = pubnub_alloc();
+if (NULL == ctx) {
+    puts(“Couldn’t allocate a Pubnub context”);
+    return -1;
+}
+pubnub_init(ctx, “demo”, “demo”);
+pubnub_publish(ctx, “hello_world”, “\”Hello from Pubnub C-core docs!\””);
+pubnub_cancel(ctx);
+```
+
+===== OTHER EXAMPLES
+
+
+== pubnub_publish
+
+===== DESCRIPTION
+Publish the message (in JSON format) on p channel, using the p context. This actually means "initiate a publish transaction".
+
+You can't publish if a transaction is in progress in p context.
+
+If transaction is not successful (PNR_PUBLISH_FAILED), you can get the string describing the reason for failure by calling pubnub_last_publish_result().
+
+Keep in mind that the time token from the publish operation response is not parsed by the library, just relayed to the user. Only time-tokens from the subscribe operation are parsed by the library.
+
+Also, for all error codes known at the time of this writing, the HTTP error will be set also, so the result of the Pubnub operation will not be PNR_OK (but you will still be able to get the result code and the description).
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| p | pubnub_t* | Yes | Pointer to pubnub context. Can't be NULL
+| channel | const char* | Yes | Pointer to string with the channel name (or comma-delimited list of channel names) to publish to.
+| message | const char* | Yes | Pointer to string containing message to publish in JSON format. 
+|======================
+
+===== RETURNS
+enum pubnub_res
+#PNR_STARTED on success, an error otherwise
+
+===== BASIC USAGE
+```
+pubnub_t *ctx = pubnub_alloc();
+if (NULL == ctx) {
+    puts(“Couldn’t allocate a Pubnub context”);
+    return -1;
+}
+pubnub_init(ctx, “demo”, “demo”);
+pubnub_publish(ctx, “hello_world”, “\”Hello from Pubnub C-core docs!\””);
+if (pbresult != PNR_OK) {
+    printf(“Failed to publish, error %d\n”, pbresult);
+    pubnub_free(ctx);
+    return -1;
+}
+```
+
+===== OTHER EXAMPLES
 
 ==
 
