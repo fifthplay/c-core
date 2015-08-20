@@ -360,23 +360,121 @@ pubnub_free(ctx);
 ```
 ===== OTHER EXAMPLES
 
-==
+== pubnub_subscribe
 
 ===== DESCRIPTION
+Subscribe to channel and/or channel_group. This actually means "initiate a subscribe operation/transaction". The outcome is sent to the process that starts the transaction via process event pubnub_publish_event, which is a good place to start reading the fetched message(s), via pubnub_get().
+
+Messages published on channel and/or channel_group since the last subscribe transaction will be fetched.
+
+The channel and channel_group strings may contain multiple comma-separated channel (channel group) names, so only one call is needed to fetch messages from multiple channels (channel groups).
+
+If channel is NULL, then channel_group cannot be NULL and you will subscribe only to the channel group(s). It goes both ways: if channel_group is NULL, then channel cannot be NULL and you will subscribe only to the channel(s).
+
+You can't subscribe if a transaction is in progress on the context.
+
+Also, you can't subscribe if there are unread messages in the context (you read messages with pubnub_get()).
+
+NOTE:   Some of the subscribed messages may be lost when calling publish() after a subscribe() on the same context or subscribe() on different channels in turn on the same context. But typically, you will want two separate contexts for publish and subscribe anyway. If you are changing the set of channels you subscribe to, you should first call pubnub_leave() on the old set.
 
 ===== METHODS
 
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 |Parameter | Type | Required | Description
+| p | pubnub_t* | Yes | Pointer to Pubnub client context. Can't be NULL.
+| channel | const char* | No | The string with the channel name (or comma-delimited list of channel names) to subscribe to.
+| channel_group | const char* | No | The string with the channel group name (or comma-delimited list of channel group names) to subscribe to.
 
 |======================
 
 ===== RETURNS
+enum pubnub_res
+#PNR_STARTED on success, an error otherwise
 
 ===== BASIC USAGE
+```
+pubnub_t *ctx = pubnub_alloc();
+if (NULL == ctx) {
+    puts(“Couldn’t allocate a Pubnub context”);
+    return -1;
+}
+pubnub_init(ctx, “demo”, “demo”);
+pubnub_subscribe(ctx, “hello_world”, NULL);
+pbresult = pubnub_await(ctx);
+if (pbresult != PNR_OK) {
+    printf(“Failed to subscribe, error %d\n”, pbresult);
+    pubnub_free(ctx);
+    return -1;
+}
+else {
+    char const *msg = pubnub_get(ctx);
+    char const *channel = pubnub_get_channel(ctx);
+    while (msg != NULL) {
+        printf(“Got message: %s on channel %s\n”, msg, channel);
+        msg = pubnub_get(ctx);
+        channel = pubnub_get_channel(ctx);
+    }
+}
+pubnub_free(ctx);
+```
+===== OTHER EXAMPLES
+
+== pubnub_leave
+
+===== DESCRIPTION
+Leave the channel. This actually means "initiate a leave transaction". You should leave channel(s) when you want to subscribe to another in the same context to avoid loosing messages. Also, it is useful for tracking presence.
+
+You can't leave if a transaction is in progress on the context.
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| p | pubnub_t* | Yes | Pointer to Pubnub client context. Can't be NULL.
+| channel | const char* | No | The string with the channel name (or comma-delimited list of channel names) to leave from.
+| channel_group | const char * | No | The string with the channel group name (or comma-delimited list of channel group names) to leave from.
+|======================
+
+===== RETURNS
+enum pubnub_res
+#PNR_STARTED on success, an error otherwise
+
+===== BASIC USAGE
+```
+pubnub_t *ctx = pubnub_alloc();
+if (NULL == ctx) {
+    puts(“Couldn’t allocate a Pubnub context”);
+    return -1;
+}
+pubnub_init(ctx, “demo”, “demo”);
+pubnub_subscribe(ctx, “hello_world”, NULL);
+pbresult = pubnub_await(ctx);
+if (pbresult != PNR_OK) {
+    printf(“Failed to subscribe, error %d\n”, pbresult);
+    pubnub_free(ctx);
+    return -1;
+}
+else {
+    char const *msg = pubnub_get(ctx);
+    char const *channel = pubnub_get_channel(ctx);
+    while (msg != NULL) {
+        printf(“Got message: %s on channel %s\n”, msg, channel);
+        msg = pubnub_get(ctx);
+        channel = pubnub_get_channel(ctx);
+    }
+}
+pubnub_leave(ctx, "hello_world", NULL);
+pbresult = pubnub_await(ctx);
+if (PNR_OK == pbresult) {
+    printf("Leave successful\n");
+}
+pubnub_free(ctx);
+```
 
 ===== OTHER EXAMPLES
+
 
 
 ==
