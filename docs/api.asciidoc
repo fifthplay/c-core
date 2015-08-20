@@ -517,6 +517,140 @@ pubnub_free(ctx);
 ===== OTHER EXAMPLES
 
 
+== pubnub_time
+
+===== DESCRIPTION
+Get the current Pubnub time token . This actually means "initiate a time transaction". Since time token is in the response to most Pubnub REST API calls, this is reserved mostly when you want to get a high-quality seed for a random number generator, or some such thing.
+
+If transaction is successful, the gotten time will be the only message you can get with pubnub_get(). It will be a (large) JSON integer.
+
+You can't get time if a transaction is in progress on the context.
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| p | pubnub_t* | Yes | Pointer to pubnub client context
+|======================
+
+===== RETURNS
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+|======================
+===== BASIC USAGE
+```
+pubnub_time(ctx);
+pbresult = pubnub_await(ctx);
+if (PNR_OK == pbresult) {
+    char const *gotten_time = pubnub_get();
+}
+
+```
+
+===== OTHER EXAMPLES
+
+
+
+
+
+== pubnub_history
+
+===== DESCRIPTION
+Get the message history for the channel and/or channel_group. This actually means "initiate a history transaction".
+
+If transaction is successful, the gotten messages will be available via the pubnub_get().
+
+If channel is NULL, then channel_group cannot be NULL and you will get history only for the channel group. It goes both ways: if channel_group is NULL, then channel cannot be NULL and you will get history only for the channel.
+
+You can't get history if a transaction is in progress on the context.
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| p | pubnub_t* | Yes | Pointer to pubnub client context.
+| channel | const char* | | The string with the channel name to get message history for. This can't be a comma separated list of channels.
+| channel_group | const char* | | The string with the channel group name to get message history for. This can't be a comma separated list
+| count | unsigned | | Maximum number of messages to get. If there are less than this available on the channel, you'll get less, but you can't get more.
+|======================
+
+===== RETURNS
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+|======================
+
+===== BASIC USAGE
+```
+
+unsigned count = 100; /* number of messages to retrieve */
+pubnub_history(ctx, “my_channel”, NULL, count);
+pbresult = pubnub_await(ctx);
+if (PNR_OK == pbresult) {
+    char const *json_messages = pubnub_get(ctx);
+    char const *first_timetoken = pubnub_get(ctx);
+    char const *last_timetoken = pubnub_get(ctx);
+}
+
+```
+
+===== OTHER EXAMPLES
+
+
+== pubnub_historyv2
+
+===== DESCRIPTION
+Get the message history for the channel and/or channel_group using the v2 API. This actually means "initiate a history transaction/operation".
+
+If transaction is successful, the gotten messages will be available via the pubnub_get(), but in a different way then pubnub_history(). In our case, pubnub_get() will give you exactly three messages (or, rather, elements). The first will be a JSON array of gotten messages, and the second and third will be the timestamps of the first and the last message from that array.
+
+If channel is NULL, then channel_group cannot be NULL and you will get history only for the channel group. It goes both ways: if channel_group is NULL, then channel cannot be NULL and you will get history only for the channel.
+
+Also, if you select to include_token, then the JSON array you get will not be a simple array of gotten messages, but rather an array of JSON objects, having keys message with value the actual message, and timetoken with the time token of that particular message.
+
+You can't get history if a transaction is in progress on the context.
+
+
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| p | pubnub_t* | Yes | Pointer to pubnub client context.
+| channel | const char* | | The string with the channel name to get message history for. This can't be a comma separated list of channels.
+| channel_group | const char* | | The string with the channel group name to get message history for. This can't be a comma separated list
+| count | unsigned | | Maximum number of messages to get. If there are less than this available on the channel, you'll get less, but you can't get more.
+| include_token | bool | | If true, include the time token for every gotten message
+|======================
+
+===== RETURNS
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+|======================
+
+
+===== BASIC USAGE
+```
+
+unsigned count = 100; /* number of messages to retrieve */
+pubnub_history(ctx, “my_channel”, NULL, count, true);
+pbresult = pubnub_await(ctx);
+if (PNR_OK == pbresult) {
+    char const *json_messages = pubnub_get(ctx);
+    char const *first_timetoken = pubnub_get(ctx);
+    char const *last_timetoken = pubnub_get(ctx);
+}
+
+```
+===== OTHER EXAMPLES
+
 
 ==
 
@@ -531,6 +665,10 @@ pubnub_free(ctx);
 |======================
 
 ===== RETURNS
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+|======================
 
 ===== BASIC USAGE
 
