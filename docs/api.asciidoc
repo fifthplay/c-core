@@ -24,7 +24,12 @@ This should be called after TCP initialization.
 |======================
 
 ===== RETURNS
-void
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| void |
+|======================
 
 ===== BASIC USAGE
 ```
@@ -43,8 +48,7 @@ pubnub_init(ctx, “demo”, “demo”);
 
 Set the UUID identification of PubNub client context p to uuid. Pass NULL to unset.
 
-[NOTE}
-The uuid is expected to be valid (ASCIIZ string) pointers throughout the use of context p, that is, until either you call pubnub_done() on p, or the otherwise stop using it (like when the whole software/ firmware stops working). So, the contents of the uuid string is not copied to the Pubnub context p.
+NOTE: The uuid is expected to be valid (ASCIIZ string) pointers throughout the use of context p, that is, until either you call pubnub_done() on p, or the otherwise stop using it (like when the whole software/ firmware stops working). So, the contents of the uuid string is not copied to the Pubnub context p.
 
 ===== METHODS
 
@@ -56,7 +60,11 @@ The uuid is expected to be valid (ASCIIZ string) pointers throughout the use of 
 |======================
 
 ===== RETURNS
-void
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| void |
+|======================
 
 ===== BASIC USAGE
 ```
@@ -86,7 +94,11 @@ Get the UUID identification of PubNub client context p. After pubnub_init(), it 
 |======================
 
 ===== RETURNS
-char const*
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| char const* |
+|======================
 
 ===== BASIC USAGE
 ```
@@ -116,7 +128,11 @@ Set the authentication information of PubNub client context p. Pass NULL to unse
 |======================
 
 ===== RETURNS
-void
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| void |
+|======================
 
 ===== BASIC USAGE
 ```
@@ -145,7 +161,11 @@ Returns the current authentication information for the context p. After pubnub_i
 |======================
 
 ===== RETURNS
-char const*
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| char const* |
+|======================
 
 ===== BASIC USAGE
 ```
@@ -174,7 +194,11 @@ Cancel an ongoing API transaction. The outcome of the transaction in progress, i
 |======================
 
 ===== RETURNS
-void
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| void |
+|======================
 
 ===== BASIC USAGE
 ```
@@ -215,8 +239,13 @@ Also, for all error codes known at the time of this writing, the HTTP error will
 |======================
 
 ===== RETURNS
-enum pubnub_res
-#PNR_STARTED on success, an error otherwise
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+|======================
+
+
 
 ===== BASIC USAGE
 ```
@@ -258,8 +287,11 @@ You can't publish if a transaction is in progress in p context.
 |======================
 
 ===== RETURNS
-enum pubnub_res
-#PNR_STARTED on success, an error otherwise
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+|======================
 
 ===== BASIC USAGE
 ```
@@ -296,8 +328,11 @@ NOTE:   Context doesn't keep track of the channel(s) you subscribed to. This is 
 |======================
 
 ===== RETURNS
-char const*
-Pointer to message, NULL on error
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| char const* | Pointer to message. Can't be NULL.
+|======================
 
 ===== BASIC USAGE
 ```
@@ -389,8 +424,11 @@ NOTE:   Some of the subscribed messages may be lost when calling publish() after
 |======================
 
 ===== RETURNS
-enum pubnub_res
-#PNR_STARTED on success, an error otherwise
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+|======================
 
 ===== BASIC USAGE
 ```
@@ -438,8 +476,11 @@ You can't leave if a transaction is in progress on the context.
 |======================
 
 ===== RETURNS
-enum pubnub_res
-#PNR_STARTED on success, an error otherwise
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+|======================
 
 ===== BASIC USAGE
 ```
