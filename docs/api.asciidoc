@@ -236,6 +236,34 @@ if (pbresult != PNR_OK) {
 
 ===== OTHER EXAMPLES
 
+== pubnub_publishv2
+
+===== DESCRIPTION
+Publish the message (in JSON format) on p channel, using the p context, utilizing the v2 API. This actually means "initiate a publish transaction".
+
+Basically, this is an extension to the pubnub_publish() (v1), with some additional options.
+
+You can't publish if a transaction is in progress in p context.
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| p | pubnub_t* | Yes | Pointer to Pubnub Client Context
+| channel | const char* | Yes | Pointer to string with the channel name (or comma-delimited list of channel names) to publish to.
+| message | const char* | Yes | Pointer to string containing message to publish in JSON format. 
+| store_in_history | bool | Yes | If false, message will not be stored in history of the channel
+| eat_after_reading | bool | yes | If true, message will not be stored for delayed or repeated retrieval or display
+|======================
+
+===== RETURNS
+
+===== BASIC USAGE
+
+===== OTHER EXAMPLES
+
+
 ==
 
 ===== DESCRIPTION
