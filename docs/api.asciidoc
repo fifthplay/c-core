@@ -258,6 +258,121 @@ You can't publish if a transaction is in progress in p context.
 |======================
 
 ===== RETURNS
+enum pubnub_res
+#PNR_STARTED on success, an error otherwise
+
+===== BASIC USAGE
+```
+pubnub_t *ctx = pubnub_alloc();
+if (NULL == ctx) {
+    puts(“Couldn’t allocate a Pubnub context”);
+    return -1;
+}
+pubnub_init(ctx, “demo”, “demo”);
+pubnub_publishv2(ctx, “hello_world”, “\”Hello from Pubnub C-core docs!\””, true, true);
+if (pbresult != PNR_OK) {
+    printf(“Failed to publish, error %d\n”, pbresult);
+    pubnub_free(ctx);
+    return -1;
+}
+```
+===== OTHER EXAMPLES
+
+== pubnub_get
+
+===== DESCRIPTION
+Returns a pointer to an arrived message or other element of the response to an operation/transaction. Message(s) arrive on finish of a subscribe operation or history operation, while for some other operations this will give access to the whole response, or the next element of the response. That is documented in the function that starts the operation.
+
+Subsequent call to this function will return the next message (if any). All messages are from the channel(s) the last operation was for.
+
+NOTE:   Context doesn't keep track of the channel(s) you subscribed to. This is a memory saving design decision, as most users won't change the channel(s) they subscribe too.
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| p | pubnub_t* | Yes | Pointer to Pubnub Client Context
+|======================
+
+===== RETURNS
+char const*
+Pointer to message, NULL on error
+
+===== BASIC USAGE
+```
+pubnub_subscribe(ctx, “hello_world”, NULL);
+pbresult = pubnub_await(ctx);
+if (pbresult != PNR_OK) {
+    printf(“Failed to subscribe, error %d\n”, pbresult);
+    pubnub_free(ctx);
+    return -1;
+}
+else {
+    char const *msg = pubnub_get(ctx);
+    while (msg != NULL) {
+        printf(“Got message: %s\n”, msg);
+        msg = pubnub_get(ctx);
+    }
+}
+pubnub_free(ctx);
+```
+
+===== OTHER EXAMPLES
+
+
+== pubnub_get_channel
+
+===== DESCRIPTION
+Returns a pointer to an fetched subscribe operation/transaction's next channel. Each transaction may hold a list of channels, and this functions provides a way to read them. Subsequent call to this function will return the next channel (if any).
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| pb | pubnub_t* | Yes | Pointer to Pubnub Client Context. Can't be NULL.
+|======================
+
+===== RETURNS
+char const*
+Pointer to channel, NULL on error
+
+===== BASIC USAGE
+```
+pubnub_subscribe(ctx, “hello_world”, NULL);
+pbresult = pubnub_await(ctx);
+if (pbresult != PNR_OK) {
+    printf(“Failed to subscribe, error %d\n”, pbresult);
+    pubnub_free(ctx);
+    return -1;
+}
+else {
+    char const *msg = pubnub_get(ctx);
+    char const *channel = pubnub_get_channel(ctx);
+    while (msg != NULL) {
+        printf(“Got message: %s on channel %s\n”, msg, channel);
+        msg = pubnub_get(ctx);
+        channel = pubnub_get_channel(ctx);
+    }
+}
+pubnub_free(ctx);
+```
+===== OTHER EXAMPLES
+
+==
+
+===== DESCRIPTION
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+
+|======================
+
+===== RETURNS
 
 ===== BASIC USAGE
 
