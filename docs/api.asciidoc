@@ -915,6 +915,246 @@ if (PNR_OK == pbresult) {
 
 
 
+== pubnub_remove_channel_from_group
+
+===== DESCRIPTION
+Removes a channel from the channel_group . This actually means "initiate a remove_channel_from_channel_group transaction". It can be thought of as an update against the "channel group database".
+
+You can't remove the last channel from a channel group. To do that, remove the channel group itself.
+
+If transaction is successful, the response will be a available via pubnub_get_channel() as one "channel", a JSON object with keys:
+
+* "service": should be "channel-registry"
+* "status": the HTTP status of the operation (200 OK, 40x error, etc.)
+* "error": true on error, false on success
+* "message": the string/message describing the status ("OK"...)
+You can't remove a channel from a channel group if a transaction is in progress on the context.
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| p | pubnub_t* | Yes | Pointer to pubnub client context
+| channel | char const* | Yes | The channel to remove
+| channel_group | char const* | Yes | The channel group to remove from
+
+|======================
+
+===== RETURNS
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+|======================
+
+===== BASIC USAGE
+```
+pubnub_remove_channel_from_group(ctx, "channel", “channel_group”);
+pbresult = pubnub_await(ctx);
+if (PNR_OK == pbresult) {
+    printf("Channel removed from group");
+}
+```
+
+===== OTHER EXAMPLES
+
+
+== pubnub_add_channel_to_group
+
+===== DESCRIPTION
+Adds a channel to the channel_group . This actually means "initiate a add_channel_to_channel_group transaction". It can be thought of as an update against the "channel group database".
+
+If the channel group doesn't exist, this implicitly adds (creates) it.
+
+If transaction is successful, the response will be a available via pubnub_get_channel() as one "channel", a JSON object with keys:
+
+* "service": should be "channel-registry"
+* "status": the HTTP status of the operation (200 OK, 40x error, etc.)
+* "error": true on error, false on success
+* "message": the string/message describing the status ("OK"...)
+* You can't add a channel to a channel group if a transaction is in progress on the context.
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| p | pubnub_t* | Yes | Pointer to pubnub client context
+| channel | char const* | Yes | The channel to add
+| channel_group | char const* | Yes | The channel group to add to
+
+|======================
+
+===== RETURNS
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+|======================
+
+===== BASIC USAGE
+```
+pubnub_add_channel_to_group(ctx, "channel", “channel_group”);
+pbresult = pubnub_await(ctx);
+if (PNR_OK == pbresult) {
+    printf("Channel added to group");
+}
+```
+
+===== OTHER EXAMPLES
+
+
+== pubnub_list_channel_group
+
+===== DESCRIPTION
+Lists all channels of a channel_group. This actually means "initiate a list_channel_group transaction". It can be thought of as a query against the "channel group database".
+
+If transaction is successful, the response will be a available via pubnub_get_channel() as one "channel", a JSON object with keys:
+
+* "service": should be "channel-registry"
+* "status": the HTTP status of the operation (200 OK, 40x error, etc.)
+* "error": true on error, false on success
+* "payload": JSON object with keys "group" with value the string of the channel group name and "channels" with value a JSON * * array of strings with names of the channels that belong to the group
+You can't remove a channel group if a transaction is in progress on the context.
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| p | pubnub_t* | Yes | Pointer to pubnub client context
+| channel_group | char const* | Yes | The channel group to list channels from
+|======================
+
+===== RETURNS
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+|======================
+
+===== BASIC USAGE
+TO BE ADDED
+
+===== OTHER EXAMPLES
+
+
+== pubnub_last_http_code
+
+
+===== DESCRIPTION
+Returns the HTTP reply code of the last transaction in the p context.
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| p | pubnub_t* | Yes | Pointer to pubnub client context
+|======================
+
+===== RETURNS
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| int | HTTP reply code of the last transaction in the p context.
+|======================
+
+===== BASIC USAGE
+TO BE ADDED
+
+===== OTHER EXAMPLES
+
+== pubnub_last_result
+
+
+===== DESCRIPTION
+Returns the result of the last transaction in the p context.
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| p | pubnub_t* | Yes | Pointer to pubnub client context
+|======================
+
+===== RETURNS
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| enum pubnub_res | result of the last transaction in the context.
+|======================
+
+===== BASIC USAGE
+
+
+===== OTHER EXAMPLES
+
+
+
+== pubnub_last_publish_result
+
+
+===== DESCRIPTION
+Returns the string of the result of the last publish transaction, as returned from Pubnub. If the last transaction is not a publish, or there is some other error, it returns NULL. If the Publish was successfull, it will return "Sent", otherwise a description of the error.
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| p | pubnub_t* | Yes | Pointer to pubnub client context
+|======================
+
+===== RETURNS
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| char const* | string of the result of the last publish transaction
+|======================
+
+===== BASIC USAGE
+TO BE ADDED
+
+===== OTHER EXAMPLES
+
+
+
+
+== pubnub_last_time_token
+
+
+===== DESCRIPTION
+Returns the string of the last received time token on the p context. After pubnub_init() this should be "0".
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| p | pubnub_t* | Yes | Pointer to pubnub client context
+|======================
+
+===== RETURNS
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| char const* | string of the last received time token on the context
+|======================
+
+===== BASIC USAGE
+TO BE ADDED
+
+===== OTHER EXAMPLES
+
+
+
+
+
+
+
 ==
 
 ===== DESCRIPTION
