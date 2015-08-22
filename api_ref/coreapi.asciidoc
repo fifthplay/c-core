@@ -1,5 +1,12 @@
 = PubNub Posix C API Reference
 
+* <<>>
+* <<>>
+* <<>>
+* <<>>
+* <<>>
+* <<>>
+
 == pubnub_init
 
 ===== DESCRIPTION
