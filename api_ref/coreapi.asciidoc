@@ -1149,31 +1149,3 @@ TO BE ADDED
 
 ===== OTHER EXAMPLES
 
-
-
-
-
-
-
-==
-
-===== DESCRIPTION
-
-===== METHODS
-
-[width="40%",frame="topbot",options="header,footer"]
-|======================
-|Parameter | Type | Required | Description
-
-|======================
-
-===== RETURNS
-[width="40%",frame="topbot",options="header,footer"]
-|======================
-| Type | Description
-|======================
-
-===== BASIC USAGE
-
-
-===== OTHER EXAMPLES
