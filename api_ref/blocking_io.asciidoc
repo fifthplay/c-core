@@ -1,5 +1,8 @@
 = PubNub Posix C API Reference
 
+* <<pubnub_set_non_blocking_io,pubnub_set_non_blocking_io>>
+* <<pubnub_set_blocking_io,pubnub_set_blocking_io>>
+
 == pubnub_set_non_blocking_io
 
 ===== DESCRIPTION
