@@ -1,7 +1,6 @@
 = PubNub Posix C API Reference
-
 * <<pubnub_alloc,pubnub_alloc>>
-
+* <<pubnub_free,pubnub_free>>
 
 == pubnub_alloc
 
