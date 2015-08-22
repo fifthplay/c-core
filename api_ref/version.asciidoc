@@ -1,1 +1,87 @@
 = PubNub Posix C API Reference
+
+== pubnub_sdk_name
+
+===== DESCRIPTION
+Returns a string with the name of the Pubnub SDK client you are using.
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+
+|======================
+
+===== RETURNS
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| char const* | string with the name of the Pubnub SDK client you are using
+|======================
+
+===== BASIC USAGE
+```
+printf("SDK name  : %s", pubnub_sdk_name());
+```
+
+
+===== OTHER EXAMPLES
+
+
+== pubnub_version
+
+===== DESCRIPTION
+Returns a string with the version of the Pubnub SDK client you are using.
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+
+|======================
+
+===== RETURNS
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| char const* | string with the version of the Pubnub SDK client
+|======================
+
+===== BASIC USAGE
+```
+printf("VERSION : %s", pubnub_version());
+```
+
+
+===== OTHER EXAMPLES
+
+
+== pubnub_uname
+
+===== DESCRIPTION
+Returns an URL encoded string with the full identification of the 
+SDK - name, version, possible something more.
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+
+|======================
+
+===== RETURNS
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| char const* | URL encoded string with the full identification of the SDK
+|======================
+
+===== BASIC USAGE
+```
+printf("uname : %s", pubnub_uname());
+```
+
+===== OTHER EXAMPLES
