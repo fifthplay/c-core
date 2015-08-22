@@ -1,5 +1,11 @@
 = PubNub Posix C API Reference
 
+* <<pubnub_generate_uuid_v1_time,pubnub_generate_uuid_v1_time>
+* <<pubnub_generate_uuid_v3_name_md5,pubnub_generate_uuid_v3_name_md5>>
+* <<pubnub_generate_uuid_v5_name_sha1,pubnub_generate_uuid_v5_name_sha1>>
+* <<pubnub_uuid_to_string,pubnub_uuid_to_string>>
+* <<pubnub_uuid_compare,pubnub_uuid_compare>>
+
 == pubnub_generate_uuid_v1_time
 
 ===== DESCRIPTION
@@ -102,7 +108,7 @@ TO BE ADDED
 ===== OTHER EXAMPLES
 
 
-== pubnub_generate_uuid_v4_random
+    == pubnub_generate_uuid_v4_random
 
 ===== DESCRIPTION
 The nice property of this random-base algorithm is that it needs
