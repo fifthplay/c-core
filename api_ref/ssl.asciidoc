@@ -1,1 +1,40 @@
 = PubNub Posix C API Reference
+
+== pubnub_set_ssl_options
+
+===== DESCRIPTION
+Sets the SSL options for a context. If SSL support is enabled, 
+these options will get their default values in pubnub_init().
+If you wish to change them, call this function.
+
+Call this after pubnub_init() on the context.
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| p | pubnub_t* | Yes | Pointer to pubnub client context
+| useSSL | bool | Yes | Should the PubNub client establish the connection to PubNub using SSL? (default: YES)
+| reduceSecurityOnError | bool | Yes | When SSL is enabled, should PubNub 
+client ignore all SSL certificate-handshake issues and still 
+continue in SSL mode if it experiences issues handshaking across 
+local proxies, firewalls, etc? (default: YES)
+| ignoreSecureConnectionRequirement | bool | Yes | ignoreSecureConnectionRequirement When SSL is enabled, 
+should the client fallback to a non-SSL connection if it 
+experiences issues handshaking across local proxies, firewalls, etc? (default: YES)
+|======================
+
+===== RETURNS
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| void | 
+|======================
+
+===== BASIC USAGE
+```
+pubnub_set_ssl_options(ctx, true, true, true, true);
+```
+
+===== OTHER EXAMPLES
