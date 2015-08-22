@@ -24,3 +24,30 @@ Parses the given publish result. You usually obtain this with pubnub_last_publis
 TO BE ADDED
 
 ===== OTHER EXAMPLES
+
+
+== pubnub_res_2_string
+
+===== DESCRIPTION
+Returns a string (in English) describing a Pubnub result enum
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| p | enum pubnub_res | Yes | Pubnub result enum value
+|======================
+
+===== RETURNS
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| char const* | String describing pubnub result
+|======================
+
+===== BASIC USAGE
+TO BE ADDED
+
+
+===== OTHER EXAMPLES
