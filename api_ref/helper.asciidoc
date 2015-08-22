@@ -1,5 +1,8 @@
 = PubNub Posix C API Reference
 
+* <<pubnub_parse_publish_result,pubnub_parse_publish_result>>
+* <<pubnub_res_2_string,pubnub_res_2_string>>
+
 == pubnub_parse_publish_result
 
 ===== DESCRIPTION
