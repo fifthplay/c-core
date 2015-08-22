@@ -1,1 +1,26 @@
 = PubNub Posix C API Reference
+
+== pubnub_parse_publish_result
+
+===== DESCRIPTION
+Parses the given publish result. You usually obtain this with pubnub_last_publish_result().
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| result | char const* | Yes | Publish Result
+|======================
+
+===== RETURNS
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| enum pubnub_publish_res | result of publish response parsing
+|======================
+
+===== BASIC USAGE
+TO BE ADDED
+
+===== OTHER EXAMPLES
