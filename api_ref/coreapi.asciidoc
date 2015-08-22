@@ -1,11 +1,33 @@
 = PubNub Posix C API Reference
 
-* <<>>
-* <<>>
-* <<>>
-* <<>>
-* <<>>
-* <<>>
+* <<pubnub_init,pubnub_init >>
+* <<pubnub_set_uuid,pubnub_set_uuid>>
+* <<pubnub_uuid_get,pubnub_uuid_get>>
+* <<pubnub_set_auth,pubnub_set_auth>>
+* <<pubnub_auth_get,pubnub_auth_get>>
+* <<pubnub_cancel,pubnub_cancel>>
+* <<pubnub_publish,pubnub_publish>>
+* <<pubnub_publishv2,pubnub_publishv2>>
+* <<pubnub_get,pubnub_get>>
+* <<pubnub_get_channel,pubnub_get_channel>>
+* <<pubnub_subscribe,pubnub_subscribe>>
+* <<pubnub_leave,pubnub_leave>>
+* <<pubnub_time,pubnub_time>>
+* <<pubnub_history,pubnub_history>>
+* <<pubnub_historyv2,pubnub_historyv2>>
+* <<pubnub_here_now,pubnub_here_now>>
+* <<pubnub_global_here_now,pubnub_global_here_now>>
+* <<pubnub_where_now,pubnub_where_now>>
+* <<pubnub_set_state,pubnub_set_state>>
+* <<pubnub_state_get,pubnub_state_get>>
+* <<pubnub_remove_channel_group,pubnub_remove_channel_group>>
+* <<pubnub_remove_channel_from_group,pubnub_remove_channel_from_group>>
+* <<pubnub_add_channel_to_group,pubnub_add_channel_to_group>>
+* <<pubnub_list_channel_group,pubnub_list_channel_group>>
+* <<pubnub_last_result,pubnub_last_result>>
+* <<pubnub_last_http_code,pubnub_last_http_code>>
+* <<pubnub_last_publish_result,pubnub_last_publish_result>>
+* <<pubnub_last_time_token,pubnub_last_time_token>>
 
 == pubnub_init
 
