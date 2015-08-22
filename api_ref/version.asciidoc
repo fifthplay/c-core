@@ -1,5 +1,10 @@
 = PubNub Posix C API Reference
 
+* <<pubnub_sdk_name,pubnub_sdk_name>>
+* <<pubnub_version,pubnub_version>>
+* <<pubnub_uname,pubnub_uname>>
+
+
 == pubnub_sdk_name
 
 ===== DESCRIPTION
