@@ -67,14 +67,14 @@ for v3 and v5).
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| int | 0 OK (generated), otherwise: error, algorithm not available
+| int | 0: OK (generated), otherwise: error, algorithm not available
 |======================
 
 ===== BASIC USAGE
 ```
 struct Pubnub_UUID uuid;
 if (0 != pubnub_generate_uuid_v4_random(&uuid)) {
-    puts("UUID generation successful");
+    puts("UUID generation unsuccessful");
 }
 ```
 
@@ -117,7 +117,7 @@ char *name = "abcd";
 struct Pubnub_UUID uuid;
 struct Pubnub_UUID nsid =  { {'x', 'y', 'z', 0} };;
 if (0 != pubnub_generate_uuid_v3_name_md5(&uuid, &nsid, name, 4)) {
-    puts("UUID generation successful");
+    puts("UUID generation unsuccessful");
 }
 ```
 
@@ -153,7 +153,7 @@ that on a particular platform.
 ```
 struct Pubnub_UUID uuid;
 if (0 != pubnub_generate_uuid_v4_random(&uuid)) {
-    puts("UUID generation successful");
+    puts("UUID generation unsuccessful");
 }
 ```
 
@@ -195,7 +195,7 @@ char *name = "abcd";
 struct Pubnub_UUID uuid;
 struct Pubnub_UUID nsid =  { {'x', 'y', 'z', 0} };;
 if (0 != pubnub_generate_uuid_v5_name_sha1(&uuid, &nsid, name, 4)) {
-    puts("UUID generation successful");
+    puts("UUID generation unsuccessful");
 }
 ```
 
@@ -264,6 +264,11 @@ Compares two UUIDs (left and right) and returns:
 
 ===== BASIC USAGE
 ```
+struct Pubnub_UUID left;
+struct Pubnub_UUID right;
+if (0 != pubnub_generate_uuid_v4_random(&left) || 0 != pubnub_generate_uuid_v4_random(&right)) {
+    puts("UUID generation unsuccessful");
+}
 int RC = pubnub_uuid_compare(left, right);
 if (0 == RC) puts ("left == right");
 else if (RC > 0) puts("left > right");
