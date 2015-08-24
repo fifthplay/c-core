@@ -8,6 +8,8 @@
 
 == pubnub_generate_uuid_v1_time
 
+===== int pubnub_generate_uuid_v4_random(struct Pubnub_UUID *uuid)
+
 ===== DESCRIPTION
 This generates an UUID using the v1 algorithm (time-based). This
 algorithm has some state, but, a lot of it is "node" identifier,
@@ -65,7 +67,7 @@ for v3 and v5).
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| int | OK (generated), otherwise: error, algorithm not available
+| int | 0 OK (generated), otherwise: error, algorithm not available
 |======================
 
 ===== BASIC USAGE
@@ -76,6 +78,8 @@ TO BE ADDED
 
 
 == pubnub_generate_uuid_v3_name_md5
+
+===== int pubnub_generate_uuid_v5_name_sha1(struct Pubnub_UUID *uuid, struct Pubnub_UUID *nsid, void *name, unsigned namelen)
 
 ===== DESCRIPTION
 The name based algorithms (this - v3 and the other - v5) don't
@@ -108,7 +112,9 @@ TO BE ADDED
 ===== OTHER EXAMPLES
 
 
-    == pubnub_generate_uuid_v4_random
+== pubnub_generate_uuid_v4_random
+
+===== int pubnub_generate_uuid_v4_random(struct Pubnub_UUID *uuid)
 
 ===== DESCRIPTION
 The nice property of this random-base algorithm is that it needs
@@ -138,6 +144,8 @@ TO BE ADDED
 
 
 == pubnub_generate_uuid_v5_name_sha1
+
+===== int pubnub_generate_uuid_v5_name_sha1(struct Pubnub_UUID *uuid, struct Pubnub_UUID *nsid, void *name, unsigned namelen)
 
 ===== DESCRIPTION
 The name based algorithms (this - v5 and the other - v3) don't
@@ -172,6 +180,8 @@ TO BE ADDED
 
 == pubnub_uuid_to_string
 
+===== struct Pubnub_UUID_String pubnub_uuid_to_string(struct Pubnub_UUID const *uuid)
+
 ===== DESCRIPTION
 Returns UUID as a standard HEX-based representation
 
@@ -198,6 +208,8 @@ TO BE ADDED
 
 
 == pubnub_uuid_compare
+
+===== int pubnub_uuid_compare(struct Pubnub_UUID const *left, struct Pubnub_UUID const *right)
 
 ===== DESCRIPTION
 Compares two UUIDs (@p left and @p right) and returns:
