@@ -5,6 +5,8 @@
 
 == pubnub_parse_publish_result
 
+===== enum pubnub_publish_res pubnub_parse_publish_result(char const *result)
+
 ===== DESCRIPTION
 Parses the given publish result. You usually obtain this with pubnub_last_publish_result().
 
@@ -30,6 +32,8 @@ TO BE ADDED
 
 
 == pubnub_res_2_string
+
+===== char const* pubnub_res_2_string(enum pubnub_res e)
 
 ===== DESCRIPTION
 Returns a string (in English) describing a Pubnub result enum
