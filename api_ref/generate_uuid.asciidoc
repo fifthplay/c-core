@@ -71,7 +71,12 @@ for v3 and v5).
 |======================
 
 ===== BASIC USAGE
-TO BE ADDED
+```
+struct Pubnub_UUID uuid;
+if (0 != pubnub_generate_uuid_v4_random(&uuid)) {
+    puts("UUID generation successful");
+}
+```
 
 
 ===== OTHER EXAMPLES
@@ -79,7 +84,7 @@ TO BE ADDED
 
 == pubnub_generate_uuid_v3_name_md5
 
-===== int pubnub_generate_uuid_v5_name_sha1(struct Pubnub_UUID *uuid, struct Pubnub_UUID *nsid, void *name, unsigned namelen)
+===== int pubnub_generate_uuid_v3_name_md5(struct Pubnub_UUID *uuid, struct Pubnub_UUID *nsid, void *name, unsigned namelen)
 
 ===== DESCRIPTION
 The name based algorithms (this - v3 and the other - v5) don't
@@ -107,7 +112,14 @@ a particular platform.
 |======================
 
 ===== BASIC USAGE
-TO BE ADDED
+```
+char *name = "abcd";
+struct Pubnub_UUID uuid;
+struct Pubnub_UUID nsid =  { {'x', 'y', 'z', 0} };;
+if (0 != pubnub_generate_uuid_v3_name_md5(&uuid, &nsid, name, 4)) {
+    puts("UUID generation successful");
+}
+```
 
 ===== OTHER EXAMPLES
 
@@ -138,7 +150,12 @@ that on a particular platform.
 |======================
 
 ===== BASIC USAGE
-TO BE ADDED
+```
+struct Pubnub_UUID uuid;
+if (0 != pubnub_generate_uuid_v4_random(&uuid)) {
+    puts("UUID generation successful");
+}
+```
 
 ===== OTHER EXAMPLES
 
@@ -173,7 +190,14 @@ a particular platform.
 |======================
 
 ===== BASIC USAGE
-TO BE ADDED
+```
+char *name = "abcd";
+struct Pubnub_UUID uuid;
+struct Pubnub_UUID nsid =  { {'x', 'y', 'z', 0} };;
+if (0 != pubnub_generate_uuid_v5_name_sha1(&uuid, &nsid, name, 4)) {
+    puts("UUID generation successful");
+}
+```
 
 ===== OTHER EXAMPLES
 
@@ -201,7 +225,12 @@ Returns UUID as a standard HEX-based representation
 |======================
 
 ===== BASIC USAGE
-TO BE ADDED
+```
+struct Pubnub_UUID uuid;
+if (0 != pubnub_generate_uuid_v4_random(&uuid)) {
+    printf("UUID generation successful. UUID is %s", pubnub_uuid_to_string(&uuid).uuid);
+}
+```
 
 ===== OTHER EXAMPLES
 
@@ -212,7 +241,7 @@ TO BE ADDED
 ===== int pubnub_uuid_compare(struct Pubnub_UUID const *left, struct Pubnub_UUID const *right)
 
 ===== DESCRIPTION
-Compares two UUIDs (@p left and @p right) and returns:
+Compares two UUIDs (left and right) and returns:
 - 0: equal
 - <0: left < right
 - >0: left > right
@@ -234,6 +263,11 @@ Compares two UUIDs (@p left and @p right) and returns:
 |======================
 
 ===== BASIC USAGE
-TO BE ADDED
+```
+int RC = pubnub_uuid_compare(left, right);
+if (0 == RC) puts ("left == right");
+else if (RC > 0) puts("left > right");
+else puts ("left < right");
+```
 
 ===== OTHER EXAMPLES
