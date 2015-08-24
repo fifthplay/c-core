@@ -31,6 +31,8 @@
 
 == pubnub_init
 
+===== void 	pubnub_init (pubnub_t *p, const char *publish_key, const char *subscribe_key)
+
 ===== DESCRIPTION
 Initialize a given pubnub context p to the publish_key and subscribe_key.
 You can customize other parameters of the context by the configuration function calls below.
@@ -73,6 +75,8 @@ pubnub_init(ctx, “demo”, “demo”);
 
 == pubnub_set_uuid
 
+===== void 	pubnub_set_uuid (pubnub_t *p, const char *uuid)
+
 ===== DESCRIPTION
 
 Set the UUID identification of PubNub client context p to uuid. Pass NULL to unset.
@@ -110,6 +114,8 @@ pubnub_set_uuid(ctx, "my_uuid");
 
 == pubnub_uuid_get 
 
+===== char const * 	pubnub_uuid_get (pubnub_t const *p)
+
 ===== DESCRIPTION
 
 Get the UUID identification of PubNub client context p. After pubnub_init(), it will return NULL until you change it to non-NULL via pubnub_set_uuid().
@@ -143,6 +149,8 @@ printf("UUID is %s", pubnub_get_uuid(ctx));
 ===== OTHER EXAMPLES
 
 == pubnub_set_auth
+
+===== void 	pubnub_set_auth(pubnub_t *p, const char *auth)
 
 ===== DESCRIPTION
 Set the authentication information of PubNub client context p. Pass NULL to unset.
@@ -178,6 +186,9 @@ pubnub_set_auth(ctx, "my_auth_key");
 
 == pubnub_auth_get
 
+===== char const * pubnub_auth_get (pubnub_t const *p)
+
+
 ===== DESCRIPTION
 Returns the current authentication information for the context p. After pubnub_init(), it will return NULL until you change it to non-NULL via pubnub_set_auth().
 
@@ -210,6 +221,8 @@ printf("Auth Key is %s", pubnub_get_auth(ctx));
 ===== OTHER EXAMPLES
 
 == pubnub_cancel
+
+===== void 	pubnub_cancel (pubnub_t *p)
 
 ===== DESCRIPTION
 Cancel an ongoing API transaction. The outcome of the transaction in progress, if any, will be #PNR_CANCELLED.
@@ -246,6 +259,8 @@ pubnub_cancel(ctx);
 
 == pubnub_publish
 
+===== enum pubnub_res pubnub_publish (pubnub_t *p, const char *channel, const char *message)
+
 ===== DESCRIPTION
 Publish the message (in JSON format) on p channel, using the p context. This actually means "initiate a publish transaction".
 
@@ -271,7 +286,7 @@ Also, for all error codes known at the time of this writing, the HTTP error will
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+| enum pubnub_res | PNR_STARTED on success, an error otherwise
 |======================
 
 
@@ -296,6 +311,8 @@ if (pbresult != PNR_OK) {
 
 == pubnub_publishv2
 
+===== enum pubnub_res pubnub_publishv2 (pubnub_t *p, const char *channel, const char *message, bool store_in_history, bool eat_after_reading)
+
 ===== DESCRIPTION
 Publish the message (in JSON format) on p channel, using the p context, utilizing the v2 API. This actually means "initiate a publish transaction".
 
@@ -319,7 +336,7 @@ You can't publish if a transaction is in progress in p context.
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+| enum pubnub_res | PNR_STARTED on success, an error otherwise
 |======================
 
 ===== BASIC USAGE
@@ -340,6 +357,8 @@ if (pbresult != PNR_OK) {
 ===== OTHER EXAMPLES
 
 == pubnub_get
+
+===== char const * pubnub_get (pubnub_t *p)
 
 ===== DESCRIPTION
 Returns a pointer to an arrived message or other element of the response to an operation/transaction. Message(s) arrive on finish of a subscribe operation or history operation, while for some other operations this will give access to the whole response, or the next element of the response. That is documented in the function that starts the operation.
@@ -387,6 +406,8 @@ pubnub_free(ctx);
 
 == pubnub_get_channel
 
+===== char const * 	pubnub_get_channel (pubnub_t *pb)
+
 ===== DESCRIPTION
 Returns a pointer to an fetched subscribe operation/transaction's next channel. Each transaction may hold a list of channels, and this functions provides a way to read them. Subsequent call to this function will return the next channel (if any).
 
@@ -426,6 +447,8 @@ pubnub_free(ctx);
 
 == pubnub_subscribe
 
+===== enum pubnub_res pubnub_subscribe (pubnub_t *p, const char *channel, const char *channel_group)
+
 ===== DESCRIPTION
 Subscribe to channel and/or channel_group. This actually means "initiate a subscribe operation/transaction". The outcome is sent to the process that starts the transaction via process event pubnub_publish_event, which is a good place to start reading the fetched message(s), via pubnub_get().
 
@@ -456,7 +479,7 @@ NOTE:   Some of the subscribed messages may be lost when calling publish() after
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+| enum pubnub_res | PNR_STARTED on success, an error otherwise
 |======================
 
 ===== BASIC USAGE
@@ -488,6 +511,8 @@ pubnub_free(ctx);
 ===== OTHER EXAMPLES
 
 == pubnub_leave
+
+===== enum pubnub_res pubnub_leave (pubnub_t *p, const char *channel, const char *channel_group)
 
 ===== DESCRIPTION
 Leave the channel. This actually means "initiate a leave transaction". You should leave channel(s) when you want to subscribe to another in the same context to avoid loosing messages. Also, it is useful for tracking presence.
@@ -548,6 +573,8 @@ pubnub_free(ctx);
 
 == pubnub_time
 
+===== enum pubnub_res pubnub_time (pubnub_t *p)
+
 ===== DESCRIPTION
 Get the current Pubnub time token . This actually means "initiate a time transaction". Since time token is in the response to most Pubnub REST API calls, this is reserved mostly when you want to get a high-quality seed for a random number generator, or some such thing.
 
@@ -567,7 +594,7 @@ You can't get time if a transaction is in progress on the context.
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+| enum pubnub_res | PNR_STARTED on success, an error otherwise
 |======================
 ===== BASIC USAGE
 ```
@@ -582,10 +609,9 @@ if (PNR_OK == pbresult) {
 ===== OTHER EXAMPLES
 
 
-
-
-
 == pubnub_history
+
+===== enum pubnub_res pubnub_history (pubnub_t *p, const char *channel, const char *channel_group, unsigned count)
 
 ===== DESCRIPTION
 Get the message history for the channel and/or channel_group. This actually means "initiate a history transaction".
@@ -610,7 +636,7 @@ You can't get history if a transaction is in progress on the context.
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+| enum pubnub_res | PNR_STARTED on success, an error otherwise
 |======================
 
 ===== BASIC USAGE
@@ -631,6 +657,8 @@ if (PNR_OK == pbresult) {
 
 
 == pubnub_historyv2
+
+===== enum pubnub_res pubnub_historyv2 (pubnub_t *p, const char *channel, const char *channel_group, unsigned count, bool include_token)
 
 ===== DESCRIPTION
 Get the message history for the channel and/or channel_group using the v2 API. This actually means "initiate a history transaction/operation".
@@ -661,7 +689,7 @@ You can't get history if a transaction is in progress on the context.
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+| enum pubnub_res | PNR_STARTED on success, an error otherwise
 |======================
 
 
@@ -682,6 +710,8 @@ if (PNR_OK == pbresult) {
 
 
 == pubnub_here_now
+
+===== enum pubnub_res pubnub_here_now (pubnub_t *p, const char *channel, const char *channel_group)
 
 ===== DESCRIPTION
 Get the currently present users on a channel and/or channel_group. This actually means "initiate a here_now transaction". It can be thought of as a query against the "presence database".
@@ -719,7 +749,7 @@ You can't get list of currently present users if a transaction is in progress on
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+| enum pubnub_res | PNR_STARTED on success, an error otherwise
 |======================
 
 ===== BASIC USAGE
@@ -735,6 +765,8 @@ if (PNR_OK == pbresult) {
 ===== OTHER EXAMPLES
 
 == pubnub_global_here_now
+
+===== enum pubnub_res pubnub_global_here_now (pubnub_t *p)
 
 ===== DESCRIPTION
 Get the currently present users on all channel. This actually means "initiate a global here_now transaction". It can be thought of as a query against the "presence database".
@@ -755,7 +787,7 @@ You can't get list of currently present users if a transaction is in progress on
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+| enum pubnub_res | PNR_STARTED on success, an error otherwise
 |======================
 
 ===== BASIC USAGE
@@ -769,6 +801,8 @@ if (PNR_OK == pbresult) {
 ===== OTHER EXAMPLES
 
 == pubnub_where_now
+
+===== enum pubnub_res pubnub_where_now (pubnub_t *p, const char *uuid)
 
 ===== DESCRIPTION
 Get the currently present users on a channel and/or channel_group. This actually means "initiate a here_now transaction". It can be thought of as a query against the "presence database".
@@ -794,7 +828,7 @@ You can't get channel presence for the user if a transaction is in progress on t
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+| enum pubnub_res | PNR_STARTED on success, an error otherwise
 |======================
 
 ===== BASIC USAGE
@@ -809,6 +843,8 @@ if (PNR_OK == pbresult) {
 
 
 == pubnub_set_state
+
+===== enum pubnub_res pubnub_set_state (pubnub_t *p, char const *channel, char const *channel_group, const char *uuid, char const *state)
 
 ===== DESCRIPTION
 Sets some state for the channel and/or for a user, identified by uuid. This actually means "initiate a set state transaction". It can be thought of as an update against the "presence database".
@@ -843,7 +879,7 @@ You can't set state of channels if a transaction is in progress on the context.
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+| enum pubnub_res | PNR_STARTED on success, an error otherwise
 |======================
 
 ===== BASIC USAGE
@@ -857,6 +893,8 @@ pub
 
 
 == pubnub_state_get
+
+===== enum pubnub_res pubnub_state_get (pubnub_t *p, char const *channel, char const *channel_group, const char *uuid)
 
 ===== DESCRIPTION
 Gets some state for the channel and/or for a user, identified by uuid. This actually means "initiate a get state transaction". It can be thought of as a query against the "presence database".
@@ -887,7 +925,7 @@ You can't set state of channels if a transaction is in progress on the context.
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+| enum pubnub_res | PNR_STARTED on success, an error otherwise
 |======================
 
 ===== BASIC USAGE
@@ -903,6 +941,8 @@ if (PNR_OK == pbresult) {
 
 
 == pubnub_remove_channel_group
+
+===== enum pubnub_res pubnub_remove_channel_group (pubnub_t *p, char const *channel_group)
 
 ===== DESCRIPTION
 Removes a channel_group and all its channels. This actually means "initiate a remove_channel_group transaction". It can be thought of as an update against the "channel group database".
@@ -928,7 +968,7 @@ You can't remove a channel group if a transaction is in progress on the context.
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+| enum pubnub_res | PNR_STARTED on success, an error otherwise
 |======================
 
 ===== BASIC USAGE
@@ -945,6 +985,8 @@ if (PNR_OK == pbresult) {
 
 
 == pubnub_remove_channel_from_group
+
+===== enum pubnub_res pubnub_remove_channel_from_group (pubnub_t *p, char const *channel, char const *channel_group)
 
 ===== DESCRIPTION
 Removes a channel from the channel_group . This actually means "initiate a remove_channel_from_channel_group transaction". It can be thought of as an update against the "channel group database".
@@ -974,7 +1016,7 @@ You can't remove a channel from a channel group if a transaction is in progress 
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+| enum pubnub_res | PNR_STARTED on success, an error otherwise
 |======================
 
 ===== BASIC USAGE
@@ -990,6 +1032,8 @@ if (PNR_OK == pbresult) {
 
 
 == pubnub_add_channel_to_group
+
+===== enum pubnub_res pubnub_add_channel_to_group (pubnub_t *p, char const *channel, char const *channel_group)
 
 ===== DESCRIPTION
 Adds a channel to the channel_group . This actually means "initiate a add_channel_to_channel_group transaction". It can be thought of as an update against the "channel group database".
@@ -1036,6 +1080,8 @@ if (PNR_OK == pbresult) {
 
 == pubnub_list_channel_group
 
+===== enum pubnub_res pubnub_list_channel_group (pubnub_t *p, char const *channel_group)
+
 ===== DESCRIPTION
 Lists all channels of a channel_group. This actually means "initiate a list_channel_group transaction". It can be thought of as a query against the "channel group database".
 
@@ -1060,7 +1106,7 @@ You can't remove a channel group if a transaction is in progress on the context.
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+| enum pubnub_res | PNR_STARTED on success, an error otherwise
 |======================
 
 ===== BASIC USAGE
@@ -1070,6 +1116,8 @@ TO BE ADDED
 
 
 == pubnub_last_http_code
+
+enum pubnub_res pubnub_last_result (pubnub_t const *p)
 
 
 ===== DESCRIPTION
@@ -1097,6 +1145,7 @@ TO BE ADDED
 
 == pubnub_last_result
 
+===== int pubnub_last_http_code (pubnub_t const *p)
 
 ===== DESCRIPTION
 Returns the result of the last transaction in the p context.
@@ -1125,6 +1174,7 @@ Returns the result of the last transaction in the p context.
 
 == pubnub_last_publish_result
 
+===== char const * 	pubnub_last_publish_result (pubnub_t const *p)
 
 ===== DESCRIPTION
 Returns the string of the result of the last publish transaction, as returned from Pubnub. If the last transaction is not a publish, or there is some other error, it returns NULL. If the Publish was successfull, it will return "Sent", otherwise a description of the error.
@@ -1153,6 +1203,8 @@ TO BE ADDED
 
 
 == pubnub_last_time_token
+
+===== char const * 	pubnub_last_time_token (pubnub_t const *p)
 
 
 ===== DESCRIPTION
