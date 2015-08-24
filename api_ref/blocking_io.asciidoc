@@ -5,6 +5,8 @@
 
 == pubnub_set_non_blocking_io
 
+===== int pubnub_set_non_blocking_io(pubnub_t *p)
+
 ===== DESCRIPTION
 Sets the usage of non-blocking I/O for a context. If non-blocking
 I/O is supported by a platform, it will be used, unless some other
@@ -24,7 +26,7 @@ Call this after pubnub_init() on the context.
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| int | OK, otherwise: error, blocking I/O not supported
+| int | 0 OK, otherwise: error, blocking I/O not supported
 |======================
 
 ===== BASIC USAGE
@@ -34,7 +36,7 @@ if (NULL == ctx) {
   puts(“Couldn’t allocate a Pubnub context”);
   return -1;
 }
-if (OK == pubnub_set_non_blocking_io(ctx)) {
+if (0 == pubnub_set_non_blocking_io(ctx)) {
   puts("Context set to non blocking");
 }
 ```
@@ -43,6 +45,8 @@ if (OK == pubnub_set_non_blocking_io(ctx)) {
 
 
 == pubnub_set_blocking_io
+
+===== int  pubnub_set_blocking_io(pubnub_t *p)
 
 ===== DESCRIPTION
 Sets the usage of blocking I/O for a context. If blocking
@@ -63,7 +67,7 @@ Call this after pubnub_init() on the context
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| int | OK, otherwise: error, blocking I/O not supported
+| int | 0 OK, otherwise: error, blocking I/O not supported
 |======================
 
 ===== BASIC USAGE
@@ -73,7 +77,7 @@ if (NULL == ctx) {
   puts(“Couldn’t allocate a Pubnub context”);
   return -1;
 }
-if (OK == pubnub_set_blocking_io(ctx)) {
+if (0 == pubnub_set_blocking_io(ctx)) {
   puts("Context set to blocking");
 }
 ```
