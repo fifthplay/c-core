@@ -5,6 +5,8 @@
 
 == pubnub_alloc
 
+===== pubnub_t *pubnub_alloc(void)
+
 ===== DESCRIPTION
 Returns an allocated context. After successful allocation, please 
 call pubnub_init() to prepare the context for regular use.
@@ -40,6 +42,8 @@ if (NULL == ctx) {
 
 
 == pubnub_free
+
+===== int pubnub_free(pubnub_t *pb)
 
 ===== DESCRIPTION
 Frees a previously allocated context, if it is not in a transaction. 
