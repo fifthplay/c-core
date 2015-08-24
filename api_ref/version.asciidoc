@@ -7,6 +7,8 @@
 
 == pubnub_sdk_name
 
+===== char const *pubnub_sdk_name(void)
+
 ===== DESCRIPTION
 Returns a string with the name of the Pubnub SDK client you are using.
 
@@ -36,6 +38,8 @@ printf("SDK name  : %s", pubnub_sdk_name());
 
 == pubnub_version
 
+===== char const *pubnub_version(void)
+
 ===== DESCRIPTION
 Returns a string with the version of the Pubnub SDK client you are using.
 
@@ -64,6 +68,8 @@ printf("VERSION : %s", pubnub_version());
 
 
 == pubnub_uname
+
+===== char const *pubnub_uname(void)
 
 ===== DESCRIPTION
 Returns an URL encoded string with the full identification of the 
