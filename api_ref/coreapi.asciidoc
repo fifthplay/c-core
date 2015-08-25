@@ -49,8 +49,8 @@ This should be called after TCP initialization.
 |======================
 |Parameter | Type | Required | Description
 |p        |pubnub_t* | Yes | Pointer to the Context to initialize (use pubnub_get_ctx() to obtain it)
-|publish_key  | char * | | Pointer to the string of the key to use when publishing messages
-|subscribe_key  | char * | | Pointer to the string of the key to use when subscribing to messages
+|publish_key  | char * | Yes | Pointer to the string of the key to use when publishing messages
+|subscribe_key  | char * | Yes | Pointer to the string of the key to use when subscribing to messages
 
 |======================
 
@@ -161,7 +161,7 @@ Set the authentication information of PubNub client context p. Pass NULL to unse
 |======================
 |Parameter | Type | Required | Description
 | p | pubnub_t* | Yes | Pointer to pubnub client context
-| auth | const char* | Yes | Pointer to auth string. NULL to unset
+| auth | const char* | No | Pointer to auth string. NULL to unset
 |======================
 
 ===== RETURNS
@@ -216,7 +216,7 @@ if (NULL == ctx) {
 }
 pubnub_init(ctx, “demo”, “demo”);
 pubnub_set_auth(ctx, "my_auth_key");
-printf("Auth Key is %s", pubnub_get_auth(ctx));
+printf("Auth Key is %s", pubnub_auth_get(ctx));
 ```
 ===== OTHER EXAMPLES
 
@@ -262,7 +262,7 @@ pubnub_cancel(ctx);
 ===== enum pubnub_res pubnub_publish (pubnub_t *p, const char *channel, const char *message)
 
 ===== DESCRIPTION
-Publish the message (in JSON format) on p channel, using the p context. This actually means "initiate a publish transaction".
+Publish the message (in JSON format) on a channel, using the context. This actually means "initiate a publish transaction".
 
 You can't publish if a transaction is in progress in p context.
 
@@ -300,7 +300,7 @@ if (NULL == ctx) {
 }
 pubnub_init(ctx, “demo”, “demo”);
 pubnub_publish(ctx, “hello_world”, “\”Hello from Pubnub C-core docs!\””);
-if (pbresult != PNR_OK) {
+if (pbresult != PNR_STARTED) {
     printf(“Failed to publish, error %d\n”, pbresult);
     pubnub_free(ctx);
     return -1;
@@ -314,7 +314,7 @@ if (pbresult != PNR_OK) {
 ===== enum pubnub_res pubnub_publishv2 (pubnub_t *p, const char *channel, const char *message, bool store_in_history, bool eat_after_reading)
 
 ===== DESCRIPTION
-Publish the message (in JSON format) on p channel, using the p context, utilizing the v2 API. This actually means "initiate a publish transaction".
+Publish the message (in JSON format) on a channel, using the context, utilizing the v2 API. This actually means "initiate a publish transaction".
 
 Basically, this is an extension to the pubnub_publish() (v1), with some additional options.
 
@@ -348,7 +348,7 @@ if (NULL == ctx) {
 }
 pubnub_init(ctx, “demo”, “demo”);
 pubnub_publishv2(ctx, “hello_world”, “\”Hello from Pubnub C-core docs!\””, true, true);
-if (pbresult != PNR_OK) {
+if (pbresult != PNR_STARTED) {
     printf(“Failed to publish, error %d\n”, pbresult);
     pubnub_free(ctx);
     return -1;
@@ -533,33 +533,11 @@ You can't leave if a transaction is in progress on the context.
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+| enum pubnub_res | PNR_STARTED on success, an error otherwise
 |======================
 
 ===== BASIC USAGE
 ```
-pubnub_t *ctx = pubnub_alloc();
-if (NULL == ctx) {
-    puts(“Couldn’t allocate a Pubnub context”);
-    return -1;
-}
-pubnub_init(ctx, “demo”, “demo”);
-pubnub_subscribe(ctx, “hello_world”, NULL);
-pbresult = pubnub_await(ctx);
-if (pbresult != PNR_OK) {
-    printf(“Failed to subscribe, error %d\n”, pbresult);
-    pubnub_free(ctx);
-    return -1;
-}
-else {
-    char const *msg = pubnub_get(ctx);
-    char const *channel = pubnub_get_channel(ctx);
-    while (msg != NULL) {
-        printf(“Got message: %s on channel %s\n”, msg, channel);
-        msg = pubnub_get(ctx);
-        channel = pubnub_get_channel(ctx);
-    }
-}
 pubnub_leave(ctx, "hello_world", NULL);
 pbresult = pubnub_await(ctx);
 if (PNR_OK == pbresult) {
@@ -628,9 +606,9 @@ You can't get history if a transaction is in progress on the context.
 |======================
 |Parameter | Type | Required | Description
 | p | pubnub_t* | Yes | Pointer to pubnub client context.
-| channel | const char* | | The string with the channel name to get message history for. This can't be a comma separated list of channels.
-| channel_group | const char* | | The string with the channel group name to get message history for. This can't be a comma separated list
-| count | unsigned | | Maximum number of messages to get. If there are less than this available on the channel, you'll get less, but you can't get more.
+| channel | const char* | No (Atleast one out of channel/channel_group required) | The string with the channel name to get message history for. This can't be a comma separated list of channels.
+| channel_group | const char* | No (Atleast one out of channel/channel_group required) | The string with the channel group name to get message history for. This can't be a comma separated list
+| count | unsigned | Yes | Maximum number of messages to get. If there are less than this available on the channel, you'll get less, but you can't get more.
 |======================
 
 ===== RETURNS
@@ -647,9 +625,13 @@ unsigned count = 100; /* number of messages to retrieve */
 pubnub_history(ctx, “my_channel”, NULL, count);
 pbresult = pubnub_await(ctx);
 if (PNR_OK == pbresult) {
-    char const *json_messages = pubnub_get(ctx);
-    char const *first_timetoken = pubnub_get(ctx);
-    char const *last_timetoken = pubnub_get(ctx);
+    for (;;) {
+        msg = pubnub_get(ctx);
+        if (NULL == msg) {
+            break;
+        }
+        puts(msg);
+    }
 }
 
 ```
@@ -680,10 +662,10 @@ You can't get history if a transaction is in progress on the context.
 |======================
 |Parameter | Type | Required | Description
 | p | pubnub_t* | Yes | Pointer to pubnub client context.
-| channel | const char* | | The string with the channel name to get message history for. This can't be a comma separated list of channels.
-| channel_group | const char* | | The string with the channel group name to get message history for. This can't be a comma separated list
-| count | unsigned | | Maximum number of messages to get. If there are less than this available on the channel, you'll get less, but you can't get more.
-| include_token | bool | | If true, include the time token for every gotten message
+| channel | const char* | No (Atleast one out of channel/channel_group required) | The string with the channel name to get message history for. This can't be a comma separated list of channels.
+| channel_group | const char* | No (Atleast one out of channel/channel_group required) | The string with the channel group name to get message history for. This can't be a comma separated list
+| count | unsigned | Yes | Maximum number of messages to get. If there are less than this available on the channel, you'll get less, but you can't get more.
+| include_token | bool | Yes | If true, include the time token for every gotten message
 |======================
 
 ===== RETURNS
@@ -698,12 +680,16 @@ You can't get history if a transaction is in progress on the context.
 ```
 
 unsigned count = 100; /* number of messages to retrieve */
-pubnub_history(ctx, “my_channel”, NULL, count, true);
+pubnub_historyv2(ctx, “my_channel”, NULL, count, true);
 pbresult = pubnub_await(ctx);
 if (PNR_OK == pbresult) {
-    char const *json_messages = pubnub_get(ctx);
-    char const *first_timetoken = pubnub_get(ctx);
-    char const *last_timetoken = pubnub_get(ctx);
+    for (;;) {
+        msg = pubnub_get(ctx);
+        if (NULL == msg) {
+            break;
+        }
+        puts(msg);
+    }
 }
 
 ```
