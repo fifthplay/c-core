@@ -606,8 +606,8 @@ You can't get history if a transaction is in progress on the context.
 |======================
 |Parameter | Type | Required | Description
 | p | pubnub_t* | Yes | Pointer to pubnub client context.
-| channel | const char* | No (Atleast one out of channel/channel_group required) | The string with the channel name to get message history for. This can't be a comma separated list of channels.
-| channel_group | const char* | No (Atleast one out of channel/channel_group required) | The string with the channel group name to get message history for. This can't be a comma separated list
+| channel | const char* | No | The string with the channel name to get message history for. This can't be a comma separated list of channels.
+| channel_group | const char* | No | The string with the channel group name to get message history for. This can't be a comma separated list
 | count | unsigned | Yes | Maximum number of messages to get. If there are less than this available on the channel, you'll get less, but you can't get more.
 |======================
 
@@ -662,8 +662,8 @@ You can't get history if a transaction is in progress on the context.
 |======================
 |Parameter | Type | Required | Description
 | p | pubnub_t* | Yes | Pointer to pubnub client context.
-| channel | const char* | No (Atleast one out of channel/channel_group required) | The string with the channel name to get message history for. This can't be a comma separated list of channels.
-| channel_group | const char* | No (Atleast one out of channel/channel_group required) | The string with the channel group name to get message history for. This can't be a comma separated list
+| channel | const char* | No | The string with the channel name to get message history for. This can't be a comma separated list of channels.
+| channel_group | const char* | No | The string with the channel group name to get message history for. This can't be a comma separated list
 | count | unsigned | Yes | Maximum number of messages to get. If there are less than this available on the channel, you'll get less, but you can't get more.
 | include_token | bool | Yes | If true, include the time token for every gotten message
 |======================
@@ -708,16 +708,20 @@ If transaction is successful, the response will be a available via pubnub_get() 
 * "status": the HTTP status of the operation (200 OK, 40x error, etc.)
 * "message": the string/message describing the status ("OK"...)
 * "service": should be "Presence"
+
 If doing a query on a single channel, following keys are present:
 
 * "uuids": an array of UUIDs of currently present users
 * "occupancy": the number of currently present users in the channel
+
 If doing a query on more channels, a key "payload" is present, which is a JSON object whose keys are:
 
 * "channels": a JSON object with keys being the names of the channels and their values JSON objects with keys "uuids" and "occupancy" with the meaning the same as for query on a single channel
 * "total_channels": the number of channels for which the presence is given (in "payload")
 * "total_occupancy": total number of users present in all channels
-If channel is NULL, then channel_group cannot be NULL and you will subscribe only to the channel group(s). It goes both ways: if channel_group is NULL, then channel cannot be NULL and you will subscribe only to the channel(s).
+
+If channel is NULL, then channel_group cannot be NULL and you will subscribe only to the channel group(s). It goes both ways:
+if channel_group is NULL, then channel cannot be NULL and you will subscribe only to the channel(s).
 
 You can't get list of currently present users if a transaction is in progress on the context.
 
@@ -800,6 +804,7 @@ If transaction is successful, the response will be a available via pubnub_get() 
 * "message": the string/message describing the status ("OK"...)
 * "service": should be "Presence"
 * "payload": JSON object with a key "channels" which is an array of channels this user is present in
+
 You can't get channel presence for the user if a transaction is in progress on the context.
 
 ===== METHODS
@@ -844,6 +849,7 @@ If transaction is successful, the response will be a available via pubnub_get() 
 * "message": the string/message describing the status ("OK"...)
 * "service": should be "Presence"
 * "payload" the state
+
 This will set the same state to all channels identified by channel and channel_group.
 
 If channel is NULL, then channel_group cannot be NULL and you will set state only to the channel group(s). It goes both ways: if channel_group is NULL, then channel cannot be NULL and you will set state only to the channel(s).
@@ -856,10 +862,10 @@ You can't set state of channels if a transaction is in progress on the context.
 |======================
 |Parameter | Type | Required | Description
 | p | pubnub_t* | Yes | Pointer to Pubnub Client Context
-| channel | char const* |  | The string with the channel name (or comma-delimited list of channel names) to set state for.
-| channel_group | char const* | | The string with the channel name (or comma-delimited list of channel group names) to set state for.
-| uuid | const char* |  | The UUID of the user for which to set state for. If NULL, the current UUID of the p context will be used.
-| state | char const* |  | Has to be a JSON object
+| channel | char const* | No | The string with the channel name (or comma-delimited list of channel names) to set state for.
+| channel_group | char const* | No | The string with the channel name (or comma-delimited list of channel group names) to set state for.
+| uuid | const char* | No | The UUID of the user for which to set state for. If NULL, the current UUID of the p context will be used.
+| state | char const* | Yes  | Has to be a JSON object
 |======================
 
 ===== RETURNS
@@ -894,6 +900,7 @@ If transaction is successful, the response will be a available via pubnub_get() 
 * "message": the string/message describing the status ("OK"...)
 * "service": should be "Presence"
 * "payload": if querying against one channel the gotten state (a JSON object), otherwise a JSON object with the key "channels" whose value is a JSON object with keys the name of the channels and their respective values JSON objects of the gotten state
+
 If channel is NULL, then channel_group cannot be NULL and you will get state only for the channel group(s). It goes both ways: if channel_group is NULL, then channel cannot be NULL and you will get state only for the channel(s).
 
 You can't set state of channels if a transaction is in progress on the context.
@@ -942,6 +949,7 @@ If transaction is successful, the response will be a available via pubnub_get_ch
 * "status": the HTTP status of the operation (200 OK, 40x error, etc.)
 * "error": true on error, false on success
 * "message": the string/message describing the status ("OK"...)
+
 You can't remove a channel group if a transaction is in progress on the context.
 
 ===== METHODS
@@ -988,6 +996,7 @@ If transaction is successful, the response will be a available via pubnub_get_ch
 * "status": the HTTP status of the operation (200 OK, 40x error, etc.)
 * "error": true on error, false on success
 * "message": the string/message describing the status ("OK"...)
+
 You can't remove a channel from a channel group if a transaction is in progress on the context.
 
 ===== METHODS
@@ -1035,7 +1044,8 @@ If transaction is successful, the response will be a available via pubnub_get_ch
 * "status": the HTTP status of the operation (200 OK, 40x error, etc.)
 * "error": true on error, false on success
 * "message": the string/message describing the status ("OK"...)
-* You can't add a channel to a channel group if a transaction is in progress on the context.
+
+You can't add a channel to a channel group if a transaction is in progress on the context.
 
 ===== METHODS
 
@@ -1080,6 +1090,7 @@ If transaction is successful, the response will be a available via pubnub_get_ch
 * "status": the HTTP status of the operation (200 OK, 40x error, etc.)
 * "error": true on error, false on success
 * "payload": JSON object with keys "group" with value the string of the channel group name and "channels" with value a JSON * * array of strings with names of the channels that belong to the group
+
 You can't remove a channel group if a transaction is in progress on the context.
 
 ===== METHODS
@@ -1168,6 +1179,7 @@ Returns the result of the last transaction in the p context.
 pubnub_list_channel_group(ctx, “my_channel_group”);
 pbresult = pubnub_await(ctx);
 printf("Last result %s\n", pubnub_res_2_string(pbresult));
+```
 
 ===== OTHER EXAMPLES
 
