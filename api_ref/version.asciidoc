@@ -17,7 +17,7 @@ Returns a string with the name of the Pubnub SDK client you are using.
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 |Parameter | Type | Required | Description
-
+| void |||
 |======================
 
 ===== RETURNS
@@ -48,7 +48,7 @@ Returns a string with the version of the Pubnub SDK client you are using.
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 |Parameter | Type | Required | Description
-
+| void |||
 |======================
 
 ===== RETURNS
@@ -80,7 +80,7 @@ SDK - name, version, possible something more.
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 |Parameter | Type | Required | Description
-
+| void |||
 |======================
 
 ===== RETURNS
