@@ -37,7 +37,7 @@ for greater portability. We emulate this, by keeping a copy (in
 volatile memory) of the last time-stamp and seeing if it changes
 and assuming that node changes at first call, so we require the
 user to gives a random number for the clock sequence on first
-call. So, basically, on the first call, put a random value in @p
+call. So, basically, on the first call, put a random value in
 io_clock_seq, and later just re-use the same variable, this
 function will update it as needed. If you don't have random number
 generator, you can use any pseudo-random number source (say a
