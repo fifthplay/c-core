@@ -70,7 +70,7 @@ transactions for a long time.
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| int | OK, context freed; else: error, context untouched
+| int | 0: OK, context freed; else: error, context untouched
 |======================
 
 ===== BASIC USAGE
@@ -80,7 +80,9 @@ if (NULL == ctx) {
     puts(“Couldn’t allocate a Pubnub context”);
     return -1;
 }
-pubnub_free(ctx);
+if (0 == pubnub_free(ctx)){
+    puts("Context freed");
+}
 ```
 
 
