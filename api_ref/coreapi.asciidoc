@@ -621,6 +621,7 @@ If transaction is successful, the gotten messages will be available via the pubn
 If channel is NULL, then channel_group cannot be NULL and you will get history only for the channel group. It goes both ways: if channel_group is NULL, then channel cannot be NULL and you will get history only for the channel.
 
 You can't get history if a transaction is in progress on the context.
+
 ===== METHODS
 
 [width="40%",frame="topbot",options="header,footer"]
@@ -883,12 +884,14 @@ You can't set state of channels if a transaction is in progress on the context.
 |======================
 
 ===== BASIC USAGE
+```
 pubnub_set_state(ctx, "hello_world", NULL, NULL, NULL);
 pbresult = pubnub_await(ctx);
 if (PNR_OK == pbresult) {
     printf("Set success\n");
 }
-pub
+```
+
 ===== OTHER EXAMPLES
 
 
