@@ -94,7 +94,7 @@ if (res != PNR_STARTED) {
     return -1;
 }
 res = pubnub_await(pbp);
-
+printf("Response %s\n",pubnub_res_2_string(res)); 
 ```
 
 
