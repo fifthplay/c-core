@@ -26,7 +26,31 @@ Parses the given publish result. You usually obtain this with pubnub_last_publis
 |======================
 
 ===== BASIC USAGE
-TO BE ADDED
+```
+enum pubnub_res res;
+pubnub_t *pbp = pubnub_alloc();
+if (NULL == pbp) {
+    printf("Failed to allocate Pubnub context!\n");
+    return -1;
+}
+pubnub_init(pbp, "demo", "demo");
+
+res = pubnub_publish(pbp, chan, "\"Hello world from sync!\"");
+if (res != PNR_STARTED) {
+    printf("pubnub_publish() returned unexpected: %d\n", res);
+    pubnub_free(pbp);
+    return -1;
+}
+res = pubnub_await(pbp);
+
+if (PNR_PUBLISH_FAILED == res) {
+  enum pubnub_publish_res publ_res = pubnub_parse_publish_result(pubnub_last_publish_result(pbp));
+  switch (publ_res) {
+  case PNPUB_INVALID_JSON: printf("Invalid JSON was sent in the publish message\n"); break;
+  default: break;
+  }
+}
+```
 
 ===== OTHER EXAMPLES
 
@@ -54,7 +78,24 @@ Returns a string (in English) describing a Pubnub result enum
 |======================
 
 ===== BASIC USAGE
-TO BE ADDED
+```
+enum pubnub_res res;
+pubnub_t *pbp = pubnub_alloc();
+if (NULL == pbp) {
+    printf("Failed to allocate Pubnub context!\n");
+    return -1;
+}
+pubnub_init(pbp, "demo", "demo");
+
+res = pubnub_publish(pbp, chan, "\"Hello world from sync!\"");
+if (res != PNR_STARTED) {
+    printf("pubnub_publish() returned unexpected: %d\n", res);
+    pubnub_free(pbp);
+    return -1;
+}
+res = pubnub_await(pbp);
+
+```
 
 
 ===== OTHER EXAMPLES
