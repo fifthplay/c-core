@@ -1113,15 +1113,20 @@ You can't remove a channel group if a transaction is in progress on the context.
 |======================
 
 ===== BASIC USAGE
-TO BE ADDED
+```
+pubnub_list_channel_group(ctx, “my_channel_group”);
+pbresult = pubnub_await(ctx);
+if (PNR_OK == pbresult) {
+    char const *json_response = pubnub_get(ctx);
+}
+```
 
 ===== OTHER EXAMPLES
 
 
 == pubnub_last_http_code
 
-enum pubnub_res pubnub_last_result (pubnub_t const *p)
-
+enum pubnub_res int pubnub_last_http_code(pubnub_t const *p)
 
 ===== DESCRIPTION
 Returns the HTTP reply code of the last transaction in the p context.
@@ -1142,13 +1147,17 @@ Returns the HTTP reply code of the last transaction in the p context.
 |======================
 
 ===== BASIC USAGE
-TO BE ADDED
+```
+pubnub_list_channel_group(ctx, “my_channel_group”);
+pbresult = pubnub_await(ctx);
+printf("HTTP Status Code %d\n", pubnub_last_http_code(ctx));
+```
 
 ===== OTHER EXAMPLES
 
 == pubnub_last_result
 
-===== int pubnub_last_http_code (pubnub_t const *p)
+===== int pubnub_last_result (pubnub_t const *p)
 
 ===== DESCRIPTION
 Returns the result of the last transaction in the p context.
@@ -1169,7 +1178,10 @@ Returns the result of the last transaction in the p context.
 |======================
 
 ===== BASIC USAGE
-
+```
+pubnub_list_channel_group(ctx, “my_channel_group”);
+pbresult = pubnub_await(ctx);
+printf("Last result %s\n", pubnub_res_2_string(pbresult));
 
 ===== OTHER EXAMPLES
 
@@ -1198,7 +1210,22 @@ Returns the string of the result of the last publish transaction, as returned fr
 |======================
 
 ===== BASIC USAGE
-TO BE ADDED
+```
+enum pubnub_res pbres;
+pubnub_t *ctx = pubnub_alloc();
+if (NULL == ctx) {
+    puts(“Couldn’t allocate a Pubnub context”);
+    return -1;
+}
+pubnub_init(ctx, “demo”, “demo”);
+pbres = pubnub_publish(ctx, “hello_world”, “\”Hello from Pubnub C-core docs!\””);
+if (pbresult != PNR_OK) {
+    printf(“Failed to publish, error %d\n”, pbresult);
+    pubnub_free(ctx);
+    return -1;
+}
+printf("String result of last publish %s\n", pubnub_last_publish_result(ctx));
+```
 
 ===== OTHER EXAMPLES
 
@@ -1229,7 +1256,9 @@ Returns the string of the last received time token on the p context. After pubnu
 |======================
 
 ===== BASIC USAGE
-TO BE ADDED
+```
+printinf("Last time token %s\n", pubnub_last_time_token(ctx));
+```
 
 ===== OTHER EXAMPLES
 
