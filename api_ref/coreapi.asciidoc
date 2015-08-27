@@ -225,7 +225,7 @@ printf("Auth Key is %s", pubnub_auth_get(ctx));
 ===== void 	pubnub_cancel (pubnub_t *p)
 
 ===== DESCRIPTION
-Cancel an ongoing API transaction. The outcome of the transaction in progress, if any, will be #PNR_CANCELLED.
+Cancel an ongoing API transaction. The outcome of the transaction in progress, if any, will be PNR_CANCELLED.
 
 ===== METHODS
 
@@ -379,7 +379,7 @@ NOTE:   Context doesn't keep track of the channel(s) you subscribed to. This is 
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| char const* | Pointer to message. Can't be NULL.
+| char const* | Pointer to message. NULL on error.
 |======================
 
 ===== BASIC USAGE
@@ -420,8 +420,10 @@ Returns a pointer to an fetched subscribe operation/transaction's next channel. 
 |======================
 
 ===== RETURNS
-char const*
-Pointer to channel, NULL on error
+|======================
+| Type | Description
+| char const* | Pointer to channel. NULL on error.
+|======================
 
 ===== BASIC USAGE
 ```
@@ -1062,7 +1064,7 @@ You can't add a channel to a channel group if a transaction is in progress on th
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| enum pubnub_res | #PNR_STARTED on success, an error otherwise
+| enum pubnub_res | PNR_STARTED on success, an error otherwise
 |======================
 
 ===== BASIC USAGE
@@ -1178,7 +1180,7 @@ Returns the result of the last transaction in the p context.
 ```
 pubnub_list_channel_group(ctx, “my_channel_group”);
 pbresult = pubnub_await(ctx);
-printf("Last result %s\n", pubnub_res_2_string(pbresult));
+printf("Last result %s\n", pubnub_res_2_string(pubnub_last_result(ctx)));
 ```
 
 ===== OTHER EXAMPLES
@@ -1209,12 +1211,6 @@ Returns the string of the result of the last publish transaction, as returned fr
 
 ===== BASIC USAGE
 ```
-enum pubnub_res pbres;
-pubnub_t *ctx = pubnub_alloc();
-if (NULL == ctx) {
-    puts(“Couldn’t allocate a Pubnub context”);
-    return -1;
-}
 pubnub_init(ctx, “demo”, “demo”);
 pbres = pubnub_publish(ctx, “hello_world”, “\”Hello from Pubnub C-core docs!\””);
 if (pbresult != PNR_OK) {
