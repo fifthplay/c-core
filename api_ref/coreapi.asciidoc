@@ -48,7 +48,7 @@ This should be called after TCP initialization.
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 |Parameter | Type | Required | Description
-|p        |pubnub_t* | Yes | Pointer to the Context to initialize (use pubnub_get_ctx() to obtain it)
+|p        |pubnub_t* | Yes | Pointer to the Context to initialize (use pubnub_alloc() to obtain it)
 |publish_key  | char * | Yes | Pointer to the string of the key to use when publishing messages
 |subscribe_key  | char * | Yes | Pointer to the string of the key to use when subscribing to messages
 
@@ -144,7 +144,7 @@ if (NULL == ctx) {
 }
 pubnub_init(ctx, “demo”, “demo”);
 pubnub_set_uuid(ctx, "my_uuid");
-printf("UUID is %s", pubnub_get_uuid(ctx));
+printf("UUID is %s", pubnub_uuid_get(ctx));
 ```
 ===== OTHER EXAMPLES
 
@@ -626,9 +626,13 @@ unsigned count = 100; /* number of messages to retrieve */
 pubnub_history(ctx, “my_channel”, NULL, count);
 pbresult = pubnub_await(ctx);
 if (PNR_OK == pbresult) {
-    char const *json_messages = pubnub_get(ctx);
-    char const *first_timetoken = pubnub_get(ctx);
-    char const *last_timetoken = pubnub_get(ctx);
+    for (;;) {
+        msg = pubnub_get(ctx);
+        if (NULL == msg) {
+            break;
+        }
+        puts(msg);
+    }
 }
 
 ```
@@ -1204,10 +1208,9 @@ pubnub_init(ctx, “demo”, “demo”);
 pbres = pubnub_publish(ctx, “hello_world”, “\”Hello from Pubnub C-core docs!\””);
 if (pbresult != PNR_OK) {
     printf(“Failed to publish, error %d\n”, pbresult);
-    pubnub_free(ctx);
+    printf("String result of last publish %s\n", pubnub_last_publish_result(ctx));
     return -1;
 }
-printf("String result of last publish %s\n", pubnub_last_publish_result(ctx));
 ```
 
 ===== OTHER EXAMPLES
