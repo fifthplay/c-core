@@ -57,6 +57,7 @@ Returns the user data set with pubnub_register_callback().
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
+| void* | user data set with pubnub_register_callback
 |======================
 
 ===== BASIC USAGE
