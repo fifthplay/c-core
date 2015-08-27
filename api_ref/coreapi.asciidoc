@@ -132,7 +132,7 @@ Get the UUID identification of PubNub client context p. After pubnub_init(), it 
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| char const* |
+| char const* | UUID for context. Null if not set.
 |======================
 
 ===== BASIC USAGE
@@ -204,7 +204,7 @@ Returns the current authentication information for the context p. After pubnub_i
 [width="40%",frame="topbot",options="header,footer"]
 |======================
 | Type | Description
-| char const* |
+| char const* | Auth Key for context. NULL if not set.
 |======================
 
 ===== BASIC USAGE
