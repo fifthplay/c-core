@@ -1,0 +1,68 @@
+== pubnub_register_callback
+
+enum pubnub_res pubnub_register_callback(pubnub_t *pb, pubnub_callback_t cb, void *user_data)
+
+===== DESCRIPTION
+
+Registers a callback function to be called when a transaction
+ends.  While it is OK to register a NULL pointer, which means no
+callback will be called, it is useful only in very specific
+circumstances. Also, `NULL` is the initial value (after calling
+pubnub_init()), so no need to set it.
+Don't make any assumptions about the thread on which this
+function is called.
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| pb | pubnub_t* | Yes | The Pubnub context for which the callback is set
+| cb | pubnub_callback_t | No | cb Pointer to function to call on end of transaction
+| user_data | void* | No | user_data Pointer that will be given to the callback function
+|======================
+
+===== RETURNS
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+| enum pubnub_res | PNR_OK on success, a value indicating the error otherwise
+|======================
+
+===== BASIC USAGE
+```
+pubnub_register_callback(ctx, sample_callback, &user_data);
+```
+
+===== OTHER EXAMPLES
+
+
+== pubnub_get_user_data
+
+void *pubnub_get_user_data(pubnub_t *pb)
+
+===== DESCRIPTION
+
+Returns the user data set with pubnub_register_callback().
+
+===== METHODS
+
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Parameter | Type | Required | Description
+| pb | pubnub_t* | Yes | Pubnub Client Context for which to return user data.
+|======================
+
+===== RETURNS
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+| Type | Description
+|======================
+
+===== BASIC USAGE
+```
+void* user_data = pubnub_get_user_data(ctx);
+```
+
+
+===== OTHER EXAMPLES
