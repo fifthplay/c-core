@@ -622,18 +622,13 @@ You can't get history if a transaction is in progress on the context.
 
 ===== BASIC USAGE
 ```
-
 unsigned count = 100; /* number of messages to retrieve */
 pubnub_history(ctx, “my_channel”, NULL, count);
 pbresult = pubnub_await(ctx);
 if (PNR_OK == pbresult) {
-    for (;;) {
-        msg = pubnub_get(ctx);
-        if (NULL == msg) {
-            break;
-        }
-        puts(msg);
-    }
+    char const *json_messages = pubnub_get(ctx);
+    char const *first_timetoken = pubnub_get(ctx);
+    char const *last_timetoken = pubnub_get(ctx);
 }
 
 ```
@@ -680,20 +675,14 @@ You can't get history if a transaction is in progress on the context.
 
 ===== BASIC USAGE
 ```
-
 unsigned count = 100; /* number of messages to retrieve */
-pubnub_historyv2(ctx, “my_channel”, NULL, count, true);
+pubnub_history(ctx, “my_channel”, NULL, count, true);
 pbresult = pubnub_await(ctx);
 if (PNR_OK == pbresult) {
-    for (;;) {
-        msg = pubnub_get(ctx);
-        if (NULL == msg) {
-            break;
-        }
-        puts(msg);
-    }
+    char const *json_messages = pubnub_get(ctx);
+    char const *first_timetoken = pubnub_get(ctx);
+    char const *last_timetoken = pubnub_get(ctx);
 }
-
 ```
 ===== OTHER EXAMPLES
 
