@@ -561,7 +561,7 @@ pubnub_free(ctx);
 
 It is possible to subscribe to more than one channel over a single TCP socket by taking advantage of Multiplexing feature. See the Multiplexing section for more info on this feature as well as the examples below using a list to specify channel name.
 
-* Subscribing using a list of channels:
+a. Subscribing using a list of channels:
 
 ```
 pubnub_t *ctx = pubnub_alloc();
