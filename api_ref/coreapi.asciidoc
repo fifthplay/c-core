@@ -529,7 +529,7 @@ pubnub_free(ctx);
 ```
 ===== OTHER EXAMPLES
 
-1. Basic subscribe with logging:
+(1)  Basic subscribe with logging:
 
 ```
 pubnub_t *ctx = pubnub_alloc();
@@ -557,11 +557,11 @@ else {
 pubnub_free(ctx);
 ```
 
-2. Subscribing to more than one channel. 
+(2)  Subscribing to more than one channel. 
 
 It is possible to subscribe to more than one channel over a single TCP socket by taking advantage of Multiplexing feature. See the Multiplexing section for more info on this feature as well as the examples below using a list to specify channel name.
 
-a. Subscribing using a list of channels:
+.. Subscribing using a list of channels:
 
 ```
 pubnub_t *ctx = pubnub_alloc();
@@ -589,7 +589,7 @@ else {
 pubnub_free(ctx);
 ```
 
-3. Subscribing to a Presence channel: 
+(3)  Subscribing to a Presence channel: 
 
 For any given channel there is an associated Presence channel. You can subscribe directly to the channel by appending -pnpres to the channel name. For example the channel named my_channel would have the presence channel named my_channel-pnpres
 
