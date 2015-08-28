@@ -73,6 +73,14 @@ pubnub_init(ctx, “demo”, “demo”);
 ```
 ===== OTHER EXAMPLES
 
+1. Initialization for a Read-Only client:
+
+In the case where a client will only read messages and never publish to a channel, you can simply omit the publish_key when initializing the client:
+
+```    
+pubnub_init(ctx, "", "demo");
+```
+
 == pubnub_set_uuid
 
 ===== void 	pubnub_set_uuid (pubnub_t *p, const char *uuid)
@@ -511,6 +519,68 @@ else {
 pubnub_free(ctx);
 ```
 ===== OTHER EXAMPLES
+
+1. Basic subscribe with logging:
+
+```
+pubnub_t *ctx = pubnub_alloc();
+if (NULL == ctx) {
+    puts(“Couldn’t allocate a Pubnub context”);
+    return -1;
+}
+pubnub_init(ctx, “demo”, “demo”);
+pubnub_subscribe(ctx, “hello_world”, NULL);
+pbresult = pubnub_await(ctx);
+if (pbresult != PNR_OK) {
+    printf(“Failed to subscribe, error %d\n”, pbresult);
+    pubnub_free(ctx);
+    return -1;
+}
+else {
+    char const *msg = pubnub_get(ctx);
+    char const *channel = pubnub_get_channel(ctx);
+    while (msg != NULL) {
+        printf(“Got message: %s on channel %s\n”, msg, channel);
+        msg = pubnub_get(ctx);
+        channel = pubnub_get_channel(ctx);
+    }
+}
+pubnub_free(ctx);
+```
+
+2. Subscribing to more than one channel. 
+
+It is possible to subscribe to more than one channel over a single TCP socket by taking advantage of Multiplexing feature. See the Multiplexing section for more info on this feature as well as the examples below using a list to specify channel name.
+
+* Subscribing using a list of channels:
+
+```
+pubnub_t *ctx = pubnub_alloc();
+if (NULL == ctx) {
+    puts(“Couldn’t allocate a Pubnub context”);
+    return -1;
+}
+pubnub_init(ctx, “demo”, “demo”);
+pubnub_subscribe(ctx, “hello_world1,hello_world2,hello_world3”, NULL);
+pbresult = pubnub_await(ctx);
+if (pbresult != PNR_OK) {
+    printf(“Failed to subscribe, error %d\n”, pbresult);
+    pubnub_free(ctx);
+    return -1;
+}
+else {
+    char const *msg = pubnub_get(ctx);
+    char const *channel = pubnub_get_channel(ctx);
+    while (msg != NULL) {
+        printf(“Got message: %s on channel %s\n”, msg, channel);
+        msg = pubnub_get(ctx);
+        channel = pubnub_get_channel(ctx);
+    }
+}
+pubnub_free(ctx);
+```
+
+
 
 == pubnub_leave
 
