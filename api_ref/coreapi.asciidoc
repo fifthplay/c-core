@@ -119,6 +119,15 @@ pubnub_set_uuid(ctx, "my_uuid");
 ```
 ===== OTHER EXAMPLES
 
+1. Initializing with a custom uuid:
+
+```
+pubnub_t *ctx = pubnub_alloc();
+pubnub_init("demo", "demo");
+pubnub_set_uuid(ctx, "my_custom_uuid");
+```
+
+
 
 == pubnub_uuid_get 
 
@@ -580,6 +589,35 @@ else {
 pubnub_free(ctx);
 ```
 
+3. Subscribing to a Presence channel: 
+
+For any given channel there is an associated Presence channel. You can subscribe directly to the channel by appending -pnpres to the channel name. For example the channel named my_channel would have the presence channel named my_channel-pnpres
+
+```
+pubnub_t *ctx = pubnub_alloc();
+if (NULL == ctx) {
+    puts(“Couldn’t allocate a Pubnub context”);
+    return -1;
+}
+pubnub_init(ctx, “demo”, “demo”);
+pubnub_subscribe(ctx, “hello_world-pnpres”, NULL);
+pbresult = pubnub_await(ctx);
+if (pbresult != PNR_OK) {
+    printf(“Failed to subscribe, error %d\n”, pbresult);
+    pubnub_free(ctx);
+    return -1;
+}
+else {
+    char const *msg = pubnub_get(ctx);
+    char const *channel = pubnub_get_channel(ctx);
+    while (msg != NULL) {
+        printf(“Got message: %s on channel %s\n”, msg, channel);
+        msg = pubnub_get(ctx);
+        channel = pubnub_get_channel(ctx);
+    }
+}
+pubnub_free(ctx);
+```
 
 
 == pubnub_leave
