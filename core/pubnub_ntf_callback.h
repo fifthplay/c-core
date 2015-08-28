@@ -3,10 +3,12 @@
 #define      INC_PUBNUB_NTF_CALLBACK
 
 
-#include "pubnub_res.h"
+#include "pubnub_api_types.h"
+
 
 /** @file pubnub_ntf_callback.h 
-    This is the "callback" notification interface.
+    This is the "callback" notification interface. It is the part of
+    the user API of the Pubnub C client.
 
     Pubnub client library offers two "mostly portable" interfaces for
     getting notification about the outcome of a Pubnub transaction.
@@ -28,16 +30,15 @@
     (other) threads that might be trying to use it at the same time.
 */
 
-struct pubnub;
-typedef struct pubnub pubnub_t;
 
 /** Pointer to a function to be called on the outcome of a Pubnub
     transaction.
     @param pb The Pubnub context for which the outcome is reported
     @param trans Type of transaction (publish, subscribe...) at hand
     @param result The actual result of the transaction
+    @param user_data The pointer provided by the user to pubnub_register_callback()
  */
-typedef void (*pubnub_callback_t)(pubnub_t *pb, enum pubnub_trans trans, enum pubnub_res result);
+typedef void (*pubnub_callback_t)(pubnub_t *pb, enum pubnub_trans trans, enum pubnub_res result, void *user_data);
 
 /** Registers a callback function to be called when a transaction
     ends.  While it is OK to register a NULL pointer, which means no
@@ -50,10 +51,15 @@ typedef void (*pubnub_callback_t)(pubnub_t *pb, enum pubnub_trans trans, enum pu
 
     @param pb The Pubnub context for which the callback is set
     @param cb Pointer to function to call on end of transaction
+    @param user_data Pointer that will be given to the callback function
+
+    @return PNR_OK on success, a value indicating the error otherwise
 */
-enum pubnub_res pubnub_register_callback(pubnub_t *pb, pubnub_callback_t cb);
+enum pubnub_res pubnub_register_callback(pubnub_t *pb, pubnub_callback_t cb, void *user_data);
 
-
+/** Returns the user data set with pubnub_register_callback().
+ */
+void *pubnub_get_user_data(pubnub_t *pb);
 
 
 #endif /* !defined INC_PUBNUB_NTF_CALLBACK */

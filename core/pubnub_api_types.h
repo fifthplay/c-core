@@ -1,6 +1,21 @@
 /* -*- c-file-style:"stroustrup"; indent-tabs-mode: nil -*- */
-#if !defined INC_PUBNUB_RES
-#define      INC_PUBNUB_RES
+#if !defined INC_PUBNUB_API_TYPES
+#define      INC_PUBNUB_API_TYPES
+
+
+/** @file pubnub_api_types.h
+
+    These are the definitions of types used by most functions of the
+    Pubnub C-core API. Users of the SDK in general don't need to
+    include it, as other headers of the API will include it for them.
+ */
+
+struct pubnub_;
+
+/** A pubnub context. An opaque data structure that holds all the data
+    needed for a context.
+ */
+typedef struct pubnub_ pubnub_t;
 
 
 /** Result codes for Pubnub functions and transactions.  */
@@ -117,4 +132,4 @@ enum pubnub_trans {
 };
 
 
-#endif /* !defined INC_PUBNUB_RES */
+#endif /* !defined INC_PUBNUB_API_TYPES */
