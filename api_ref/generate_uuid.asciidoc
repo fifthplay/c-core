@@ -78,7 +78,6 @@ if (0 != pubnub_generate_uuid_v4_random(&uuid)) {
 }
 ```
 
-
 ===== OTHER EXAMPLES
 
 
@@ -234,7 +233,15 @@ if (0 != pubnub_generate_uuid_v4_random(&uuid)) {
 
 ===== OTHER EXAMPLES
 
+1. Creating a unique auth_key for PAM on initialization:
 
+```
+struct Pubnub_UUID uuid;
+char *auth_key;
+if (0 != pubnub_generate_uuid_v4_random(&uuid)) {
+    auth_key = pubnub_uuid_to_string(&uuid).uuid);
+}
+```
 
 == pubnub_uuid_compare
 
