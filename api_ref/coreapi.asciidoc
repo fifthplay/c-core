@@ -324,6 +324,104 @@ if (pbresult != PNR_STARTED) {
 }
 ```
 
+```
+#include "pubnub_callback.h"
+
+#include <pthread.h>
+
+#include <stdio.h>
+#include <unistd.h>
+
+char *chan = "ab";
+
+struct UserData {
+    pthread_mutex_t mutw;
+    bool triggered;
+    pthread_cond_t condw;
+    pubnub_t *pb;
+};
+
+
+void _callback(pubnub_t *pb, enum pubnub_trans trans, enum pubnub_res result, void *user_data)
+{
+    struct UserData *pUserData = (struct UserData*)user_data;
+   
+    switch (trans) {
+    case PBTT_PUBLISH:
+        printf("Publish %d\n", result);
+        printf("Published! Response from Pubnub: %s , Timetoken = %s\n", 
+            pubnub_last_publish_result(pb),pubnub_last_time_token(pb));
+        break;
+    default:
+        printf("None?! result: %d\n", result);
+        break;
+    }
+
+    pthread_mutex_lock(&pUserData->mutw);
+    pUserData->triggered = true;
+    pthread_cond_signal(&pUserData->condw);
+    pthread_mutex_unlock(&pUserData->mutw);
+}
+
+static enum pubnub_res await(struct UserData *pUserData)
+{
+    pthread_mutex_lock(&pUserData->mutw);
+    pUserData->triggered = false;
+    while (!pUserData->triggered) {
+        pthread_cond_wait(&pUserData->condw, &pUserData->mutw);
+    }
+    pthread_mutex_unlock(&pUserData->mutw);
+    return pubnub_last_result(pUserData->pb);
+}
+
+static void initUserData(struct UserData *pUserData, pubnub_t *pb)
+{
+
+    pthread_mutex_init(&pUserData->mutw, NULL);
+    pthread_cond_init(&pUserData->condw, NULL);
+    pUserData->pb = pb;
+}
+
+int main()
+{
+
+    enum pubnub_res res;
+    pubnub_t *pbp = pubnub_alloc();
+    struct UserData user_data;
+
+    if (NULL == pbp) {
+        printf("Failed to allocate Pubnub context!\n");
+        return -1;
+    }
+
+    pubnub_init(pbp, "demo", "demo");
+    
+    initUserData(&user_data, pbp);
+    pubnub_register_callback(pbp, _callback, &user_data);
+
+    res = pubnub_publish(pbp, chan, "\"Hello from Pubnub C-core docs!\"");
+    if (res != PNR_STARTED) {
+        printf("pubnub_publish() returned unexpected: %d\n", res);
+        pubnub_free(pbp);
+        return -1;
+    }
+    
+    res = await(&user_data);
+    if (res == PNR_STARTED) {
+        printf("await() returned unexpected: PNR_STARTED(%d)\n", res);
+        pubnub_free(pbp);
+        return -1;
+    }
+
+    if (pubnub_free(pbp) != 0) {
+        printf("Failed to free the Pubnub context\n");
+    }
+    
+    return 0;
+}
+```
+
+
 ===== OTHER EXAMPLES
 
 == pubnub_publishv2
@@ -371,6 +469,104 @@ if (pbresult != PNR_STARTED) {
     return -1;
 }
 ```
+```
+#include "pubnub_callback.h"
+
+#include <pthread.h>
+
+#include <stdio.h>
+#include <unistd.h>
+
+char *chan = "ab";
+
+struct UserData {
+    pthread_mutex_t mutw;
+    bool triggered;
+    pthread_cond_t condw;
+    pubnub_t *pb;
+};
+
+
+void _callback(pubnub_t *pb, enum pubnub_trans trans, enum pubnub_res result, void *user_data)
+{
+    struct UserData *pUserData = (struct UserData*)user_data;
+   
+    switch (trans) {
+    case PBTT_PUBLISH:
+        printf("Publish %d\n", result);
+        printf("Published! Response from Pubnub: %s , Timetoken = %s\n", 
+            pubnub_last_publish_result(pb),pubnub_last_time_token(pb));
+        break;
+    default:
+        printf("None?! result: %d\n", result);
+        break;
+    }
+
+    pthread_mutex_lock(&pUserData->mutw);
+    pUserData->triggered = true;
+    pthread_cond_signal(&pUserData->condw);
+    pthread_mutex_unlock(&pUserData->mutw);
+}
+
+static enum pubnub_res await(struct UserData *pUserData)
+{
+    pthread_mutex_lock(&pUserData->mutw);
+    pUserData->triggered = false;
+    while (!pUserData->triggered) {
+        pthread_cond_wait(&pUserData->condw, &pUserData->mutw);
+    }
+    pthread_mutex_unlock(&pUserData->mutw);
+    return pubnub_last_result(pUserData->pb);
+}
+
+static void initUserData(struct UserData *pUserData, pubnub_t *pb)
+{
+
+    pthread_mutex_init(&pUserData->mutw, NULL);
+    pthread_cond_init(&pUserData->condw, NULL);
+    pUserData->pb = pb;
+}
+
+int main()
+{
+
+    enum pubnub_res res;
+    pubnub_t *pbp = pubnub_alloc();
+    struct UserData user_data;
+
+    if (NULL == pbp) {
+        printf("Failed to allocate Pubnub context!\n");
+        return -1;
+    }
+
+    pubnub_init(pbp, "demo", "demo");
+    
+    initUserData(&user_data, pbp);
+    pubnub_register_callback(pbp, _callback, &user_data);
+
+    res = pubnub_publish(pbp, chan, "\"Hello from Pubnub C-core docs!\"", true, true);
+    if (res != PNR_STARTED) {
+        printf("pubnub_publish() returned unexpected: %d\n", res);
+        pubnub_free(pbp);
+        return -1;
+    }
+    
+    res = await(&user_data);
+    if (res == PNR_STARTED) {
+        printf("await() returned unexpected: PNR_STARTED(%d)\n", res);
+        pubnub_free(pbp);
+        return -1;
+    }
+
+    if (pubnub_free(pbp) != 0) {
+        printf("Failed to free the Pubnub context\n");
+    }
+    
+    return 0;
+}
+```
+
+
 ===== OTHER EXAMPLES
 
 == pubnub_get
