@@ -14,7 +14,6 @@
 * <<pubnub_leave,pubnub_leave>>
 * <<pubnub_time,pubnub_time>>
 * <<pubnub_history,pubnub_history>>
-* <<pubnub_historyv2,pubnub_historyv2>>
 * <<pubnub_here_now,pubnub_here_now>>
 * <<pubnub_global_here_now,pubnub_global_here_now>>
 * <<pubnub_where_now,pubnub_where_now>>
@@ -1015,65 +1014,12 @@ if (PNR_OK == pbresult) {
 
 == pubnub_history
 
-===== enum pubnub_res pubnub_history (pubnub_t *p, const char *channel, const char *channel_group, unsigned count)
+===== enum pubnub_res pubnub_history (pubnub_t *p, const char *channel, unsigned count, bool include_token)
 
 ===== DESCRIPTION
-Get the message history for the channel and/or channel_group. This actually means "initiate a history transaction".
+Get the message history for the channel. This actually means "initiate a history transaction/operation".
 
-If transaction is successful, the gotten messages will be available via the pubnub_get().
-
-If channel is NULL, then channel_group cannot be NULL and you will get history only for the channel group. It goes both ways: if channel_group is NULL, then channel cannot be NULL and you will get history only for the channel.
-
-You can't get history if a transaction is in progress on the context.
-
-===== METHODS
-
-[width="40%",frame="topbot",options="header,footer"]
-|======================
-|Parameter | Type | Required | Description
-| p | pubnub_t* | Yes | Pointer to pubnub client context.
-| channel | const char* | No | The string with the channel name to get message history for. This can't be a comma separated list of channels.
-| channel_group | const char* | No | The string with the channel group name to get message history for. This can't be a comma separated list
-| count | unsigned | Yes | Maximum number of messages to get. If there are less than this available on the channel, you'll get less, but you can't get more.
-|======================
-
-===== RETURNS
-[width="40%",frame="topbot",options="header,footer"]
-|======================
-| Type | Description
-| enum pubnub_res | PNR_STARTED on success, an error otherwise
-|======================
-
-===== BASIC USAGE
-```
-unsigned count = 100; /* number of messages to retrieve */
-pubnub_history(ctx, “my_channel”, NULL, count);
-pbresult = pubnub_await(ctx);
-if (PNR_OK == pbresult) {
-    for (;;) {
-        msg = pubnub_get(ctx);
-        if (NULL == msg) {
-            break;
-        }
-        puts(msg);
-    }
-}
-
-```
-
-===== OTHER EXAMPLES
-
-
-== pubnub_historyv2
-
-===== enum pubnub_res pubnub_historyv2 (pubnub_t *p, const char *channel, const char *channel_group, unsigned count, bool include_token)
-
-===== DESCRIPTION
-Get the message history for the channel and/or channel_group using the v2 API. This actually means "initiate a history transaction/operation".
-
-If transaction is successful, the gotten messages will be available via the pubnub_get(), but in a different way then pubnub_history(). In our case, pubnub_get() will give you exactly three messages (or, rather, elements). The first will be a JSON array of gotten messages, and the second and third will be the timestamps of the first and the last message from that array.
-
-If channel is NULL, then channel_group cannot be NULL and you will get history only for the channel group. It goes both ways: if channel_group is NULL, then channel cannot be NULL and you will get history only for the channel.
+If transaction is successful, the gotten messages will be available via the pubnub_get() which will give you exactly three messages (or, rather, elements). The first will be a JSON array of gotten messages, and the second and third will be the timestamps of the first and the last message from that array.
 
 Also, if you select to include_token, then the JSON array you get will not be a simple array of gotten messages, but rather an array of JSON objects, having keys message with value the actual message, and timetoken with the time token of that particular message.
 
@@ -1088,7 +1034,6 @@ You can't get history if a transaction is in progress on the context.
 |Parameter | Type | Required | Description
 | p | pubnub_t* | Yes | Pointer to pubnub client context.
 | channel | const char* | No | The string with the channel name to get message history for. This can't be a comma separated list of channels.
-| channel_group | const char* | No | The string with the channel group name to get message history for. This can't be a comma separated list
 | count | unsigned | Yes | Maximum number of messages to get. If there are less than this available on the channel, you'll get less, but you can't get more.
 | include_token | bool | Yes | If true, include the time token for every gotten message
 |======================
