@@ -151,9 +151,7 @@ enum pbpal_resolv_n_connect_result pbpal_resolv_and_connect(pubnub_t *pb)
     if (NULL == pb->pal.socket) {
         PUBNUB_LOG_TRACE("pb=%p: Don't have BIO\n", pb);
         pb->pal.socket = BIO_new_ssl_connect(pb->pal.ctx);
-        if (PUBNUB_TIMERS_API) {
-            pb->pal.connect_timeout = time(NULL)  + pb->transaction_timeout_ms/1000;
-        }
+        pb->pal.connect_timeout = time(NULL) + pb->connection_timeout_s;
     }
     if (NULL == pb->pal.socket) {
         ERR_print_errors_cb(print_to_pubnub_log, NULL);
@@ -250,23 +248,29 @@ enum pbpal_resolv_n_connect_result pbpal_check_connect(pubnub_t *pb)
     int rslt;
     struct timeval timev = { 0, 300000 };
 
-    if (-1 == BIO_get_fd(pb->pal.socket, &socket)) {
-        PUBNUB_LOG_ERROR("pbpal_connected(): Uninitialized BIO!\n");
-        return pbpal_connect_resource_failure;
+    if (NULL != pb->pal.socket && -1 != BIO_get_fd(pb->pal.socket, &socket)) {
+        FD_ZERO(&read_set);
+        FD_ZERO(&write_set);
+        FD_SET(socket, &read_set);
+        if (BIO_should_write(pb->pal.socket))
+            FD_SET(socket, &write_set);
+        rslt = select(socket + 1, &read_set, &write_set, NULL, &timev);
+        if (0 != rslt) {
+            if (SOCKET_ERROR == rslt) {
+                PUBNUB_LOG_ERROR("pbpal_connected(): select(%d) Error: \"%s\"!\n", socket, strerror(errno));
+            }
+            else {
+                if (FD_ISSET(socket, &read_set)) {
+                    PUBNUB_LOG_TRACE("pbpal_connected(): select(%d, read) event\n", socket);
+                }
+                if (FD_ISSET(socket, &write_set)) {
+                    PUBNUB_LOG_TRACE("pbpal_connected(): select(%d, write) event\n", socket);
+                }
+            }
+        }
+        else {
+            PUBNUB_LOG_TRACE("pbpal_connected(): no select(%d) events\n", socket);
+        }
     }
-    FD_ZERO(&read_set);
-    FD_ZERO(&write_set);
-    FD_SET(socket, &read_set);
-    FD_SET(socket, &write_set);
-    rslt = select(socket + 1, &read_set, &write_set, NULL, &timev);
-    if (SOCKET_ERROR == rslt) {
-        PUBNUB_LOG_ERROR("pbpal_connected(): select() Error!\n");
-        return pbpal_connect_resource_failure;
-    }
-    else if (rslt > 0) {
-        PUBNUB_LOG_TRACE("pbpal_connected(): select() event\n");
-        return pbpal_resolv_and_connect(pb);
-    }
-    PUBNUB_LOG_TRACE("pbpal_connected(): no select() events\n");
-    return pbpal_connect_wouldblock;
+    return pbpal_resolv_and_connect(pb);
 }
